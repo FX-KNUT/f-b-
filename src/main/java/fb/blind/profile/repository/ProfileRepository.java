@@ -1,4 +1,4 @@
-package fb.blind;
+package fb.blind.profile.repository;
 
 import fb.blind.domain.profile.Profile;
 
