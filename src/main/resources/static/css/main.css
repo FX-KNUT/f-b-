@@ -1,0 +1,155 @@
+
+@charset "UTF-8";
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+header,section,footer{
+  position: relative;
+  width: 60%;
+  height: 100px;
+  margin: 0 auto;
+}
+
+#logo{
+  display: inline-block;
+  position: relative;
+  width: 350px;
+  height: 40px;
+  font-weight: bolder;
+  top: 25%;
+  left: 8px;
+  line-height: 40px;
+  font-size: 25px;
+}
+
+#btnWrapper{
+  display: inline-block;
+  position: absolute;
+  width: 120px;
+  height: 30px;
+  top: 28%;
+  right: 30px;
+}
+
+#btnWrapper>a{
+  display: inline-block;
+  width: 50px;
+  height: 100%;
+  cursor: pointer;
+  border-style: none;
+  transition: 0.5s;
+  line-height: 32px;
+  text-align: center;
+}
+
+#wbtn{
+  background: red;
+  color: #ffff;
+  margin-right: 15px;
+}
+
+#wbtn:hover{
+  background: #fff;
+  color: red;
+}
+
+#lbtn:hover{
+  background: #000;
+  color: #fff;
+}
+
+
+section{
+  height: 780px;
+  position: relative;
+}
+
+section>article{
+  width: 48%;
+  height: 50%;
+  float: left;
+  margin-bottom: 15px;
+}
+
+section>article:nth-child(even){
+  float: right;
+}
+
+.articleName{
+  width: 100%;
+  height: 10%;
+  font-size: 28px;
+}
+
+hr{
+  color: gray;
+}
+
+
+.articleList{
+  width: 100%;
+  height: 90%;
+  position: relative;
+}
+
+.articleList>li{
+  width: 100%;
+  height: 10%;
+  margin-bottom: 5px;
+}
+
+.articleList>li>a{
+  display: inline-block;
+  width: 75%;
+  height: 100%;
+  font-size: 20px;
+}
+
+.artiinfo{
+  width: 25%;
+  height: 100%;
+  float: right;
+}
+
+.artiinfo>div{
+  font-size: 14px;
+  width: 50%;
+  height: 100%;
+  float: left;
+}
+
+.artiinfo>div>i{
+  width: 30%;
+  height: 100%;
+}
+
+.artiinfo>div>i>span{
+  width: 25%;
+  height: 100%;
+}
+
+.artiinfo>.clicked{
+  width: 0;
+  display: none;
+}
+
+
+
+footer{
+  background: darkgrey;
+  padding: 10px;
+}
+

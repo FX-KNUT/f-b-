@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/edit.css">
+  <script src="https://kit.fontawesome.com/5a855f27dd.js" crossorigin="anonymous"></script>
+  <title>edit</title>
+</head>
+<body>
+  
+  <header>
+    <div id="logo">
+      <h1>Blind Clone f(b)</h1>
+    </div>
+  </header>
+
+  <section>
+
+    <article>
+      <h1 class="articleName">게시판 이름 1</h1>
+      
+      <hr>
+      
+      <form action="" method="post" id="addForm">
+        <div id="titleWrapper">
+          <label for="title">제목 : </label>
+          <input type="text" name="title" id="title" placeholder="제목을 입력하세요.">
+        </div>
+        <div id="bodyWrapper">
+        <label for="body">내용 : </label>
+        <textarea name="body" id="body" cols="30" rows="10"></textarea>
+        </div>
+      </form>
+
+    </article>
+    <script>
+      function form_submit(){
+        console.log("test");
+        document.getElementById('addForm').submit();  
+      }
+    </script>
+    <a href="main.html" id="homebutton">홈으로</a>
+    <a id="submit" onclick="form_submit()">수정</a>
+
+  </section>
+
+  <footer>
+    footer 기능 추가 시 활용 예정
+    @Capyright f(b)
+  </footer>
+
+
+</body>
+</html>

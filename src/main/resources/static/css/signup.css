@@ -1,0 +1,123 @@
+
+@charset "UTF-8";
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+header,section,footer{
+  position: relative;
+  width: 60%;
+  height: 100px;
+  margin: 0 auto;
+}
+
+#logo{
+  display: inline-block;
+  position: relative;
+  width: 500px;
+  height: 40px;
+  font-weight: bolder;
+  top: 25%;
+  left: 8px;
+  line-height: 40px;
+  font-size: 25px;
+}
+
+
+section{
+  height: 500px;
+  position: relative;
+}
+
+section>article{
+  width: 100%;
+  height: 100%;
+  float: left;
+  margin-bottom: 15px;
+}
+
+#Wrapper{
+  width: 50%;
+  height: 80%;
+  padding: 20px;
+}
+
+#Wrapper>form>div{
+  margin-bottom: 10px;
+}
+
+#nick{
+  margin-left: 10px;
+}
+
+#id,#pw1,#pw2,#nick,#belong{
+  width: 300px;
+  height: 30px;
+  font-size: 16px;
+  outline: none;
+  border-style: none;
+  border-bottom: 1px solid #cfcfcf;
+}
+
+#signupBtn{
+  width: 340px;
+  height: 30px;
+  border-style: none;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+#signupBtn:hover{
+  background-color: #ffff;
+  color: gray;
+}
+
+
+#homebutton{
+  position: absolute;
+  bottom: 30%;
+  right: 2%;
+  width: 50px;
+  height: 30px;
+  border-style: none;
+  background-color: #cfcfcf;
+  cursor: pointer;
+  transition: 0.5s;
+  text-align: center;
+  line-height: 30px;
+}
+
+#nickCheckBtn,#idCheckBtn{
+  width: 350px;
+  height: 30px;
+  border-style: none;
+  background-color: #cfcfcf;
+  cursor: pointer;
+  transition: 0.5s;
+  text-align: center;
+  line-height: 30px;
+}
+
+#homebutton:hover,#nickCheckBtn:hover,#idCheckBtn:hover{
+  background-color: #000;
+  color: #fff;
+}
+
+
+footer{
+  background: darkgrey;
+  padding: 10px;
+}
+

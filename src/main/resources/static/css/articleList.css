@@ -1,0 +1,219 @@
+
+@charset "UTF-8";
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+header,section,footer{
+  position: relative;
+  width: 60%;
+  height: 100px;
+  margin: 0 auto;
+}
+
+#logo{
+  display: inline-block;
+  position: relative;
+  width: 350px;
+  height: 40px;
+  font-weight: bolder;
+  top: 25%;
+  left: 8px;
+  line-height: 40px;
+  font-size: 25px;
+}
+
+#btnWrapper{
+  display: inline-block;
+  position: absolute;
+  width: 120px;
+  height: 30px;
+  top: 28%;
+  right: 30px;
+}
+
+#btnWrapper>a{
+  display: inline-block;
+  width: 50px;
+  height: 100%;
+  cursor: pointer;
+  border-style: none;
+  transition: 0.5s;
+  line-height: 32px;
+  text-align: center;
+}
+
+
+#wbtn{
+  background: red;
+  color: #ffff;
+  margin-right: 15px;
+}
+
+#wbtn:hover{
+  background: #fff;
+  color: red;
+}
+
+#lbtn:hover{
+  background: #000;
+  color: #fff;
+}
+
+
+section{
+  height: 780px;
+  position: relative;
+}
+
+section>article{
+  width: 100%;
+  height: 100%;
+  float: left;
+  margin-bottom: 15px;
+}
+
+#discript{
+  width: 100%;
+  height: 30px;
+}
+
+#discript>p{
+  height: 100%;
+  float: left;
+}
+
+#no{
+  width: 5%;
+}
+#title{
+  width: 21%;
+}
+#writer{
+  width: 20%;
+}
+#date{
+  width: 28%;
+}
+#like{
+  width: 13%;
+}
+
+.articleName{
+  width: 100%;
+  height: 35px;
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+hr{
+  color: gray;
+}
+
+
+.articleList{
+  width: 100%;
+  height: 90%;
+  position: relative;
+}
+
+.articleList>li{
+  width: 100%;
+  height: 5%;
+  margin-bottom: 5px;
+}
+
+.articleList>li>p{
+  display: inline-block;
+  width: 5%;
+  height: 100%;
+  font-size: 20px;
+}
+
+.articleList>li>a{
+  display: inline-block;
+  width: 20%;
+  height: 100%;
+  font-size: 20px;
+}
+
+.articleList>li>a:first-child{
+  display: inline-block;
+  width: 30%;
+  height: 100%;
+  font-size: 20px;
+}
+
+.artiinfo{
+  width: 25%;
+  height: 100%;
+  float: right;
+}
+
+.artiinfo>div{
+  font-size: 14px;
+  width: 50%;
+  height: 100%;
+  float: left;
+}
+
+.artiinfo>div>i{
+  width: 30%;
+  height: 100%;
+}
+
+.artiinfo>div>i>span{
+  width: 25%;
+  height: 100%;
+}
+
+.artiinfo>.clicked{
+  width: 0;
+  display: none;
+}
+
+
+#homebutton{
+  position: absolute;
+  bottom: 30%;
+  right: 2%;
+  width: 50px;
+  height: 30px;
+  border-style: none;
+  background-color: #cfcfcf;
+  cursor: pointer;
+  transition: 0.5s;
+  text-align: center;
+  line-height: 30px;
+}
+
+#homebutton:hover{
+  background-color: #000;
+  color: #fff;
+}
+
+#orderForm{
+  position: absolute;
+  top: 12%;
+  right: 20%;
+  z-index: 99;
+}
+
+
+footer{
+  background: darkgrey;
+  padding: 10px;
+}
+
