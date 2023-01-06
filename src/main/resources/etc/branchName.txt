@@ -1,3 +1,4 @@
 
 
-mento ==> 김성은,신영운
+mento ==> 김성은,신영운,
+choiyujin ==> 최유진
