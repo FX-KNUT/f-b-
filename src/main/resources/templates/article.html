@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/article.css">
+  <script src="https://kit.fontawesome.com/5a855f27dd.js" crossorigin="anonymous"></script>
+  <title>article</title>
+</head>
+<body>
+  
+  <header>
+    <div id="logo">
+      <h1>Blind Clone f(b)</h1>
+    </div>
+  </header>
+
+  <section>
+
+    <article>
+      <h1 class="articleName">게시판 이름 1</h1>
+      
+      <hr>
+      
+      <form id="addForm">
+        <div id="titleWrapper">
+          <input type="hidden" th:value="${article.id}">
+          <label for="title">제목 : </label>
+          <input type="text" id="title" th:value="${article.title}" disabled>
+        </div>
+        <div id="bodyWrapper">
+        <label for="body">내용 : </label>
+        <textarea id="body" cols="30" rows="10" th:text="${article.body}" disabled></textarea>
+        </div>
+      </form>
+
+    </article>
+    <a href="main.html" th:href="@{/articles}" id="homebutton">홈으로</a>
+    <a id="edit" href="edit.html" th:href="@{/articles/edit/{articleId}(articleId=${articleId})}">수정</a>
+
+  </section>
+
+  <footer>
+    footer 기능 추가 시 활용 예정
+    @Capyright f(b)
+  </footer>
+
+
+</body>
+</html>

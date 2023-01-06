@@ -11,7 +11,7 @@ public interface ArticleRepository {
      * @author 김성은,신영운
      * @param Article 객체를 받아와 저장
      */
-    void save(Article Article);
+    Article save(Article Article);
 
     /**
      * @author 김성은,신영운

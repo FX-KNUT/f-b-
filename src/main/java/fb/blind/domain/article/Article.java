@@ -25,15 +25,18 @@ public class Article {
     private long likes;
     private long views;
     private long userId;
+    private String writer;
 
     public Article() {
+
     }
 
-    public Article(String title, String body, String date, String fileName) {
+    public Article(String title, String body, String date, String fileName,String writer) {
         this.title = title;
         this.body = body;
         this.date = date;
         this.fileName = fileName;
+        this.writer = writer;
     }
 }
 

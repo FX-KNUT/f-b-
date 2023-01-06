@@ -15,15 +15,16 @@ public class MemoryArticleRepository implements ArticleRepository {
     private long Sequence = 0L;
     /**
      * @author 김성은,신영운
-     * @param Article 객체를 받아와 저장
+     * @param article 객체를 받아와 저장
      * 작성 레벨 --> ???
      * 변수 담아서 갈래? -> 직접 매서드 호출
      */
     @Override
-    public void save(Article Article) {
-        Article.setId(++Sequence);
-        long articleId = Article.getId();
-        store.put(articleId,Article);
+    public Article save(Article article) {
+        article.setId(++Sequence);
+        long articleId = article.getId();
+        store.put(articleId,article);
+        return article;
     }
 
     /**
@@ -93,9 +94,14 @@ public class MemoryArticleRepository implements ArticleRepository {
 
     @PostConstruct
     public void setTestData(){
-        Article arA = new Article("testA", "test", "2023-01-06", null);
-        Article arB = new Article("testB", "test", "2023-01-06", null);
-        Article arC = new Article("testC", "test", "2023-01-06", null);
+        Article arA = new Article("testA", "test", "2023-01-06", null,"shin");
+        Article arB = new Article("testB", "test", "2023-01-06", null,"shin");
+        Article arC = new Article("testC", "test", "2023-01-06", null,"shin");
+
+        arA.setId(997L);
+        arB.setId(998L);
+        arC.setId(999L);
+
         store.put(997L,arA);
         store.put(998L,arB);
         store.put(999L,arC);

@@ -10,7 +10,7 @@ public interface ArticleService {
     /**
      * @param article article 신규 작성 하기
      */
-    void addArticle(Article article);
+    Article addArticle(Article article);
 
     /**
      * @param articleId article 고유 id
@@ -19,10 +19,10 @@ public interface ArticleService {
     Optional<Article> readArticle(long articleId);
 
     /**
-     * @param articleId article 고유 id
+     * @param article article 고유 id
      * @return update 된 article 반환
      */
-    Article updateArticle(long articleId);
+    Article updateArticle(Article article);
 
     /**
      * @param articleId article 고유 id
@@ -32,7 +32,7 @@ public interface ArticleService {
     /**
      * @return article 전체 조회
      */
-    Optional<List<Article>> articleList();
+    List<Article> articleList();
 
     /**
      * @param articleId article 고유 id
@@ -44,13 +44,13 @@ public interface ArticleService {
      * @param articleId article 고유 id
      * @return 조회수 반한
      */
-    int getViews(long articleId);
+    long getViews(long articleId);
 
     /**
      * @param articleId article 고유 id
      * @return 좋아요 수 반환
      */
-    int getLikes(long articleId);
+    long getLikes(long articleId);
 
     /**
      * @param articleId article 고유 id
