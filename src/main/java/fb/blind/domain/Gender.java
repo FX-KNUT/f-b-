@@ -1,12 +1,18 @@
 package fb.blind.domain;
 
+import lombok.Getter;
+
+@Getter
 public enum Gender {
 
-    /**
-     * M -> men
-     * F -> women
-     */
-    M(1), W(0);
+    M(0),W(1);
+    private int gender;
 
-    Gender(int i) {};
+    /**
+     * @param gender M -> 0 , W -> 1
+     */
+    Gender(int gender) {
+        this.gender = gender;
+    }
+
 }
