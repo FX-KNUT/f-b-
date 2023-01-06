@@ -9,17 +9,23 @@ public interface MarkRepository {
     /**
      * @param mark mark 객체 저장
      */
-    void save(Mark mark);
+    Mark save(Mark mark);
 
     /**
-     * @param userid user 고유 id
+     * @param userId user 고유 id
      * @return mark list return
      */
-    List<Mark> findByUserId(long userid);
+    List<Mark> findByUserId(long userId);
 
+    List<Mark> findByArticleId(long articleId);
     /**
      * @param mark mark 객체 -> reversion 필요
      */
     void delete(Mark mark);
+
+    /**
+     * test 용
+     */
+    void clear();
 
 }

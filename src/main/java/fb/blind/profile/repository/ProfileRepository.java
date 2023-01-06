@@ -8,7 +8,7 @@ public interface ProfileRepository {
     /**
      * @param profile profile 객체 등록
      */
-    void save(Profile profile);
+    Profile save(Profile profile);
 
     /**
      * @param userId user 고유 id
@@ -21,4 +21,6 @@ public interface ProfileRepository {
      * user 삭제 -> profile 연쇄 삭제 필요
      */
     void delete(long userId);
+
+    void clear();
 }
