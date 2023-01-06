@@ -85,7 +85,7 @@ section>article{
 }
 
 
-#homebutton{
+#homebutton,#editBtn,#myarticle,#mycomment{
   position: absolute;
   bottom: 30%;
   right: 2%;
@@ -99,18 +99,20 @@ section>article{
   line-height: 30px;
 }
 
-#nickCheckBtn,#idCheckBtn{
-  width: 350px;
-  height: 30px;
-  border-style: none;
-  background-color: #cfcfcf;
-  cursor: pointer;
-  transition: 0.5s;
-  text-align: center;
-  line-height: 30px;
+#editBtn{
+  right: 14%;
 }
 
-#homebutton:hover,#nickCheckBtn:hover,#idCheckBtn:hover{
+#myarticle{
+  width: 120px;
+  right: 25%;
+}
+#mycomment{
+  width: 120px;
+  right: 45%;
+}
+
+#homebutton:hover,#editBtn:hover,#myarticle:hover,#mycomment:hover{
   background-color: #000;
   color: #fff;
 }
