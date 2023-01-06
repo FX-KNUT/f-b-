@@ -1,0 +1,67 @@
+
+### url 설계서
+
+## resource 파악
+1. articles
+2. mark
+3. profile
+4. user
+5. comment -> article 에서 조회
+6. recomment -> article 에서 조회
+
+##
+Main link page : localhost:8080
+main page : /articles -> GET ==> article page 로도 넘어갈 수 있음
+article List page : /articles/{articlesId} -> GET => 정렬 기준은 query parameter 로 보냄 Path variable
+article page : /articles/{articleId} -> GET Path variable
+
+article add form : /articles/add -> GET ==> 빈 item 객체 -> 빈공간 넘겨주고
+article add : /articles/add -> POST => PRG : redirect article page
+
+article edit form : /articles/edit/{articleId} -> GET
+article edit : /articles/edit/{articleId} -> POST => PRG : redirect article page
+
+login form : /users/login -> GET
+login : /users/login -> POST ==> PRG --> main 보내고  reversion : 이전 path -> 검증 : POST 로 못넘어가게
+
+signup form : /users/signup -> GET
+NickName duplication check : /users/signup/ -> POST => 검증 로직 : redirect /users/signup -> GET
+ID duplication check : /users/signup/ -> POST => 검증 로직 : redirect /users/signup/ -> GET
+
+PW 검증은 client 구현 예정
+signup : /users/signup -> POST => PRG : redirect /articles
+생각거리 : 서버 --> 클라이언트 같은 키 사용 -> key ---> 서로 다른 키로 만들어요
+
+<--- view 구현 필요 --->
+find-email form: /users/find  -> GET
+find-passwd form: /users/find -> GET
+# check Box , drop menu -> param
+find-email: /users/find  -> POST => redirect /users/findview
+find-passwd : /users/find -> POST => redirect /users/findview
+# passwd 임시 비번 --> passwd 변경 form
+passwd change form : /users/change -> GET
+passwd change : /users/change --> POST ==> PRG : login form 으로 이동
+<--- --->
+
+show profile : /profile
+
+add profile form : /profile/add -> GET
+add profile : /profile/add -> POST => PRG : redirect /profile
+
+edit profile : /profile/edit -> GET
+edit profile : /profile/edit -> POST  => PRG : redirect /profile
+
+show my article : /users/myarticle -> GET
+show my comment : /users/mycomment -> GET
+
+
+
+
+
+
+
+
+
+
+
+
