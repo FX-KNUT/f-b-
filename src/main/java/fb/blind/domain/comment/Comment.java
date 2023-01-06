@@ -8,12 +8,12 @@ import lombok.Setter;
 public class Comment {
 
     /**
-     * id: comment 고유 id
-     * articleId : 게시물 id
-     * userid : comment 작성자 id
-     * comm : 댓글 내용
-     * date: 댓글 작성 시간
-     * likes: 좋아요 server binding
+     * @Param id: comment 고유 id
+     * @Param articleId : 게시물 id
+     * @Param userid : comment 작성자 id
+     * @Param comm : 댓글 내용
+     * @Param date: 댓글 작성 시간
+     * @Param likes: 좋아요 server binding
      */
     private long id;
     private long articleId;
@@ -21,6 +21,8 @@ public class Comment {
     private String comm;
     private String date;
     private long likes;
+
+    public Comment() {    }
 
     public Comment(long articleId, long userId, String comm, String date) {
         this.articleId = articleId;

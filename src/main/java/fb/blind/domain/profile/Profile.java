@@ -9,15 +9,17 @@ import lombok.Setter;
 public class Profile {
 
     /**
-     * id : profiel 고유 no
-     * gender : 여 0, 남 1 (Enum)
-     * imgPath : 경로 저장용
-     * userId : user id
+     * @Param id : profiel 고유 no
+     * @Param gender : 여 0, 남 1 (Enum)
+     * @Param imgPath : 경로 저장용
+     * @Param userId : user id
      */
     private long id;
     private Gender gender;
     private String imgPath;
     private long userId;
+
+    public Profile() {}
 
     public Profile(Gender gender, String imgPath, long userId) {
         this.gender = gender;

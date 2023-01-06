@@ -8,12 +8,12 @@ import lombok.Setter;
 public class User {
 
     /**
-     * id : user 고유 id
-     * depf : 소속
-     * nickName : 닉네임
-     * email : 로그인 id -> e-mail 형식
-     * passwd : pw
-     * createDate : user  생성 시간
+     * @Param id : user 고유 id
+     * @Param dept : 소속
+     * @Param nickName : 닉네임
+     * @Param email : 로그인 id -> e-mail 형식
+     * @Param passwd : pw
+     * @Param createDate : user  생성 시간
      */
     private long id;
     private String dept;
@@ -21,6 +21,8 @@ public class User {
     private String email;
     private String passwd;
     private String createDate;
+
+    public User() {}
 
     public User(String dept, String nickName, String email, String passwd, String createDate) {
         this.dept = dept;

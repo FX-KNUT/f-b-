@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/articles")
 public class ArticleController {
 
+    /**
+     * @param model test data
+     * @return main 화면 이동
+     */
     @GetMapping
     public String mainView(Model model){
         model.addAttribute("test","Main Page");

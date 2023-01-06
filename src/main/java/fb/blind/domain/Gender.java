@@ -1,7 +1,12 @@
 package fb.blind.domain;
 
 public enum Gender {
-    M(1), F(0);
+
+    /**
+     * M -> men
+     * F -> women
+     */
+    M(1), W(0);
 
     Gender(int i) {};
 }
