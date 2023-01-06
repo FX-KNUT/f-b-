@@ -16,13 +16,13 @@ public interface RecommentRepository {
      * @param commId comment 고유 id
      * @return recomment list 반환
      */
-    Optional<List<Recomment>> findByCommId(long commId);
+    List<Recomment> findByCommId(long commId);
 
     /**
      * @param userid user 고유 id
      * @return Recomment List 반환
      */
-    Optional<List<Recomment>> findByUserId(long userid);
+    List<Recomment> findByUserId(long userid);
 
     /**
      * @param commId comment  고유 id
