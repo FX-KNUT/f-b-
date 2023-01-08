@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/signup.css">
+  <link rel="stylesheet" href="/css/signup.css?after">
   <script src="https://kit.fontawesome.com/5a855f27dd.js" crossorigin="anonymous"></script>
   <title>signup</title>
 </head>
@@ -20,7 +20,7 @@
 
     <article>
       <div id="Wrapper">
-        <form action="" method="post">
+        <form action="" method="post" id="signupForm">
           <div>
             <label for="nick">닉네임 : </label>
             <input type="text" name="nick" id="nick">
@@ -32,11 +32,11 @@
           </div>
           <input type="button" id="idCheckBtn" value="중복 확인">
           <div>
-            <label for="pw">PW : </label>
+            <label for="pw1">PW : </label>
             <input type="text" name="passwd1" id="pw1">
           </div>
           <div>
-            <label for="pw">PW : </label>
+            <label for="pw2">PW : </label>
             <input type="text" name="passwd2" id="pw2">
           </div>
           <div>
@@ -47,7 +47,23 @@
             <input type="radio" name="gender" value="남">남
             <input type="radio" name="gender" value="여">여
           </div>
-          <input type="button" id="signupBtn" value="회원가입">
+
+
+          <div>
+            <label for="questionInput">질문 : </label>
+            <select class="question" id="questionSelect" name="question">
+              <option value="born">본인의 고향은?</option>
+              <option value="hoby">본인의 취미는?</option>
+              <option value="nickname">본인의 초등학교 별명은?</option>
+              <option value="userinput">직접 입력</option>
+            </select>
+            <input type="text" name="question" id="questionInput" disabled>
+          </div>
+          <div>
+            <label for="answer">문답 : </label>
+            <input type="text" name="answer" id="answer">
+          </div>
+          <input type="button" id="signupBtn" value="회원가입" onclick="form_submit()">
         </form>
       </div>
 
@@ -61,7 +77,21 @@
     footer 기능 추가 시 활용 예정
     @Capyright f(b)
   </footer>
+  <script>
+    let questionInput = document.querySelector("#questionInput");
+    let questionSelect = document.querySelector("#questionSelect");
+    questionSelect.addEventListener("change", ()=>{
+      if(questionSelect.value != "userinput"){
+        questionInput.disabled = true;
+      }else{
+        questionInput.disabled = false;
+      }
+    });
 
+    function form_submit(){
+      document.getElementById('signupForm').submit();
+    }
+  </script>
 
 </body>
 </html>

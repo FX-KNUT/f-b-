@@ -32,7 +32,7 @@ public interface ArticleService {
     /**
      * @return article 전체 조회
      */
-    List<Article> articleList();
+    List<Article> articleList(long kindId);
 
     /**
      * @param articleId article 고유 id
@@ -57,5 +57,7 @@ public interface ArticleService {
      * @return 작성일 반환
      */
     String getWriteDate(long articleId);
+
+
 
 }

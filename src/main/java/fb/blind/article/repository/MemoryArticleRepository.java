@@ -83,6 +83,18 @@ public class MemoryArticleRepository implements ArticleRepository {
         return new ArrayList<Article>(store.values());
     }
 
+    @Override
+    public List<Article> findByKindId(long kindId) {
+        List<Article> articles = new ArrayList<>(store.values());
+        List<Article> result = new ArrayList<>();
+        for (Article article : articles) {
+            if(article.getKindId()== kindId){
+                result.add(article);
+            }
+        }
+        return result;
+    }
+
     /**
      * @author 김성은,신영운
      * test 용
@@ -94,17 +106,35 @@ public class MemoryArticleRepository implements ArticleRepository {
 
     @PostConstruct
     public void setTestData(){
-        Article arA = new Article("testA", "test", "2023-01-06", null,"shin");
-        Article arB = new Article("testB", "test", "2023-01-06", null,"shin");
-        Article arC = new Article("testC", "test", "2023-01-06", null,"shin");
+        Article arA = new Article("testA", "test", "2023-01-06", null,"shin",996L);
+        Article arB = new Article("testB", "test", "2023-01-06", null,"shin",996L);
+        Article arC = new Article("testC", "test", "2023-01-06", null,"shin",996L);
+        Article arD = new Article("testD", "test", "2023-01-06", null,"shin",997L);
+        Article arE = new Article("testE", "test", "2023-01-06", null,"shin",997L);
+        Article arF = new Article("testF", "test", "2023-01-06", null,"shin",997L);
+        Article arG = new Article("testG", "test", "2023-01-06", null,"shin",998L);
+        Article arH = new Article("testH", "test", "2023-01-06", null,"shin",998L);
+        Article arI = new Article("testI", "test", "2023-01-06", null,"shin",998L);
 
-        arA.setId(997L);
-        arB.setId(998L);
-        arC.setId(999L);
+        arA.setId(991L);
+        arB.setId(992L);
+        arC.setId(993L);
+        arD.setId(994L);
+        arE.setId(995L);
+        arF.setId(996L);
+        arG.setId(997L);
+        arH.setId(998L);
+        arI.setId(999L);
 
-        store.put(997L,arA);
-        store.put(998L,arB);
-        store.put(999L,arC);
+        store.put(991L,arA);
+        store.put(992L,arB);
+        store.put(993L,arC);
+        store.put(994L,arD);
+        store.put(995L,arE);
+        store.put(996L,arF);
+        store.put(997L,arG);
+        store.put(998L,arH);
+        store.put(999L,arI);
     }
 
 }

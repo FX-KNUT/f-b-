@@ -47,6 +47,8 @@ public interface ArticleRepository {
      */
     List<Article> findAll();
 
+    List<Article> findByKindId(long kindId);
+
     /**
      * @author 김성은,신영운
      * Test 용 Memory clear Method

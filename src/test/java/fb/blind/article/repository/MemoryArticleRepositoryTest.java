@@ -1,19 +1,15 @@
 package fb.blind.article.repository;
 
 import fb.blind.domain.article.Article;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class MemoryArticleRepositoryTest {
 
@@ -36,7 +32,7 @@ class MemoryArticleRepositoryTest {
     @Test
     @DisplayName("제목으로 찾기")
     void findByTitle() {
-        Article article = new Article("testA", "test", "2023-01-06", null);
+        Article article = new Article("testA", "test", "2023-01-06", null,1L);
         ar.save(article);
         Article testA = ar.findByTitle("testA");
         assertThat(testA.getTitle()).isEqualTo(article.getTitle());
@@ -45,7 +41,7 @@ class MemoryArticleRepositoryTest {
     @Test
     @DisplayName("Article id 로 찾기")
     void findByArticleId() {
-        Article article = new Article("testA", "test", "2023-01-06", null);
+        Article article = new Article("testA", "test", "2023-01-06", null,1L);
         article.setId(1L);
         ar.save(article);
         Article testA = ar.findByArticleId(1L).get();
@@ -54,7 +50,7 @@ class MemoryArticleRepositoryTest {
 
     @Test
     void delete() {
-        Article article = new Article("testA", "test", "2023-01-06", null);
+        Article article = new Article("testA", "test", "2023-01-06", null,1L);
         article.setId(1L);
         ar.save(article);
         System.out.println("article = " + article.getTitle());
@@ -78,9 +74,9 @@ class MemoryArticleRepositoryTest {
     }
 
     private void setTestData(){
-        Article arA = new Article("testA", "test", "2023-01-06", null);
-        Article arB = new Article("testB", "test", "2023-01-06", null);
-        Article arC = new Article("testC", "test", "2023-01-06", null);
+        Article arA = new Article("testA", "test", "2023-01-06", null,1L);
+        Article arB = new Article("testA", "test", "2023-01-06", null,1L);
+        Article arC = new Article("testA", "test", "2023-01-06", null,1L);
         ar.save(arA);
         ar.save(arB);
         ar.save(arC);

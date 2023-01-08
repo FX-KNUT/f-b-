@@ -27,16 +27,19 @@ public class Article {
     private long userId;
     private String writer;
 
-    public Article() {
+    private long kindId;
+
+    public Article(String testA, String test, String s, Object o, long l) {
 
     }
 
-    public Article(String title, String body, String date, String fileName,String writer) {
+    public Article(String title, String body, String date, String fileName,String writer,long kindId) {
         this.title = title;
         this.body = body;
         this.date = date;
         this.fileName = fileName;
         this.writer = writer;
+        this.kindId = kindId;
     }
 }
 

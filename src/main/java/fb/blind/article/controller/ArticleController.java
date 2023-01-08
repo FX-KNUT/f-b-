@@ -1,11 +1,9 @@
 package fb.blind.article.controller;
 
-import fb.blind.article.repository.ArticleRepository;
-import fb.blind.article.repository.MemoryArticleRepository;
 import fb.blind.article.service.ArticleService;
-import fb.blind.domain.Gender;
 import fb.blind.domain.article.Article;
-import lombok.RequiredArgsConstructor;
+import fb.blind.domain.kind.Kind;
+import fb.blind.kind.service.KindService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,10 +21,11 @@ import java.util.Optional;
 public class ArticleController {
 
     private ArticleService as;
-
+    private KindService ks;
     @Autowired
-    public ArticleController(ArticleService as) {
+    public ArticleController(ArticleService as,KindService ks) {
         this.as = as;
+        this.ks = ks;
     }
 
     /**
@@ -35,15 +35,19 @@ public class ArticleController {
      */
     @GetMapping
     public String mainView(Model model){
-        model.addAttribute("test","Main Page");
+        List<Kind> result = ks.findAll();
+        model.addAttribute("kind",result);
         return "main";
     }
 
-    @GetMapping("/articleList")
-    public String articleList(Model model){
+    @GetMapping("/articleList/{kindId}")
+    public String articleList(@PathVariable long kindId,Model model){
 
-        List<Article> articles = as.articleList();
+        List<Article> articles = as.articleList(kindId);
+        Kind kind = ks.getKindById(kindId).get();
         model.addAttribute("articles",articles);
+        model.addAttribute("kind",kind);
+
 
         return "articleList";
     }
@@ -63,7 +67,7 @@ public class ArticleController {
     }
 
     @PostMapping("/edit/{articleId}")
-    public String  edit(@ModelAttribute Article article,RedirectAttributes redirectAttributes){
+    public String edit(@ModelAttribute Article article,RedirectAttributes redirectAttributes){
         long id = article.getId();
         Article target = as.readArticle(id).get();
         log.info("title ={} ", target.getTitle());

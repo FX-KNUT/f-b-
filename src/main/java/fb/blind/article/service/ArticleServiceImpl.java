@@ -49,8 +49,8 @@ public class ArticleServiceImpl implements ArticleService{
     }
 
     @Override
-    public List<Article> articleList() {
-        return ar.findAll();
+    public List<Article> articleList(long kindId) {
+        return ar.findByKindId(kindId);
     }
 
     @Override
@@ -75,4 +75,5 @@ public class ArticleServiceImpl implements ArticleService{
         Article target = ar.findByArticleId(articleId).get();
         return target.getDate();
     }
+
 }
