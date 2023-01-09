@@ -71,7 +71,7 @@ form{
   margin-top: 10px;
 }
 
-#title{
+#title,#kindName{
   width: 300px;
   height: 30px;
   font-size: 20px;
@@ -134,6 +134,7 @@ form{
   background-color: #000;
   color: #fff;
 }
+
 
 footer{
   background: darkgrey;

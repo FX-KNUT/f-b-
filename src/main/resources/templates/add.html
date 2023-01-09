@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,26 +19,23 @@
   <section>
 
     <article>
-      <h1 class="articleName">게시판 이름 1</h1>
+      <h1 class="articleName" >게시판 이름 1</h1>
       
       <hr>
       
-      <form action="" method="post" id="addForm">
+      <form action="" method="post" id="addForm" th:object="${article}">
 
-        <select class="article" id="article" name="article">
-          <option value="free">자유 게시판</option>
-          <option value="secret">비밀 게시판</option>
-          <option value="game">게임 게시판</option>
-          <option value="cat">고양이 게시판</option>
+        <select class="kindName" id="kindName" name="kindName" >
+          <option th:each="ki : ${kindList}" value="free" th:value="${ki.kindName}" th:text="${ki.kindName}">자유 게시판</option>
         </select>
 
         <div id="titleWrapper">
           <label for="title">제목 : </label>
-          <input type="text" name="title" id="title" placeholder="제목을 입력하세요.">
+          <input type="text" id="title" th:field="*{title}" placeholder="제목을 입력하세요.">
         </div>
         <div id="bodyWrapper">
         <label for="body">내용 : </label>
-        <textarea name="body" id="body" cols="30" rows="10"></textarea>
+        <textarea id="body" cols="30" rows="10" th:field="*{body}"></textarea>
         </div>
       </form>
 

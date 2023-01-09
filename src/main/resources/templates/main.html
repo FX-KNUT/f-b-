@@ -15,7 +15,7 @@
       <h1>Blind Clone f(b)</h1>
     </div>
     <div id="btnWrapper">
-      <a href="add.html" id="wbtn">글 작성</a>
+      <a href="add.html" th:href="@{/articles/add}" id="wbtn">글 작성</a>
       <a href="login.html" id="lbtn">로그인</a>
     </div>
   </header>
@@ -23,7 +23,7 @@
   <section>
     <article >
       <div th:each="ki : ${kind}">
-        <a href="articleList.html" th:href="@{/articles/articleList/{kindId}(kindId=${ki.id})}" class="articleName" th:text="${ki.kindName}">게시판 이름 1</a>
+        <a href="articleList.html" th:field="${ki.id}" th:href="@{/articles/articleList/{kindId}(kindId=${ki.id})}" class="articleName" th:text="${ki.kindName}">게시판 이름 1</a>
         <hr>
       </div>
     </article>

@@ -1,11 +1,13 @@
 package fb.blind.kind.repository;
 
 import fb.blind.domain.kind.Kind;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import java.util.*;
 
+@Slf4j
 @Repository
 public class MemoryKindRepository implements KindRepository{
 
@@ -31,9 +33,11 @@ public class MemoryKindRepository implements KindRepository{
 
     @Override
     public Optional<Kind> findByTitle(String title) {
+        log.info("repository Title = {} ", title);
         for (Kind kind : store.values()) {
-            if (kind.getKindName() == title)
+            if(kind.getKindName().equals(title)){
                 return Optional.ofNullable(kind);
+            }
         }
         return Optional.empty();
     }
@@ -47,7 +51,7 @@ public class MemoryKindRepository implements KindRepository{
     public void clear() {
         store.clear();
     }
-
+    
     @PostConstruct
     public void setTestData(){
         Kind free = new Kind("자유게시판");
