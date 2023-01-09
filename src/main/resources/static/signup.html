@@ -48,7 +48,6 @@
             <input type="radio" name="gender" value="여">여
           </div>
 
-
           <div>
             <label for="questionInput">질문 : </label>
             <select class="question" id="questionSelect" name="question">
@@ -87,6 +86,26 @@
         questionInput.disabled = false;
       }
     });
+
+    let pw1 = document.querySelector("#pw1");
+    let pw2 = document.querySelector("#pw2");
+
+    pw2.oninput = function() {
+      if(!pw1.value){
+        alert("please input first passwd");
+        pw2.value = "";
+        pw1.focus();
+      }
+    };
+
+    pw2.onchange = ()=>{
+      if(pw1.value !== pw2.value){
+        alert("not equals pw1, pw2 please check!");
+        pw2.value = "";
+        pw2.focus();
+      }
+    }
+
 
     function form_submit(){
       document.getElementById('signupForm').submit();
