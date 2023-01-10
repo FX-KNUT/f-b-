@@ -43,7 +43,9 @@ public class ArticleController {
      */
     @GetMapping
     public String mainView(@SessionAttribute(name = "memberId", required = false) User loginUser,HttpServletRequest request, @ModelAttribute("kind") Kind kind, Model model){
-
+        /**
+         * session 이용
+         */
         List<Kind> result = ks.findAll();
         model.addAttribute("kinds",result);
 
@@ -57,24 +59,40 @@ public class ArticleController {
     }
 
     @GetMapping("/articleList/{kindId}")
-    public String articleList(@PathVariable long kindId,Model model){
+    public String articleList(HttpServletRequest request,@PathVariable long kindId,Model model){
         List<Article> articles = as.articleList(kindId);
         Kind result = ks.getKindById(kindId).get();
 
         model.addAttribute("articles",articles);
         model.addAttribute("kind",result);
 
+        HttpSession session = request.getSession(false);
+
+        boolean logined = true;
+
+        if(session == null){
+            logined = false;
+            model.addAttribute("logined",logined);
+            return "articleList";
+        }
+
+        User user = (User)session.getAttribute("memberId");
+
+        model.addAttribute("logined",logined);
         return "articleList";
     }
 
     @GetMapping("/article/{articleId}")
-    public String article(@PathVariable long articleId,Model model){
+    public String article(HttpServletRequest request,@PathVariable long articleId,Model model){
 
         Article target = as.readArticle(articleId).get();
         Kind kind = ks.getKindById(target.getKindId()).get();
 
         model.addAttribute("article",target);
         model.addAttribute("kind",kind);
+
+        //여기 수정중
+        HttpSession session = request.getSession(false);
 
         return "article";
     }

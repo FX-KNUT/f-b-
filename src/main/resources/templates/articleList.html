@@ -16,15 +16,15 @@
       
     </div>
     <div id="btnWrapper">
-      <a href="add.html" th:href="@{/articles/add}" id="wbtn">글 작성</a>
-      <a href="login.html" th:href="@{/login}" id="lbtn">로그인</a>
+      <a href="add.html" th:if="${logined}" th:href="@{/articles/add}" id="wbtn">글 작성</a>
+      <a href="login.html" th:unless="${logined}" th:href="@{/login}" id="lbtn">로그인</a>
     </div>
   </header>
 
   <form action="" method="get" id="orderForm">
     <select name="orderFlag">
-      <option value="americano">최신순</option>
-      <option value="caffe latte">작성자 이름 순</option>
+      <option value="1">최신순</option>
+      <option value="2">작성자 이름 순</option>
   </select>
   <input type="button" value="정렬">
   </form>
