@@ -27,6 +27,11 @@
     <article>
       <div id="logWrapper">
         <form action="" method="post" th:object="${user}">
+
+          <div th:if="${#fields.hasGlobalErrors()}">
+            <p class="error" th:each="err : ${#fields.globalErrors()}" th:text="${err}">전체 오류 메세지</p>
+          </div>
+
           <div>
             <label for="id">ID : </label>
             <input type="text" th:field="*{inputId}" th:errorclass="error" id="id">
@@ -45,7 +50,7 @@
     </article>
 
     <a href="find.html" id="findBtn">E-mail / passwd 찾기</a>
-    <a href="main.html" id="homebutton">홈으로</a>
+    <a href="main.html" id="homebutton" th:href="@{/articles}">홈으로</a>
 
   </section>
 

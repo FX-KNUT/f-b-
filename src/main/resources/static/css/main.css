@@ -44,7 +44,7 @@ header,section,footer{
   right: 30px;
 }
 
-#btnWrapper>a{
+#btnWrapper>a,#lbtn{
   display: inline-block;
   width: 50px;
   height: 100%;

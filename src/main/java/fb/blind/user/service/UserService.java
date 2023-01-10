@@ -2,6 +2,7 @@ package fb.blind.user.service;
 
 import fb.blind.domain.question.Question;
 import fb.blind.domain.user.User;
+import org.springframework.validation.BindingResult;
 
 import java.util.Optional;
 
@@ -45,4 +46,7 @@ public interface UserService {
 
     Optional<User> findUserByEmail(String email);
 
+    Optional<User> findUserByNick(String nick);
+
+    void checkedFormPolicy(User user, BindingResult bindingResult);
 }

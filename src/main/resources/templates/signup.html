@@ -28,31 +28,28 @@
     <article>
       <div id="Wrapper">
 
-        <div th:if="${joined == false}">
-          <p class="error" >가입 오류</p>
-        </div>
-
         <form action="" method="post" id="signupForm" th:object="${user}">
+          <div th:if="${#fields.hasGlobalErrors()}">
+              <p class="error" th:each="err : ${ #fields.globalErrors() }" th:text="${err}">에러</p>
+          </div>
           <div>
             <label for="nick">닉네임 : </label>
             <input type="text" th:field="*{nick}" th:errorclass="error" name="nick" id="nick">
             <p th:errorclass="error" th:errors="*{nick}"></p>
           </div>
-          <input type="button" id="nickCheckBtn" value="중복 확인">
           <div>
             <label for="id">E-mail : </label>
-            <input type="text" th:field="*{id}" th:errorclass="error" name="userid" id="id">
-            <p th:errorclass="error" th:errors="*{id}"></p>
+            <input type="text" th:field="*{email}" th:errorclass="error" name="userid" id="id">
+            <p th:errorclass="error" th:errors="*{email}"></p>
           </div>
-          <input type="button" id="idCheckBtn" value="중복 확인">
           <div>
             <label for="pw1">PW : </label>
-            <input type="text" name="passwd1" th:field="*{pw1}" th:errorclass="error" id="pw1">
+            <input type="password" name="passwd1" th:field="*{pw1}" th:errorclass="error" id="pw1">
             <p th:errorclass="error" th:errors="*{pw1}"></p>
           </div>
           <div>
             <label for="pw2">PW : </label>
-            <input type="text" name="passwd2" th:field="*{pw2}" th:errorclass="error" id="pw2">
+            <input type="password" name="passwd2" th:field="*{pw2}" th:errorclass="error" id="pw2">
             <p th:errorclass="error" th:errors="*{pw2}"></p>
           </div>
           <div>
@@ -88,7 +85,7 @@
 
     </article>
 
-    <a href="main.html" id="homebutton">홈으로</a>
+    <a href="main.html" th:href="@{/articles}" id="homebutton">홈으로</a>
 
   </section>
 
@@ -99,6 +96,9 @@
   <script>
     let questionInput = document.querySelector("#questionInput");
     let questionSelect = document.querySelector("#questionSelect");
+    const MIN = 8;
+
+
     questionSelect.addEventListener("change", ()=>{
       if(questionSelect.value != "userinput"){
         questionInput.disabled = true;
@@ -120,12 +120,27 @@
 
     pw2.onchange = ()=>{
       if(pw1.value !== pw2.value){
-        alert("not equals pw1, pw2 please check!");
+        alert("패스워드가 다릅니다. 확인 바람, 대소문자 비교");
         pw2.value = "";
         pw2.focus();
       }
     }
 
+    pw1.onchange = () => {
+      if(pw1.value.length < MIN){
+        alert("비밀번호는 8이상이여야 합니다.");
+        pw1.value="";
+        pw1.focus();
+      }
+
+      if(!pw1.value.includes("#","!","@","~")){
+        alert("특수문자 1개 이상 포함해야 하며, \"#\",\"!\",\"@\",\"~\" 만 허용 합니다.");
+        pw1.value="";
+        pw1.focus();
+      }
+
+
+    }
 
     function form_submit(){
       document.getElementById('signupForm').submit();

@@ -1,11 +1,13 @@
 package fb.blind.profile.repository;
 
 import fb.blind.domain.profile.Profile;
+import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.Map;
 
+@Repository
 public class MemoryProfileRepository implements ProfileRepository{
 
     private Map<Long,Profile> store = new HashMap<>();

@@ -6,16 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/main.css">
   <script src="https://kit.fontawesome.com/5a855f27dd.js" crossorigin="anonymous"></script>
-  <title th:text="${test}">Main</title>
+  <title th:text="${test}">logined Main</title>
 </head>
 <body>
   
   <header>
     <div id="logo">
       <h1>Blind Clone f(b)</h1>
+      <h4 th:text="|${user.nickName} 님|">로그인 사용자 ID</h4>
     </div>
     <div id="btnWrapper">
-      <a href="login.html" th:href="@{/login}" id="lbtn">로그인</a>
+      <a href="add.html" th:href="@{/articles/add}" id="wbtn">글 작성</a>
+      <form th:action="@{/login/logout}" method="post">
+        <input th:type="submit" id="lbtn" th:value="로그아웃">
+      </form>
     </div>
   </header>
 

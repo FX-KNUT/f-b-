@@ -3,6 +3,7 @@ package fb.blind.article.repository;
 import fb.blind.domain.article.Article;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
 import java.util.*;
@@ -85,13 +86,15 @@ public class MemoryArticleRepository implements ArticleRepository {
 
     @Override
     public List<Article> findByKindId(long kindId) {
-        List<Article> articles = new ArrayList<>(store.values());
+
         List<Article> result = new ArrayList<>();
+        List<Article> articles = new ArrayList<>(store.values());
         for (Article article : articles) {
             if(article.getKindId()== kindId){
                 result.add(article);
             }
         }
+
         return result;
     }
 
@@ -103,7 +106,6 @@ public class MemoryArticleRepository implements ArticleRepository {
     public void clear() {
         store.clear();
     }
-
 
 
 }

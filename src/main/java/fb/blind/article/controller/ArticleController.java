@@ -5,7 +5,9 @@ import fb.blind.domain.article.Article;
 import fb.blind.domain.article.ArticleAddForm;
 import fb.blind.domain.article.ArticleEditForm;
 import fb.blind.domain.kind.Kind;
+import fb.blind.domain.user.User;
 import fb.blind.kind.service.KindService;
+import fb.blind.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,17 +34,26 @@ public class ArticleController {
     private final ArticleService as;
     private final KindService ks;
 
+    private final UserService us;
+
     /**
      * @author 김성은,신영운
      * @param model test data
      * @return main 화면 이동
      */
     @GetMapping
-    public String mainView(@ModelAttribute Kind kind, Model model){
+    public String mainView(@SessionAttribute(name = "memberId", required = false) User loginUser,HttpServletRequest request, @ModelAttribute("kind") Kind kind, Model model){
+
         List<Kind> result = ks.findAll();
         model.addAttribute("kinds",result);
-        model.addAttribute("kind",new Kind());
-        return "main";
+
+        if (loginUser == null){
+            return "main";
+        }
+
+        model.addAttribute("user",loginUser);
+        return "loginmain";
+
     }
 
     @GetMapping("/articleList/{kindId}")
