@@ -43,9 +43,6 @@ public class ArticleController {
      */
     @GetMapping
     public String mainView(@SessionAttribute(name = "memberId", required = false) User loginUser,HttpServletRequest request, @ModelAttribute("kind") Kind kind, Model model){
-        /**
-         * session 이용
-         */
         List<Kind> result = ks.findAll();
         model.addAttribute("kinds",result);
 
