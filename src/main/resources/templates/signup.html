@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/signup.css?after">
+  <script src="https://kit.fontawesome.com/5a855f27dd.js" crossorigin="anonymous"></script>
+  <title>signup</title>
+  <style>
+    .error {
+      border-color: #ff2f2f;
+      color: #ff2f2f;
+    }
+
+  </style>
+</head>
+<body>
+  
+  <header>
+    <div id="logo">
+      <h1>Blind Clone f(b) login</h1>
+    </div>
+  </header>
+
+  <section>
+
+    <article>
+      <div id="Wrapper">
+
+        <div th:if="${joined == false}">
+          <p class="error" >가입 오류</p>
+        </div>
+
+        <form action="" method="post" id="signupForm" th:object="${user}">
+          <div>
+            <label for="nick">닉네임 : </label>
+            <input type="text" th:field="*{nick}" th:errorclass="error" name="nick" id="nick">
+            <p th:errorclass="error" th:errors="*{nick}"></p>
+          </div>
+          <input type="button" id="nickCheckBtn" value="중복 확인">
+          <div>
+            <label for="id">E-mail : </label>
+            <input type="text" th:field="*{id}" th:errorclass="error" name="userid" id="id">
+            <p th:errorclass="error" th:errors="*{id}"></p>
+          </div>
+          <input type="button" id="idCheckBtn" value="중복 확인">
+          <div>
+            <label for="pw1">PW : </label>
+            <input type="text" name="passwd1" th:field="*{pw1}" th:errorclass="error" id="pw1">
+            <p th:errorclass="error" th:errors="*{pw1}"></p>
+          </div>
+          <div>
+            <label for="pw2">PW : </label>
+            <input type="text" name="passwd2" th:field="*{pw2}" th:errorclass="error" id="pw2">
+            <p th:errorclass="error" th:errors="*{pw2}"></p>
+          </div>
+          <div>
+            <label for="belong">소속 : </label>
+            <input type="text"  th:field="*{dept}" th:errorclass="error" id="belong">
+            <p th:errorclass="error" th:errors="*{dept}"></p>
+          </div>
+          <div>
+            <input type="radio" th:field="*{gender}" th:errorclass="error" value="남">남
+            <input type="radio" th:field="*{gender}" th:errorclass="error" value="여">여
+            <p th:errorclass="error" th:errors="*{gender}"></p>
+          </div>
+
+          <div>
+            <label for="questionInput">질문 : </label>
+            <select class="question" id="questionSelect" th:field="*{question}" th:errorclass="error">
+              <option value="born">본인의 고향은?</option>
+              <option value="hoby">본인의 취미는?</option>
+              <option value="nickname">본인의 초등학교 별명은?</option>
+              <option value="userinput">직접 입력</option>
+            </select>
+            <input type="text" th:field="*{question}" th:errorclass="error" id="questionInput" disabled>
+            <p th:errorclass="error" th:errors="*{question}"></p>
+          </div>
+          <div>
+            <label for="answer">문답 : </label>
+            <input type="text" th:field="*{answer}" th:errorclass="error" id="answer">
+            <p th:errorclass="error" th:errors="*{answer}"></p>
+          </div>
+          <input type="button" th:type="submit" id="signupBtn" value="회원가입">
+        </form>
+      </div>
+
+    </article>
+
+    <a href="main.html" id="homebutton">홈으로</a>
+
+  </section>
+
+  <footer>
+    footer 기능 추가 시 활용 예정
+    @Capyright f(b)
+  </footer>
+  <script>
+    let questionInput = document.querySelector("#questionInput");
+    let questionSelect = document.querySelector("#questionSelect");
+    questionSelect.addEventListener("change", ()=>{
+      if(questionSelect.value != "userinput"){
+        questionInput.disabled = true;
+      }else{
+        questionInput.disabled = false;
+      }
+    });
+
+    let pw1 = document.querySelector("#pw1");
+    let pw2 = document.querySelector("#pw2");
+
+    pw2.oninput = function() {
+      if(!pw1.value){
+        alert("please input first passwd");
+        pw2.value = "";
+        pw1.focus();
+      }
+    };
+
+    pw2.onchange = ()=>{
+      if(pw1.value !== pw2.value){
+        alert("not equals pw1, pw2 please check!");
+        pw2.value = "";
+        pw2.focus();
+      }
+    }
+
+
+    function form_submit(){
+      document.getElementById('signupForm').submit();
+    }
+  </script>
+
+</body>
+</html>

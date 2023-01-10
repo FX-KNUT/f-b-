@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -23,12 +24,19 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User join(User user) {
-        User findUser = ur.findByEmail(user.getEmail()).get();
+    public boolean join(User user) {
+        Optional<User> findUser = ur.findByEmail(user.getEmail());
+        List<User> result = ur.findAll();
         if(findUser != null){
-            return ur.save(user);
+            for (User u : result) {
+                if(u.getEmail().equals(user.getEmail())){
+                    return false;
+                }
+            }
+            ur.save(user);
+            return true;
         }
-        return null;
+        return false;
     }
 
     @Override
@@ -51,4 +59,10 @@ public class UserServiceImpl implements UserService{
     public String findPasswd(Question question) {
         return null;
     }
+
+    public Optional<User> findUserByEmail(String email){
+        return ur.findByEmail(email);
+    }
+
+
 }

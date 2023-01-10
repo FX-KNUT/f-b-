@@ -34,12 +34,13 @@ public class MemoryUserRepository implements UserRepository{
      */
     @Override
     public Optional<User> findByEmail(String email) {
-        // Map : 순서가 없는 0 -> 순차
-        for (User user : store.values()) {
-            if(user.getEmail().equals(email)){
-                return Optional.ofNullable(user);
+
+        for (User value : store.values()) {
+            if(value.getEmail().equals(email)){
+                return Optional.ofNullable(value);
             }
         }
+
         return Optional.empty();
     }
 

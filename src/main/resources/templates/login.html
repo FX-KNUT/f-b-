@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/login.css?after">
+  <script src="https://kit.fontawesome.com/5a855f27dd.js" crossorigin="anonymous"></script>
+  <title>login</title>
+  <style>
+    .error{
+      border-color: #ff2f2f;
+      color: #ff2f2f;
+    }
+  </style>
+</head>
+<body>
+  
+  <header>
+    <div id="logo">
+      <h1>Blind Clone f(b) login</h1>
+    </div>
+  </header>
+
+  <section>
+
+    <article>
+      <div id="logWrapper">
+        <form action="" method="post" th:object="${user}">
+          <div>
+            <label for="id">ID : </label>
+            <input type="text" th:field="*{inputId}" th:errorclass="error" id="id">
+            <p th:errorclass="error" th:errors="*{inputId}"> id 입력 error </p>
+          </div>
+          <div>
+            <label for="pw">PW : </label>
+            <input type="text" th:field="*{inputPw}" th:errorsclass="error" id="pw">
+            <p th:errorclass="error" th:errors="*{inputPw}"> id 입력 error </p>
+          </div>
+          <input type="submit" th:onclick="|location.href='@{/login}'|" id="loginBtn" value="로그인">
+          <a th:onclick="|location.href='@{/signup}'|" id="signupBtn">회원가입</a>
+        </form>
+      </div>
+
+    </article>
+
+    <a href="find.html" id="findBtn">E-mail / passwd 찾기</a>
+    <a href="main.html" id="homebutton">홈으로</a>
+
+  </section>
+
+  <footer>
+    footer 기능 추가 시 활용 예정
+    @Capyright f(b)
+  </footer>
+
+
+</body>
+</html>

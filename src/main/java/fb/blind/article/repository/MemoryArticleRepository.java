@@ -104,48 +104,6 @@ public class MemoryArticleRepository implements ArticleRepository {
         store.clear();
     }
 
-    @PostConstruct
-    public void setTestData(){
-        Article arA = new Article("testA", "test", "2023-01-06", null,"shin",996L);
-        Article arB = new Article("testB", "test", "2023-01-06", null,"shin",996L);
-        Article arC = new Article("testC", "test", "2023-01-06", null,"shin",996L);
-        Article arD = new Article("testD", "test", "2023-01-06", null,"shin",997L);
-        Article arE = new Article("testE", "test", "2023-01-06", null,"shin",997L);
-        Article arF = new Article("testF", "test", "2023-01-06", null,"shin",997L);
-        Article arG = new Article("testG", "test", "2023-01-06", null,"shin",998L);
-        Article arH = new Article("testH", "test", "2023-01-06", null,"shin",998L);
-        Article arI = new Article("testI", "test", "2023-01-06", null,"shin",998L);
 
-
-        Article arJ = new Article("testJ", "test", "2023-01-06", null,"shin",999L);
-        Article arK = new Article("testK", "test", "2023-01-06", null,"shin",999L);
-        Article arL = new Article("testL", "test", "2023-01-06", null,"shin",999L);
-
-        arA.setId(988L);
-        arB.setId(989L);
-        arC.setId(990L);
-        arD.setId(991L);
-        arE.setId(992L);
-        arF.setId(993L);
-        arG.setId(994L);
-        arH.setId(995L);
-        arI.setId(996L);
-        arJ.setId(997L);
-        arK.setId(998L);
-        arL.setId(999L);
-
-        store.put(988L,arA);
-        store.put(989L,arB);
-        store.put(990L,arC);
-        store.put(991L,arD);
-        store.put(992L,arE);
-        store.put(993L,arF);
-        store.put(994L,arG);
-        store.put(995L,arH);
-        store.put(996L,arI);
-        store.put(997L,arJ);
-        store.put(998L,arK);
-        store.put(999L,arL);
-    }
 
 }
