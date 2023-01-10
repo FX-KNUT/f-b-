@@ -71,7 +71,16 @@ form{
   margin-top: 10px;
 }
 
-#title,#kindName{
+#title{
+  width: 300px;
+  height: 30px;
+  font-size: 20px;
+  outline: none;
+  border-style: none;
+  border-bottom: #cfcfcf solid 1px;
+}
+
+.kindName{
   width: 300px;
   height: 30px;
   font-size: 20px;

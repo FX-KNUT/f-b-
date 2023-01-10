@@ -7,6 +7,12 @@
   <link rel="stylesheet" href="/css/edit.css">
   <script src="https://kit.fontawesome.com/5a855f27dd.js" crossorigin="anonymous"></script>
   <title>edit</title>
+  <style>
+    .error{
+      border-color: #ff2f2f;
+      color: #ff2f2f;
+    }
+  </style>
 </head>
 <body>
   
@@ -26,12 +32,14 @@
       <form action="" method="post" id="addForm" th:object="${article}">
         <div id="titleWrapper">
           <label for="title">제목 : </label>
-          <input type="text" th:field="*{title}" id="title" placeholder="제목을 입력하세요.">
+          <input type="text" th:field="*{title}" th:errorclass="error" id="title" placeholder="제목을 입력하세요.">
+          <p th:errorclass="error" th:errors="*{title}"> 필드 에러 </p>
         </div>
         <div id="bodyWrapper">
         <label for="body">내용 : </label>
-        <textarea th:field="*{body}" id="body" cols="30" rows="10"></textarea>
-          <input type="hidden" th:field="*{id}">
+        <textarea th:field="*{body}" th:errorclass="error" id="body" cols="30" rows="10"></textarea>
+          <p th:errorclass="error" th:errors="*{body}"> 필드 에러 </p>
+          <input type="hidden" th:field="*{articleId}">
         </div>
       </form>
 

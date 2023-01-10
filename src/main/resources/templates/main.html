@@ -21,15 +21,14 @@
   </header>
 
   <section>
-    <article >
-      <div th:each="ki : ${kind}">
-        <a href="articleList.html" th:field="${ki.id}" th:href="@{/articles/articleList/{kindId}(kindId=${ki.id})}" class="articleName" th:text="${ki.kindName}">게시판 이름 1</a>
+    <article>
+      <div th:each="x : ${kinds}">
+        <input type="hidden" th:field="*{kind.id}" th:value="${x.getId()}">
+        <a href="articleList.html" th:href="@{/articles/articleList/{kindId}(kindId=${x.getId()})}" class="articleName" th:text="${x.kindName}">게시판 이름 1</a>
         <hr>
       </div>
     </article>
-
   </section>
-
   <footer>
     footer 기능 추가 시 활용 예정
     @Capyright f(b)

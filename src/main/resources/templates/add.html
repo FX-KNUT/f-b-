@@ -7,9 +7,17 @@
   <link rel="stylesheet" href="/css/add.css?after">
   <script src="https://kit.fontawesome.com/5a855f27dd.js" crossorigin="anonymous"></script>
   <title>add</title>
+
+  <style>
+    .error-class{
+      border-color: #ff2f2f;
+      color: #ff2f2f;
+    }
+  </style>
+
 </head>
 <body>
-  
+
   <header>
     <div id="logo">
       <h1>Blind Clone f(b)</h1>
@@ -26,16 +34,18 @@
       <form action="" method="post" id="addForm" th:object="${article}">
 
         <select class="kindName" id="kindName" name="kindName" >
-          <option th:each="ki : ${kindList}" value="free" th:value="${ki.kindName}" th:text="${ki.kindName}">자유 게시판</option>
+          <option th:each="kind : ${kindList}" class="kindName" th:field="*{kindName}" value="free" th:value="${kind.kindName}" th:text="${kind.kindName}">자유 게시판</option>
         </select>
 
         <div id="titleWrapper">
           <label for="title">제목 : </label>
-          <input type="text" id="title" th:field="*{title}" placeholder="제목을 입력하세요.">
+          <input type="text" id="title" th:field="*{title}"  th:value="*{title}" th:errorclass="error-class" placeholder="제목을 입력하세요.">
+          <p th:errorclass="error-class" th:errors="*{title}">입력 에러</p>
         </div>
         <div id="bodyWrapper">
         <label for="body">내용 : </label>
-        <textarea id="body" cols="30" rows="10" th:field="*{body}"></textarea>
+        <textarea id="body" cols="30" rows="10" th:field="*{body}" th:errorclass="error-class" th:value="*{body}"></textarea>
+        <p th:errorclass="error-class" th:errors="*{body}">입력 에러</p>
         </div>
       </form>
 

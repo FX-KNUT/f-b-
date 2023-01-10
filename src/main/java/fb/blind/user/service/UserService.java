@@ -27,10 +27,10 @@ public interface UserService {
     void logout(User user);
 
     /**
-     * @param userId user 고유 id
+     * @param user user
      * 회원 탈퇴 기능
      */
-    void withdrawal(long userId);
+    void withdrawal(User user);
 
     /**
      * @param question 질문 객체

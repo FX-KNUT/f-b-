@@ -44,7 +44,9 @@ class MemoryKindRepositoryTest {
         Kind free = new Kind("자유게시판");
         Kind notice = new Kind("공지");
         Kind saved1 = kr.save(free);
+        free.setId(1L);
         Kind saved2 = kr.save(notice);
+        notice.setId(2L);
         Kind findKind = kr.findById(1L);
         assertThat(findKind).isEqualTo(free);
     }

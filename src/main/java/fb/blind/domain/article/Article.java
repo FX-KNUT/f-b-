@@ -3,9 +3,6 @@ package fb.blind.domain.article;
 import lombok.*;
 
 @Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class Article {
 
     /**
@@ -31,16 +28,26 @@ public class Article {
     private long kindId;
 
     public Article(String testA, String test, String s, Object o, long l) {
-
     }
 
-    public Article(String title, String body, String date, String fileName,String writer,long kindId) {
+    public Article(String title, String body, String date, String fileName, String writer, long kindId) {
         this.title = title;
         this.body = body;
         this.date = date;
         this.fileName = fileName;
         this.writer = writer;
         this.kindId = kindId;
+    }
+
+    public Article(String title, String body) {
+        this.title = title;
+        this.body = body;
+    }
+
+    public Article(long id, String title, String body) {
+        this.id = id;
+        this.title = title;
+        this.body = body;
     }
 }
 

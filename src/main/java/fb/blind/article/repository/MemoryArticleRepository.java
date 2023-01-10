@@ -116,25 +116,36 @@ public class MemoryArticleRepository implements ArticleRepository {
         Article arH = new Article("testH", "test", "2023-01-06", null,"shin",998L);
         Article arI = new Article("testI", "test", "2023-01-06", null,"shin",998L);
 
-        arA.setId(991L);
-        arB.setId(992L);
-        arC.setId(993L);
-        arD.setId(994L);
-        arE.setId(995L);
-        arF.setId(996L);
-        arG.setId(997L);
-        arH.setId(998L);
-        arI.setId(999L);
 
-        store.put(991L,arA);
-        store.put(992L,arB);
-        store.put(993L,arC);
-        store.put(994L,arD);
-        store.put(995L,arE);
-        store.put(996L,arF);
-        store.put(997L,arG);
-        store.put(998L,arH);
-        store.put(999L,arI);
+        Article arJ = new Article("testJ", "test", "2023-01-06", null,"shin",999L);
+        Article arK = new Article("testK", "test", "2023-01-06", null,"shin",999L);
+        Article arL = new Article("testL", "test", "2023-01-06", null,"shin",999L);
+
+        arA.setId(988L);
+        arB.setId(989L);
+        arC.setId(990L);
+        arD.setId(991L);
+        arE.setId(992L);
+        arF.setId(993L);
+        arG.setId(994L);
+        arH.setId(995L);
+        arI.setId(996L);
+        arJ.setId(997L);
+        arK.setId(998L);
+        arL.setId(999L);
+
+        store.put(988L,arA);
+        store.put(989L,arB);
+        store.put(990L,arC);
+        store.put(991L,arD);
+        store.put(992L,arE);
+        store.put(993L,arF);
+        store.put(994L,arG);
+        store.put(995L,arH);
+        store.put(996L,arI);
+        store.put(997L,arJ);
+        store.put(998L,arK);
+        store.put(999L,arL);
     }
 
 }

@@ -15,7 +15,6 @@ public class MemoryUserRepository implements UserRepository{
     private final Map<Long,User> store = new HashMap<>();
 
     private long userId = 0L;
-
     /**
      * @author 김성은,신영운
      * @Parma userid => 고유 ID
@@ -35,8 +34,9 @@ public class MemoryUserRepository implements UserRepository{
      */
     @Override
     public Optional<User> findByEmail(String email) {
+        // Map : 순서가 없는 0 -> 순차
         for (User user : store.values()) {
-            if(user.getEmail() == email){
+            if(user.getEmail().equals(email)){
                 return Optional.ofNullable(user);
             }
         }
@@ -52,7 +52,7 @@ public class MemoryUserRepository implements UserRepository{
     @Override
     public Optional<User> findByNickName(String nickName) {
         for (User user : store.values()) {
-            if(user.getNickName() == nickName){
+            if(user.getNickName().equals(nickName)){
                 return Optional.ofNullable(user);
             }
         }
@@ -68,7 +68,7 @@ public class MemoryUserRepository implements UserRepository{
     public List<User> findByDept(String dept) {
         ArrayList<User> result = new ArrayList<>();
         for (User user : store.values()) {
-            if(user.getDept() == dept){
+            if(user.getDept().equals(dept)){
                 result.add(user);
             }
         }

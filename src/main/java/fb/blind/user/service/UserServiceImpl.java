@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -16,12 +18,16 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User login(String email, String passwd) {
-
-        return null;
+        User user = ur.findByEmail(email).get();
+        return user.getPasswd().equals(passwd)? user : null;
     }
 
     @Override
     public User join(User user) {
+        User findUser = ur.findByEmail(user.getEmail()).get();
+        if(findUser != null){
+            return ur.save(user);
+        }
         return null;
     }
 
@@ -31,8 +37,9 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void withdrawal(long userId) {
-
+    public void withdrawal(User user) {
+        User target = ur.findByEmail(user.getEmail()).get();
+        ur.delete(target.getId());
     }
 
     @Override
