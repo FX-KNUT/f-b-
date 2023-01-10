@@ -1,10 +1,14 @@
 package fb.blind;
 
 import fb.blind.article.repository.ArticleRepository;
+import fb.blind.domain.Gender;
 import fb.blind.domain.article.Article;
 import fb.blind.domain.kind.Kind;
+import fb.blind.domain.profile.Profile;
+import fb.blind.domain.user.User;
 import fb.blind.kind.repository.KindRepository;
 import fb.blind.kind.service.KindService;
+import fb.blind.profile.repository.ProfileRepository;
 import fb.blind.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -18,6 +22,8 @@ public class InitTestData {
     private final ArticleRepository ar;
     private final UserRepository ur;
     private final KindRepository kr;
+
+    private final ProfileRepository pr;
 
     @PostConstruct
     public void setTestData(){
@@ -71,6 +77,7 @@ public class InitTestData {
         Kind game = new Kind("게임게시판");
         Kind cat = new Kind("고양이게시판");
 
+
         free.setId(996L);
         secret.setId(997L);
         game.setId(998L);
@@ -82,6 +89,21 @@ public class InitTestData {
         kr.save(cat);
 
     }
+    @PostConstruct
+    public void setUserTestData(){
+        User userA = new User("KNUT", "김민기", "rlaalsrl@gmail.com", "1234");
+        User userB = new User("KNUT", "김성은", "rlatjddms@gmail.com", "1234");
+        User userC = new User("KNUT", "신영운", "tlsduddns@gmail.com", "1234");
+
+        Profile profileA = new Profile(Gender.M, null, userA.getId());
+        Profile profileB = new Profile(Gender.W, null, userB.getId());
+        Profile profileC = new Profile(Gender.M, null, userC.getId());
+
+        ur.save(userA);ur.save(userB);ur.save(userC);
+        pr.save(profileA);pr.save(profileB);pr.save(profileC);
+
+    }
+
 
 
 

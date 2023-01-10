@@ -6,6 +6,7 @@ import fb.blind.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
 
 import java.util.List;
 import java.util.Optional;
@@ -61,8 +62,35 @@ public class UserServiceImpl implements UserService{
     }
 
     public Optional<User> findUserByEmail(String email){
+        log.info(email);
         return ur.findByEmail(email);
     }
 
+    public Optional<User> findUserByNick(String nick){
+        return ur.findByNickName(nick);
+    }
+
+    @Override
+    public void checkedFormPolicy(User user, BindingResult bindingResult) {
+        checkDuplicateEmail(user,bindingResult);
+        checkDuplicateNick(user,bindingResult);
+    }
+
+    private void checkDuplicateNick(User user,BindingResult bindingResult) {
+        Optional<User> userByNick = findUserByNick(user.getNickName());
+
+        if(!userByNick.isEmpty()){
+            bindingResult.reject("duplicationNick");
+        }
+
+    }
+
+    private void checkDuplicateEmail(User user,BindingResult bindingResult) {
+        Optional<User> userByEmail = findUserByEmail(user.getEmail());
+
+        if(!userByEmail.isEmpty()){
+            bindingResult.reject("duplicationEmail");
+        }
+    }
 
 }

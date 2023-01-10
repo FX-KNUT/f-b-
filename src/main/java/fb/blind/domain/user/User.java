@@ -1,5 +1,6 @@
 package fb.blind.domain.user;
 
+import fb.blind.domain.Gender;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,6 +25,7 @@ public class User {
     private String passwd;
     private LocalDateTime createDate = LocalDateTime.now();
 
+
     public User() {}
 
     public User(String dept, String nickName, String email, String passwd) {
@@ -31,5 +33,7 @@ public class User {
         this.nickName = nickName;
         this.email = email;
         this.passwd = passwd;
+        this.createDate = LocalDateTime.now();
     }
+
 }

@@ -29,34 +29,28 @@ public class SignupController {
     public String signupForm(@ModelAttribute("user") SignupForm form, BindingResult bindingResult, Model model){
 
         model.addAttribute("user",form);
-
         return "signup";
+
     }
 
     @PostMapping
     public String signup(@Validated @ModelAttribute("user") SignupForm form, BindingResult bindingResult, Model model){
 
-        boolean joined = false;
+        User user = new User(form.getDept(),form.getNick(),form.getEmail(),form.getPw2());
 
-        User user = new User(form.getDept(),form.getNick(),form.getId(),form.getPw2());
-        Optional<User> userByEmail = us.findUserByEmail(user.getEmail());
+        us.checkedFormPolicy(user,bindingResult);
 
-
-        if(bindingResult.hasErrors() || !userByEmail.isEmpty()){
+        if(bindingResult.hasErrors()){
             model.addAttribute("user",form);
-            model.addAttribute("joined",joined);
-            if(!userByEmail.isEmpty()){
-                bindingResult.reject("joined","joinedFail");
-            }
             return "signup";
         }
 
-        joined = us.join(user);
+        us.join(user);
 
         model.addAttribute("user", new LoginForm());
-        model.addAttribute("joined",joined);
 
         return "login";
     }
+
 
 }
