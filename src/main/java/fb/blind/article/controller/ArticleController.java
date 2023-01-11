@@ -1,5 +1,6 @@
 package fb.blind.article.controller;
 
+import fb.blind.argumentresolver.Login;
 import fb.blind.article.service.ArticleService;
 import fb.blind.domain.article.Article;
 import fb.blind.domain.article.ArticleAddForm;
@@ -41,8 +42,23 @@ public class ArticleController {
      * @param model test data
      * @return main 화면 이동
      */
+//    @GetMapping
+//    public String mainView(@SessionAttribute(name = "memberId", required = false) User loginUser,HttpServletRequest request, @ModelAttribute("kind") Kind kind, Model model){
+//        List<Kind> result = ks.findAll();
+//        model.addAttribute("kinds",result);
+//
+//        if (loginUser == null){
+//            return "main";
+//        }
+//
+//        model.addAttribute("user",loginUser);
+//        return "loginmain";
+//
+//    }
+
+
     @GetMapping
-    public String mainView(@SessionAttribute(name = "memberId", required = false) User loginUser,HttpServletRequest request, @ModelAttribute("kind") Kind kind, Model model){
+    public String mainView(@Login User loginUser, HttpServletRequest request, @ModelAttribute("kind") Kind kind, Model model){
         List<Kind> result = ks.findAll();
         model.addAttribute("kinds",result);
 
