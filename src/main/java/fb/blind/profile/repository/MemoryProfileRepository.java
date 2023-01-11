@@ -33,5 +33,4 @@ public class MemoryProfileRepository implements ProfileRepository{
         store.clear();
     }
 
-
 }

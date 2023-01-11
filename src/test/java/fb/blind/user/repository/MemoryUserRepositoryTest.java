@@ -48,12 +48,6 @@ class MemoryUserRepositoryTest {
     }
 
     @Test
-    void findByEmail() {
-        User user = ur.findByEmail("spring2@naver.com").get();
-        assertThat(user.getNickName()).isEqualTo("min");
-    }
-
-    @Test
     void findByNickName() {
         User user = ur.findByNickName("kim").get();
         assertThat(user.getEmail()).isEqualTo("spring1@naver.com");

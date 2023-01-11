@@ -30,15 +30,6 @@ class MemoryArticleRepositoryTest {
     void findByEmail() {}
 
     @Test
-    @DisplayName("제목으로 찾기")
-    void findByTitle() {
-        Article article = new Article("testA", "test", "2023-01-06", null,1L);
-        ar.save(article);
-        Article testA = ar.findByTitle("testA");
-        assertThat(testA.getTitle()).isEqualTo(article.getTitle());
-    }
-
-    @Test
     @DisplayName("Article id 로 찾기")
     void findByArticleId() {
         Article article = new Article("testA", "test", "2023-01-06", null,1L);

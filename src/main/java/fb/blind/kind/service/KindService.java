@@ -14,6 +14,9 @@ public interface KindService {
     Optional<Kind> getKindByTitle(String title);
 
     List<Kind> findAll();
+
+    Optional<Kind> findByTitle(String title);
+
     void delete(Kind kind);
 
 }

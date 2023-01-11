@@ -33,7 +33,7 @@ public class KindServiceImpl implements KindService{
 
     @Override
     public Optional<Kind> getKindByTitle(String title) {
-        return kr.findByTitle(title);
+        return findByTitle(title);
     }
 
     @Override
@@ -45,4 +45,11 @@ public class KindServiceImpl implements KindService{
     public void delete(Kind kind) {
         kr.removeKind(kind);
     }
+
+    @Override
+    public Optional<Kind> findByTitle(String title) {
+        log.info("repository Title = {} ", title);
+        return kr.findAll().stream().filter(m -> m.getKindName().equals(title)).findFirst();
+    }
+
 }

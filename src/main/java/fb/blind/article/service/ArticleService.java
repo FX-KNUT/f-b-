@@ -2,6 +2,7 @@ package fb.blind.article.service;
 
 import fb.blind.domain.article.Article;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,6 +59,8 @@ public interface ArticleService {
      */
     String getWriteDate(long articleId);
 
+    public Optional<Article> findByTitle(String title);
 
+    public List<Article> findByKindId(long kindId);
 
 }

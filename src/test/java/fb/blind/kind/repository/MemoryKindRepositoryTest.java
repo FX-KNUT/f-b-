@@ -52,18 +52,6 @@ class MemoryKindRepositoryTest {
     }
 
     @Test
-    void findByTitle() {
-        Kind free = new Kind("자유게시판");
-        Kind notice = new Kind("공지");
-        Kind saved1 = kr.save(free);
-        Kind saved2 = kr.save(notice);
-        Kind kind1 = kr.findByTitle("자유게시판").get();
-        Kind kind2 = kr.findByTitle("공지").get();
-        assertThat(kind1.getKindName()).isEqualTo("자유게시판");
-        assertThat(kind2.getKindName()).isEqualTo("공지");
-    }
-
-    @Test
     void removeKind() {
         Kind free = new Kind("자유게시판");
         Kind notice = new Kind("공지");

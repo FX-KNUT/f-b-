@@ -13,8 +13,6 @@ public interface KindRepository {
 
     Kind findById(long kindId);
 
-    Optional<Kind> findByTitle(String title);
-
     void removeKind(Kind kind);
 
     void clear();

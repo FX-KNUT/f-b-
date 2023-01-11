@@ -20,13 +20,13 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User login(String email, String passwd) {
-        User user = ur.findByEmail(email).get();
+        User user = findByEmail(email).get();
         return user.getPasswd().equals(passwd)? user : null;
     }
 
     @Override
     public boolean join(User user) {
-        Optional<User> findUser = ur.findByEmail(user.getEmail());
+        Optional<User> findUser = findByEmail(user.getEmail());
         List<User> result = ur.findAll();
         if(findUser != null){
             for (User u : result) {
@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void withdrawal(User user) {
-        User target = ur.findByEmail(user.getEmail()).get();
+        User target = findByEmail(user.getEmail()).get();
         ur.delete(target.getId());
     }
 
@@ -63,7 +63,7 @@ public class UserServiceImpl implements UserService{
 
     public Optional<User> findUserByEmail(String email){
         log.info(email);
-        return ur.findByEmail(email);
+        return findByEmail(email);
     }
 
     public Optional<User> findUserByNick(String nick){
@@ -91,6 +91,11 @@ public class UserServiceImpl implements UserService{
         if(!userByEmail.isEmpty()){
             bindingResult.reject("duplicationEmail");
         }
+    }
+
+    @Override
+    public Optional<User> findByEmail(String email) {
+        return ur.findAll().stream().filter(m -> m.getEmail().equals(email)).findAny();
     }
 
 }

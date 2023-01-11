@@ -5,6 +5,7 @@ import fb.blind.domain.article.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -50,7 +51,7 @@ public class ArticleServiceImpl implements ArticleService{
 
     @Override
     public List<Article> articleList(long kindId) {
-        return ar.findByKindId(kindId);
+        return findByKindId(kindId);
     }
 
     @Override
@@ -74,6 +75,25 @@ public class ArticleServiceImpl implements ArticleService{
     public String getWriteDate(long articleId) {
         Article target = ar.findByArticleId(articleId).get();
         return target.getDate();
+    }
+
+    @Override
+    public Optional<Article> findByTitle(String title) {
+        return ar.findAll().stream().filter(m -> m.getTitle().equals(title)).findAny();
+    }
+
+    @Override
+    public List<Article> findByKindId(long kindId) {
+        
+        List<Article> result = new ArrayList<>();
+        List<Article> findList = ar.findAll();
+        for (Article article : findList) {
+            if(article.getKindId() == kindId){
+                result.add(article);
+            }
+        }
+
+        return result;
     }
 
 }

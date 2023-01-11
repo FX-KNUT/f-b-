@@ -14,13 +14,6 @@ public interface UserRepository {
 
     /**
      * @author 김성은,신영운
-     * @param email user email (id 대용)
-     * @return user 객체 return
-     */
-    Optional<User> findByEmail(String email);
-
-    /**
-     * @author 김성은,신영운
      * @param nickName 닉네임
      * @return user 객체 리턴
      */

@@ -46,15 +46,6 @@ public class MemoryArticleRepository implements ArticleRepository {
      * @author 김성은, 신영운
      * @version v0_1 : title 100% 검사
      */
-    @Override
-    public Article findByTitle(String title) {
-        for (Article article : store.values()) {
-            if(article.getTitle() == title){
-                return article;
-            }
-        }
-      return null;
-    }
 
     /**
      * @author 김성은,신영운
@@ -82,20 +73,6 @@ public class MemoryArticleRepository implements ArticleRepository {
     @Override
     public List<Article> findAll() {
         return new ArrayList<Article>(store.values());
-    }
-
-    @Override
-    public List<Article> findByKindId(long kindId) {
-
-        List<Article> result = new ArrayList<>();
-        List<Article> articles = new ArrayList<>(store.values());
-        for (Article article : articles) {
-            if(article.getKindId()== kindId){
-                result.add(article);
-            }
-        }
-
-        return result;
     }
 
     /**

@@ -49,4 +49,7 @@ public interface UserService {
     Optional<User> findUserByNick(String nick);
 
     void checkedFormPolicy(User user, BindingResult bindingResult);
+
+    Optional<User> findByEmail(String email);
+
 }

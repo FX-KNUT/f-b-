@@ -26,7 +26,6 @@ public interface ArticleRepository {
      * @param title : article 제목으로 검색 -> 검색 방법 결정 필요
      * @return title String 100% Match 외 Policy 사용 시 여러 Article 반환 가능
      */
-    Article findByTitle(String title);
 
     /**
      * @author 김성은,신영운
@@ -46,8 +45,6 @@ public interface ArticleRepository {
      * @return articles view
      */
     List<Article> findAll();
-
-    List<Article> findByKindId(long kindId);
 
     /**
      * @author 김성은,신영운

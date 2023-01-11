@@ -35,17 +35,6 @@ public class MemoryKindRepository implements KindRepository{
     }
 
     @Override
-    public Optional<Kind> findByTitle(String title) {
-        log.info("repository Title = {} ", title);
-        for (Kind kind : store.values()) {
-            if(kind.getKindName().equals(title)){
-                return Optional.ofNullable(kind);
-            }
-        }
-        return Optional.empty();
-    }
-
-    @Override
     public void removeKind(Kind kind) {
         store.remove(kind.getId());
     }

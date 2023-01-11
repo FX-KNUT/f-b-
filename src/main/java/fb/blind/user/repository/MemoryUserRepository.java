@@ -29,23 +29,6 @@ public class MemoryUserRepository implements UserRepository{
 
     /**
      * @author 김성은,신영운
-     * @param email user email (id 대용)
-     * @return
-     */
-    @Override
-    public Optional<User> findByEmail(String email) {
-
-        for (User value : store.values()) {
-            if(value.getEmail().equals(email)){
-                return Optional.ofNullable(value);
-            }
-        }
-
-        return Optional.empty();
-    }
-
-    /**
-     * @author 김성은,신영운
      * @param nickName 닉네임
      * @return
      */
