@@ -1,5 +1,6 @@
 package fb.blind;
 
+import fb.blind.common.NowDate;
 import fb.blind.domain.article.repository.ArticleRepository;
 import fb.blind.domain.Gender;
 import fb.blind.domain.article.Article;
@@ -13,6 +14,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Component
 @RequiredArgsConstructor
@@ -26,20 +29,20 @@ public class InitTestData {
 
     @PostConstruct
     public void setTestData(){
-        Article arA = new Article("testA", "test", "2023-01-06", null,"shin",996L);
-        Article arB = new Article("testB", "test", "2023-01-06", null,"shin",996L);
-        Article arC = new Article("testC", "test", "2023-01-06", null,"shin",996L);
-        Article arD = new Article("testD", "test", "2023-01-06", null,"shin",997L);
-        Article arE = new Article("testE", "test", "2023-01-06", null,"shin",997L);
-        Article arF = new Article("testF", "test", "2023-01-06", null,"shin",997L);
-        Article arG = new Article("testG", "test", "2023-01-06", null,"shin",998L);
-        Article arH = new Article("testH", "test", "2023-01-06", null,"shin",998L);
-        Article arI = new Article("testI", "test", "2023-01-06", null,"shin",998L);
+        Article arA = new Article("testA", "test", NowDate.getNowDate(), null,"shin",996L);
+        Article arB = new Article("testB", "test", NowDate.getNowDate(), null,"shin",996L);
+        Article arC = new Article("testC", "test", NowDate.getNowDate(), null,"shin",996L);
+        Article arD = new Article("testD", "test", NowDate.getNowDate(), null,"shin",997L);
+        Article arE = new Article("testE", "test", NowDate.getNowDate(), null,"shin",997L);
+        Article arF = new Article("testF", "test", NowDate.getNowDate(), null,"shin",997L);
+        Article arG = new Article("testG", "test", NowDate.getNowDate(), null,"shin",998L);
+        Article arH = new Article("testH", "test", NowDate.getNowDate(), null,"shin",998L);
+        Article arI = new Article("testI", "test", NowDate.getNowDate(), null,"shin",998L);
 
 
-        Article arJ = new Article("testJ", "test", "2023-01-06", null,"shin",999L);
-        Article arK = new Article("testK", "test", "2023-01-06", null,"shin",999L);
-        Article arL = new Article("testL", "test", "2023-01-06", null,"shin",999L);
+        Article arJ = new Article("testJ", "test", NowDate.getNowDate(), null,"shin",999L);
+        Article arK = new Article("testK", "test", NowDate.getNowDate(), null,"shin",999L);
+        Article arL = new Article("testL", "test", NowDate.getNowDate(), null,"shin",999L);
 
         arA.setId(988L);
         arB.setId(989L);

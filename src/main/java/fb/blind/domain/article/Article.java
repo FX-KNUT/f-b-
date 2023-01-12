@@ -2,6 +2,8 @@ package fb.blind.domain.article;
 
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Data
 public class Article {
 
@@ -48,6 +50,20 @@ public class Article {
         this.id = id;
         this.title = title;
         this.body = body;
+    }
+
+    public Article(String title, String body, String date, String writer) {
+        this.title = title;
+        this.body = body;
+        this.date = date;
+        this.writer = writer;
+    }
+
+    public Article(long id, String title, String body, String date) {
+        this.id = id;
+        this.title = title;
+        this.body = body;
+        this.date = date;
     }
 }
 

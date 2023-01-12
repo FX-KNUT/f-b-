@@ -2,6 +2,7 @@ package fb.blind.domain.article.service;
 
 import fb.blind.domain.article.repository.ArticleRepository;
 import fb.blind.domain.article.Article;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 public class ArticleServiceImpl implements ArticleService{
 
@@ -36,10 +38,13 @@ public class ArticleServiceImpl implements ArticleService{
      */
     @Override
     public Article updateArticle(Article article) {
+
+        log.info("articleId {}", article.getId());
+        log.info("target {}", ar.findByArticleId(article.getId()).get().getId());
         Article target = ar.findByArticleId(article.getId()).get();
         target.setTitle(article.getTitle());
         target.setBody(article.getBody());
-        //target.setDate(article.getDate());
+        target.setDate(article.getDate());
         target.setFileName(article.getFileName());
         return target;
     }

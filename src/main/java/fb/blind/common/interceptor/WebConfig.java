@@ -34,7 +34,7 @@ public class WebConfig implements WebMvcConfigurer {
                 .order(2)
                 .addPathPatterns("/**")
                 //excludeathPatterns 재 등록 필요
-                .excludePathPatterns("/articles","/","/articles/articleList/**","/login/signup","/login","/logout","/css/**","/*.ico","/error");
+                .excludePathPatterns("/articles","/","/articles/articleList/**","/signup","/login","/logout","/css/**","/*.ico","/error");
 
     }
 

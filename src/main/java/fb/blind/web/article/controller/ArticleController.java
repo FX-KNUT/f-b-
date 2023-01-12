@@ -1,9 +1,12 @@
 package fb.blind.web.article.controller;
 
+import fb.blind.common.NowDate;
 import fb.blind.common.argumentresolver.Login;
 import fb.blind.domain.article.service.ArticleService;
 import fb.blind.domain.article.Article;
 import fb.blind.domain.comment.SessionConst;
+import fb.blind.domain.profile.Profile;
+import fb.blind.domain.profile.repository.ProfileRepository;
 import fb.blind.web.article.form.ArticleAddForm;
 import fb.blind.web.article.form.ArticleEditForm;
 import fb.blind.domain.kind.Kind;
@@ -21,6 +24,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Slf4j
@@ -33,6 +38,8 @@ public class ArticleController {
     private final KindService ks;
 
     private final UserService us;
+
+    private final ProfileRepository pr;
 
     /**
      * @author 김성은,신영운
@@ -93,7 +100,7 @@ public class ArticleController {
     }
 
     @GetMapping("/article/{articleId}")
-    public String article(HttpServletRequest request,@PathVariable long articleId,Model model){
+    public String article(@PathVariable long articleId,Model model){
 
         Article target = as.readArticle(articleId).get();
         Kind kind = ks.getKindById(target.getKindId()).get();
@@ -101,8 +108,6 @@ public class ArticleController {
         model.addAttribute("article",target);
         model.addAttribute("kind",kind);
 
-        //여기 수정중
-        HttpSession session = request.getSession(false);
 
         return "article";
     }
@@ -138,7 +143,7 @@ public class ArticleController {
         }
 
         Article target = as.readArticle(form.getArticleId()).get();
-        Article article = new Article(form.getArticleId(),form.getTitle(),form.getBody());
+        Article article = new Article(form.getArticleId(),form.getTitle(),form.getBody(),NowDate.getNowDate());
         as.updateArticle(article);
 
         long kindId = target.getKindId();
@@ -161,7 +166,7 @@ public class ArticleController {
     }
 
     @PostMapping("/add")
-    public String add(@Validated @ModelAttribute("article") ArticleAddForm form,BindingResult bindingResult,RedirectAttributes redirectAttributes,Model model){
+    public String add(@Login User loginUser,@Validated @ModelAttribute("article") ArticleAddForm form,BindingResult bindingResult,RedirectAttributes redirectAttributes,Model model){
 
         if (bindingResult.hasErrors()) {
             List<Kind> result = ks.findAll();
@@ -172,7 +177,7 @@ public class ArticleController {
             return "add";
         }
 
-        Article article = new Article(form.getTitle(),form.getBody());
+        Article article = new Article(form.getTitle(),form.getBody(), NowDate.getNowDate(),loginUser.getNickName());
         Article result = as.addArticle(article);
         long kindId = ks.getKindByTitle(form.getKindName()).get().getId();
         article.setUserId(kindId);

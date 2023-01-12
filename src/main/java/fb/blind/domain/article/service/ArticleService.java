@@ -2,7 +2,6 @@ package fb.blind.domain.article.service;
 
 import fb.blind.domain.article.Article;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
