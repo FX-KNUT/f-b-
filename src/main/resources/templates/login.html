@@ -39,7 +39,7 @@
           </div>
           <div>
             <label for="pw">PW : </label>
-            <input type="text" th:field="*{inputPw}" th:errorsclass="error" id="pw">
+            <input type="password" th:field="*{inputPw}" th:errorsclass="error" id="pw">
             <p th:errorclass="error" th:errors="*{inputPw}"> id 입력 error </p>
           </div>
           <input type="submit" th:onclick="|location.href='@{/login}'|" id="loginBtn" value="로그인">

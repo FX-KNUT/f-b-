@@ -1,5 +1,6 @@
 package fb.blind.common.argumentresolver;
 
+import fb.blind.domain.comment.SessionConst;
 import fb.blind.domain.user.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.MethodParameter;
@@ -37,7 +38,7 @@ public class LoginMemberArgumentResolver implements HandlerMethodArgumentResolve
             return  null;
         }
 
-        return session.getAttribute("memberId");
+        return session.getAttribute(SessionConst.LOGIN_MEMBER);
 
     }
 }

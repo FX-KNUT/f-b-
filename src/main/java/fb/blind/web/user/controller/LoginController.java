@@ -1,6 +1,7 @@
 package fb.blind.web.user.controller;
 
 
+import fb.blind.domain.comment.SessionConst;
 import fb.blind.web.user.form.LoginForm;
 import fb.blind.domain.user.User;
 import fb.blind.domain.user.service.LoginService;
@@ -47,7 +48,7 @@ public class LoginController {
 
         HttpSession session = request.getSession();
 
-        session.setAttribute("memberId",loginUser);
+        session.setAttribute(SessionConst.LOGIN_MEMBER,loginUser);
 
         return "redirect:/articles";
     }

@@ -3,6 +3,7 @@ package fb.blind.web.article.controller;
 import fb.blind.common.argumentresolver.Login;
 import fb.blind.domain.article.service.ArticleService;
 import fb.blind.domain.article.Article;
+import fb.blind.domain.comment.SessionConst;
 import fb.blind.web.article.form.ArticleAddForm;
 import fb.blind.web.article.form.ArticleEditForm;
 import fb.blind.domain.kind.Kind;
@@ -39,7 +40,7 @@ public class ArticleController {
      * @return main 화면 이동
      */
 //    @GetMapping
-//    public String mainView(@SessionAttribute(name = "memberId", required = false) User loginUser,HttpServletRequest request, @ModelAttribute("kind") Kind kind, Model model){
+//    public String mainView(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) User loginUser,HttpServletRequest request, @ModelAttribute("kind") Kind kind, Model model){
 //        List<Kind> result = ks.findAll();
 //        model.addAttribute("kinds",result);
 //
@@ -85,7 +86,7 @@ public class ArticleController {
             return "articleList";
         }
 
-        User user = (User)session.getAttribute("memberId");
+        User user = (User)session.getAttribute(SessionConst.LOGIN_MEMBER);
 
         model.addAttribute("logined",logined);
         return "articleList";
