@@ -1,8 +1,8 @@
 package fb.blind.mark.repository;
 
 import fb.blind.domain.mark.Mark;
-import fb.blind.domain.user.User;
-import org.assertj.core.api.Assertions;
+import fb.blind.domain.mark.repository.MarkRepository;
+import fb.blind.domain.mark.repository.MemoryMarkRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class MemoryMarkRepositoryTest {
 

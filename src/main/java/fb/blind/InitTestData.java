@@ -1,15 +1,14 @@
 package fb.blind;
 
-import fb.blind.article.repository.ArticleRepository;
+import fb.blind.domain.article.repository.ArticleRepository;
 import fb.blind.domain.Gender;
 import fb.blind.domain.article.Article;
 import fb.blind.domain.kind.Kind;
 import fb.blind.domain.profile.Profile;
 import fb.blind.domain.user.User;
-import fb.blind.kind.repository.KindRepository;
-import fb.blind.kind.service.KindService;
-import fb.blind.profile.repository.ProfileRepository;
-import fb.blind.user.repository.UserRepository;
+import fb.blind.domain.kind.repository.KindRepository;
+import fb.blind.domain.profile.repository.ProfileRepository;
+import fb.blind.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

@@ -1,6 +1,8 @@
 package fb.blind.article.repository;
 
 import fb.blind.domain.article.Article;
+import fb.blind.domain.article.repository.ArticleRepository;
+import fb.blind.domain.article.repository.MemoryArticleRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;

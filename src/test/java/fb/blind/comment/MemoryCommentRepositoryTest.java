@@ -1,6 +1,8 @@
 package fb.blind.comment;
 
 import fb.blind.domain.comment.Comment;
+import fb.blind.domain.comment.CommentRepository;
+import fb.blind.domain.comment.MemoryCommentRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

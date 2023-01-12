@@ -1,22 +1,15 @@
 package fb.blind.user.repository;
 
 import fb.blind.domain.user.User;
-import org.assertj.core.api.Assertions;
+import fb.blind.domain.user.repository.MemoryUserRepository;
+import fb.blind.domain.user.repository.UserRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.client.AutoConfigureWebClient;
-import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.annotation.PostConstruct;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 
 class MemoryUserRepositoryTest {

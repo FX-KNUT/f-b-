@@ -1,16 +1,15 @@
 package fb.blind.kind.repository;
 
 import fb.blind.domain.kind.Kind;
-import org.assertj.core.api.Assertions;
+import fb.blind.domain.kind.repository.KindRepository;
+import fb.blind.domain.kind.repository.MemoryKindRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class MemoryKindRepositoryTest {
 

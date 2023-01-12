@@ -2,12 +2,12 @@ package fb.blind.profile.repository;
 
 import fb.blind.domain.Gender;
 import fb.blind.domain.profile.Profile;
-import org.assertj.core.api.Assertions;
+import fb.blind.domain.profile.repository.MemoryProfileRepository;
+import fb.blind.domain.profile.repository.ProfileRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 class MemoryProfileRepositoryTest {
 
