@@ -13,8 +13,10 @@
   <header>
     <div id="logo">
       <h1>Blind Clone f(b)</h1>
-      <h4 th:text="|${user.nickName} 님|">로그인 사용자 ID</h4>
     </div>
+
+    <a th:href="@{/profile}" id="loginUser"> [[${user.nickName}]] 님 </a>
+
     <div id="btnWrapper">
       <a href="add.html" th:href="@{/articles/add}" id="wbtn">글 작성</a>
     </div>
@@ -22,7 +24,6 @@
     <form th:action="@{/login/logout}" id="logoutForm" method="post">
       <input th:type="submit" id="lbtn" th:value="로그아웃">
     </form>
-
   </header>
 
   <section>
