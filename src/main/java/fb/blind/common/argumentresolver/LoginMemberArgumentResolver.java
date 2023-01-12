@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 @Slf4j
 public class LoginMemberArgumentResolver implements HandlerMethodArgumentResolver {
 
-
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
         log.info("supportsParameter 실행");

@@ -38,7 +38,6 @@ header,section,footer{
 #btnWrapper{
   display: inline-block;
   position: absolute;
-  width: 120px;
   height: 30px;
   top: 28%;
   right: 30px;
@@ -51,10 +50,9 @@ header,section,footer{
   cursor: pointer;
   border-style: none;
   transition: 0.5s;
-  line-height: 32px;
+  line-height: 30px;
   text-align: center;
 }
-
 
 #wbtn{
   background: red;
@@ -66,12 +64,6 @@ header,section,footer{
   background: #fff;
   color: red;
 }
-
-#lbtn:hover{
-  background: #000;
-  color: #fff;
-}
-
 
 section{
   height: 780px;

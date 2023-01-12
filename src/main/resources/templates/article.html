@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/article.css">
+  <link rel="stylesheet" href="/css/article.css?after">
   <script src="https://kit.fontawesome.com/5a855f27dd.js" crossorigin="anonymous"></script>
   <title>article</title>
 </head>
@@ -37,7 +37,11 @@
 
     </article>
     <a href="main.html" th:href="@{/articles}" id="homebutton">홈으로</a>
-    <a id="edit" href="edit.html" th:href="@{/articles/edit/{articleId}(articleId=${articleId})}">수정</a>
+    <a th:if="${owner}" id="edit" href="edit.html" th:href="@{/articles/edit/{articleId}(articleId=${articleId})}">수정</a>
+    <form th:if="${owner}" th:action="@{/articles/delete/{articleId}(articleId=${articleId})}" method="post">
+      <button type="submit" id="delete" th:text="삭제">삭제하기</button>
+    </form>
+
 
   </section>
 

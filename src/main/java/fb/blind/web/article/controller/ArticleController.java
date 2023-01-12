@@ -27,6 +27,7 @@ import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Controller
@@ -35,6 +36,7 @@ import java.util.List;
 public class ArticleController {
 
     private final ArticleService as;
+
     private final KindService ks;
 
     private final UserService us;
@@ -60,11 +62,10 @@ public class ArticleController {
 //
 //    }
 
-
     @GetMapping
     public String mainView(@Login User loginUser, HttpServletRequest request, @ModelAttribute("kind") Kind kind, Model model){
-        List<Kind> result = ks.findAll();
-        model.addAttribute("kinds",result);
+
+        model.addAttribute("kinds",ks.findAll());
 
         if (loginUser == null){
             return "main";
@@ -72,11 +73,11 @@ public class ArticleController {
 
         model.addAttribute("user",loginUser);
         return "loginmain";
-
     }
 
     @GetMapping("/articleList/{kindId}")
     public String articleList(HttpServletRequest request,@PathVariable long kindId,Model model){
+
         List<Article> articles = as.articleList(kindId);
         Kind result = ks.getKindById(kindId).get();
 
@@ -93,21 +94,23 @@ public class ArticleController {
             return "articleList";
         }
 
-        User user = (User)session.getAttribute(SessionConst.LOGIN_MEMBER);
+        User user = (User) session.getAttribute(SessionConst.LOGIN_MEMBER);
 
-        model.addAttribute("logined",logined);
+        model.addAttribute("logined",user);
+
         return "articleList";
     }
 
     @GetMapping("/article/{articleId}")
-    public String article(@PathVariable long articleId,Model model){
+    public String article(@Login User loginUser, @PathVariable long articleId,Model model){
 
         Article target = as.readArticle(articleId).get();
+
         Kind kind = ks.getKindById(target.getKindId()).get();
 
         model.addAttribute("article",target);
         model.addAttribute("kind",kind);
-
+        model.addAttribute("owner",target.getUserId() == loginUser.getId());
 
         return "article";
     }
@@ -118,6 +121,7 @@ public class ArticleController {
         Article target = as.readArticle(articleId).get();
         Kind kind = ks.getKindById(target.getKindId()).get();
         ArticleEditForm form = new ArticleEditForm();
+
         form.setArticleId(target.getId());
         form.setTitle(target.getTitle());
         form.setBody(target.getBody());
@@ -132,7 +136,6 @@ public class ArticleController {
     public String edit(@Validated @ModelAttribute("article") ArticleEditForm form, BindingResult bindingResult, RedirectAttributes redirectAttributes,Model model){
 
         if(bindingResult.hasErrors()){
-            log.info("in test");
             Article target = as.readArticle(form.getArticleId()).get();
             Kind kind = ks.getKindById(target.getKindId()).get();
 
@@ -177,17 +180,27 @@ public class ArticleController {
             return "add";
         }
 
-        Article article = new Article(form.getTitle(),form.getBody(), NowDate.getNowDate(),loginUser.getNickName());
+        Article article = new Article(form.getTitle(),form.getBody(), NowDate.getNowDate(),loginUser.getNickName(),loginUser.getId());
         Article result = as.addArticle(article);
         long kindId = ks.getKindByTitle(form.getKindName()).get().getId();
-        article.setUserId(kindId);
 
-
+        article.setUserId(loginUser.getId());
         result.setKindId(kindId);
+
         redirectAttributes.addAttribute("articleId",result.getId());
         redirectAttributes.addAttribute("kindId",kindId);
 
         return "redirect:/articles/article/{articleId}";
     }
 
+    @PostMapping("/delete/{articleId}")
+    public String delete(@PathVariable Long articleId,RedirectAttributes redirectAttributes){
+
+        Article target = as.readArticle(articleId).get();
+        as.deleteArticle(target.getId());
+
+        long kindId = target.getKindId();
+        redirectAttributes.addAttribute("kindId",kindId);
+        return "redirect:/articles/articleList/{kindId}";
+    }
 }

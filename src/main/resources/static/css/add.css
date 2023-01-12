@@ -99,17 +99,18 @@ form{
 }
 
 #body{
-  width:700px; 
-	height:370px; 
+  width: 100%;
+  height:370px;
   resize: none;
   outline: none;
   padding: 10px;
+  box-sizing: border-box;
 }
 
 #homebutton{
   position: absolute;
-  bottom: 30%;
-  right: 2%;
+  bottom: 20%;
+  right: 10px;
   width: 50px;
   height: 30px;
   border-style: none;
@@ -127,7 +128,7 @@ form{
 
 #submit{
   position: absolute;
-  bottom: 30%;
+  bottom: 20%;
   right: 10%;
   width: 50px;
   height: 30px;

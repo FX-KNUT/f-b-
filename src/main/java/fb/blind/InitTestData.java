@@ -102,6 +102,9 @@ public class InitTestData {
         Profile profileC = new Profile(Gender.M, null, userC.getId());
 
         ur.save(userA);ur.save(userB);ur.save(userC);
+        userA.setId(996L);
+        userB.setId(997L);
+        userC.setId(998L);
         pr.save(profileA);pr.save(profileB);pr.save(profileC);
 
     }

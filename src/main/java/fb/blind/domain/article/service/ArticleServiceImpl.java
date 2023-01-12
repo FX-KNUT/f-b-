@@ -39,8 +39,6 @@ public class ArticleServiceImpl implements ArticleService{
     @Override
     public Article updateArticle(Article article) {
 
-        log.info("articleId {}", article.getId());
-        log.info("target {}", ar.findByArticleId(article.getId()).get().getId());
         Article target = ar.findByArticleId(article.getId()).get();
         target.setTitle(article.getTitle());
         target.setBody(article.getBody());
