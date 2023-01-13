@@ -3,7 +3,7 @@ package fb.blind.domain.comment;
 import java.util.*;
 
 public class MemmoryRecommentRepository implements RecommentRepository {
-    private final Map<Long, Recomment> store = new HashMap<>();
+    private static Map<Long, Recomment> store = new HashMap<>();
 
     private long Sequence = 0L;
 

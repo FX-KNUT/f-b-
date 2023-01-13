@@ -10,7 +10,7 @@ import java.util.*;
 @Repository
 public class MemoryArticleRepository implements ArticleRepository {
 
-    private final Map<Long, Article> store = new HashMap<>();
+    private static Map<Long, Article> store = new HashMap<>();
     private long Sequence = 0L;
     /**
      * @author 김성은,신영운

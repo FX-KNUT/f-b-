@@ -10,7 +10,7 @@ import java.util.*;
 @Repository
 public class MemoryKindRepository implements KindRepository{
 
-    private Map<Long,Kind> store = new HashMap<>();
+    private static Map<Long,Kind> store = new HashMap<>();
     private static long sequence = 0L;
 
     @Override

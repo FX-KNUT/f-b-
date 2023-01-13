@@ -1,5 +1,7 @@
 package fb.blind.web.user.controller;
 
+import fb.blind.domain.question.Question;
+import fb.blind.domain.question.repository.QuestionRepository;
 import fb.blind.web.user.form.LoginForm;
 import fb.blind.web.user.form.SignupForm;
 import fb.blind.domain.user.User;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SignupController {
 
     private final UserService us;
+    private final QuestionRepository qr;
 
     @GetMapping
     public String signupForm(@ModelAttribute("user") SignupForm form, BindingResult bindingResult, Model model){
@@ -45,6 +48,10 @@ public class SignupController {
 
         us.join(user);
 
+        long joinedUserId = us.findByEmail(user.getEmail()).get().getId();
+        Question question = new Question(form.getQuestion(), form.getAnswer(), joinedUserId);
+        qr.save(question);
+        
         model.addAttribute("user", new LoginForm());
 
         return "login";

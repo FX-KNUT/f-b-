@@ -49,13 +49,50 @@ section>article{
 }
 
 #Wrapper{
-  width: 50%;
+  position: relative;
+  width: 100%;
   height: 80%;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 #Wrapper>form>div{
   margin-bottom: 10px;
+}
+
+#nav{
+  width: 100%;
+  height: 50px;
+}
+
+#nav>ul{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-bottom: 0px;
+}
+
+#nav>ul>li{
+  width: 50%;
+  height: 100%;
+  line-height: 50px;
+  text-align: center;
+  float: left;
+  cursor: pointer;
+}
+
+.focusBox{
+  box-sizing: border-box;
+  border-bottom: 2px black solid;
+  transition: 1s;
+}
+
+#findIdForm,#findPasswdForm{
+  position: absolute;
+  width: 100%;
+  height: 300px;
+  padding: 30px;
+  box-sizing: border-box;
 }
 
 #question,#answer{
@@ -116,4 +153,5 @@ footer{
   background: darkgrey;
   padding: 10px;
 }
+
 

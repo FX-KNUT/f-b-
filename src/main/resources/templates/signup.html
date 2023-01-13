@@ -66,10 +66,10 @@
           <div>
             <label for="questionInput">질문 : </label>
             <select class="question" id="questionSelect" th:field="*{question}" th:errorclass="error">
-              <option value="born">본인의 고향은?</option>
-              <option value="hoby">본인의 취미는?</option>
-              <option value="nickname">본인의 초등학교 별명은?</option>
-              <option value="userinput">직접 입력</option>
+              <option value="본인의 고향은?">본인의 고향은?</option>
+              <option value="본인의 취미는?">본인의 취미는?</option>
+              <option value="본인의 초등학교 별명은?">본인의 초등학교 별명은?</option>
+              <option value="직접 입력">직접 입력</option>
             </select>
             <input type="text" th:field="*{question}" th:errorclass="error" id="questionInput" disabled>
             <p th:errorclass="error" th:errors="*{question}"></p>
@@ -79,7 +79,7 @@
             <input type="text" th:field="*{answer}" th:errorclass="error" id="answer">
             <p th:errorclass="error" th:errors="*{answer}"></p>
           </div>
-          <input type="button" th:type="submit" id="signupBtn" value="회원가입">
+          <input type="button" th:onclick="init()" id="signupBtn" value="회원가입">
         </form>
       </div>
 
@@ -94,49 +94,60 @@
     @Capyright f(b)
   </footer>
   <script>
-    let questionInput = document.querySelector("#questionInput");
-    let questionSelect = document.querySelector("#questionSelect");
+    const $questionInput = document.querySelector("#questionInput");
+    const $questionSelect = document.querySelector("#questionSelect");
+    const $signupForm = document.querySelector("#signupForm");
+    $questionInput.value = questionSelect.value;
     const MIN = 8;
 
+    let init = () =>{
+      $questionSelect.value = "";
+      $signupForm.submit();
+    }
 
-    questionSelect.addEventListener("change", ()=>{
-      if(questionSelect.value != "userinput"){
-        questionInput.disabled = true;
+    $questionSelect.addEventListener("change", ()=>{
+      if($questionSelect.value !== "직접 입력"){
+        $questionInput.value = $questionSelect.value;
+        $questionInput.disabled = true;
       }else{
-        questionInput.disabled = false;
+        $questionInput.value = "";
+        $questionInput.disabled = false;
+        $questionSelect.placeholder = "직접 입력";
+        $questionInput.focus();
+        $questionInput.style.backgroundColor ="#F5FFFA";
       }
     });
 
-    let pw1 = document.querySelector("#pw1");
-    let pw2 = document.querySelector("#pw2");
+    let $pw1 = document.querySelector("#pw1");
+    let $pw2 = document.querySelector("#pw2");
 
-    pw2.oninput = function() {
-      if(!pw1.value){
+    $pw2.oninput = function() {
+      if(!$pw1.value){
         alert("please input first passwd");
-        pw2.value = "";
-        pw1.focus();
+        $pw2.value = "";
+        $pw1.focus();
       }
     };
 
-    pw2.onchange = ()=>{
-      if(pw1.value !== pw2.value){
+    $pw2.onchange = ()=>{
+      if($pw1.value !== $pw2.value){
         alert("패스워드가 다릅니다. 확인 바람, 대소문자 비교");
-        pw2.value = "";
-        pw2.focus();
+        $pw2.value = "";
+        $pw2.focus();
       }
     }
 
-    pw1.onchange = () => {
-      if(pw1.value.length < MIN){
+    $pw1.onchange = () => {
+      if($pw1.value.length < MIN){
         alert("비밀번호는 8이상이여야 합니다.");
-        pw1.value="";
-        pw1.focus();
+        $pw1.value="";
+        $pw1.focus();
       }
 
-      if(!pw1.value.includes("#","!","@","~")){
+      if(!$pw1.value.includes("#","!","@","~")){
         alert("특수문자 1개 이상 포함해야 하며, \"#\",\"!\",\"@\",\"~\" 만 허용 합니다.");
-        pw1.value="";
-        pw1.focus();
+        $pw1.value="";
+        $pw1.focus();
       }
 
 

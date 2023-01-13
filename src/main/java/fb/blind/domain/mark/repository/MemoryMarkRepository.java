@@ -11,7 +11,7 @@ import java.util.Map;
 @Repository
 public class MemoryMarkRepository implements MarkRepository{
 
-    private Map<Long,Mark> store = new HashMap<>();
+    private static Map<Long,Mark> store = new HashMap<>();
     private static long sequence = 0L;
     @Override
     public Mark save(Mark mark) {

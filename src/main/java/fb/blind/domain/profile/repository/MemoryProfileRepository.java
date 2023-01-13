@@ -9,7 +9,7 @@ import java.util.Map;
 @Repository
 public class MemoryProfileRepository implements ProfileRepository{
 
-    private Map<Long,Profile> store = new HashMap<>();
+    private static Map<Long,Profile> store = new HashMap<>();
 
     @Override
     public Profile save(Profile profile) {

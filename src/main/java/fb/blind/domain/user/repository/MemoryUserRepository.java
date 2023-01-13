@@ -10,7 +10,7 @@ import java.util.*;
 @Repository
 public class MemoryUserRepository implements UserRepository{
 
-    private final Map<Long,User> store = new HashMap<>();
+    private static Map<Long,User> store = new HashMap<>();
 
     private long userId = 0L;
     /**

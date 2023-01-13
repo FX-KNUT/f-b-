@@ -7,7 +7,7 @@ import java.util.*;
 @Repository
 public class MemoryCommentRepository implements CommentRepository{
 
-    private final Map<Long, Comment> store = new HashMap<>();
+    private static Map<Long, Comment> store = new HashMap<>();
     private static long sequence = 0L;
 
     /**

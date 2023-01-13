@@ -12,10 +12,13 @@ import fb.blind.domain.profile.repository.ProfileRepository;
 import fb.blind.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.annotation.PostConstruct;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 @RequiredArgsConstructor
@@ -102,13 +105,10 @@ public class InitTestData {
         Profile profileC = new Profile(Gender.M, null, userC.getId());
 
         ur.save(userA);ur.save(userB);ur.save(userC);
-        userA.setId(996L);
-        userB.setId(997L);
-        userC.setId(998L);
+
         pr.save(profileA);pr.save(profileB);pr.save(profileC);
 
     }
-
 
 
 
