@@ -29,21 +29,30 @@
         </div>
 
       <form action="" method="post" id="findIdForm">
+        <label for="email">Email : </label>
         <input type="text" name="email" id="email">
-        <input type="button" value="mail 보내기">
+        <input type="submit" id="idBtn" value="mail 보내기">
       </form>
 
-      <form action="" method="post" id="findPasswdForm">
-        <div>
-          <label for="questionInput">질문 : </label>
-          <input type="text" name="question" id="questionInput" disabled>
-        </div>
-        <div>
-          <label for="answer">문답 : </label>
-          <input type="text" name="answer" id="answer">
-        </div>
-        <input type="button" id="findBtn" value="찾기" onclick="form_submit()">
-      </form>
+      <div id="findPasswdForm">
+        <form action="/find/emailCheck" method="post" id="emailCheck">
+          <label for="mail">Email : </label>
+          <input type="text" name="email" id="mail">
+          <input type="submit" id="eBtn" value="인증">
+        </form>
+        <form action="" method="post" id="questionCheck">
+          <div>
+            <label for="questionInput">질문 : </label>
+            <input type="text" name="question" id="questionInput" disabled>
+          </div>
+          <div>
+            <label for="answer">문답 : </label>
+            <input type="text" name="answer" id="answer">
+          </div>
+          <input type="submit" id="findBtn" value="찾기">
+        </form>
+      </div>
+
     </div>
 
   </article>
@@ -83,10 +92,6 @@
   $idFind.addEventListener("click",onClick);
   $passwdFind.addEventListener("click",onClick);
 
-
-  function form_submit(){
-    document.getElementById('findForm').submit();
-  }
 </script>
 
 </body>

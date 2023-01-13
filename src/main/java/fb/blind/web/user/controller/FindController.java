@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
@@ -28,11 +29,17 @@ public class FindController {
     private final QuestionRepository qr;
 
     @GetMapping
-    public String find(Model model){
-
-
+    public String findForm(Model model){
 
         model.addAttribute("question","result");
+
+        return "find";
+    }
+
+    // e-mail 인증 -> question 받아와서 등록하기 -> answer 받아와 user 인증 후 임시 비밀 번화 setting 및 발급 해주기
+    @PostMapping("/emailCheck")
+    public String find(Model model){
+        log.info("here");
 
         return "find";
     }

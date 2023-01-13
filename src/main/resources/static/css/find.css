@@ -94,17 +94,38 @@ section>article{
   padding: 30px;
   box-sizing: border-box;
 }
+#email,#mail{
+  display: block;
+  width: 300px;
+  padding: 2px;
+  height: 30px;
+  border-style: none;
+  border-bottom: 1px solid #4d4a4a;
+  outline: none;
+  box-sizing: border-box;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
 
-#question,#answer{
+#idBtn{
+  width: 300px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+#questionInput,#answer{
+  display: block;
   width: 300px;
   height: 30px;
   font-size: 16px;
   outline: none;
   border-style: none;
-  border-bottom: 1px solid #cfcfcf;
+  border-bottom: 1px solid #4d4a4a;
 }
 
-#findBtn{
+#findBtn,#eBtn{
   width: 340px;
   height: 30px;
   border-style: none;
@@ -137,17 +158,6 @@ section>article{
   background-color: #000;
   color: #fff;
 }
-
-#questionInput{
-  margin-bottom: 5px;
-  width: 350px;
-  height: 30px;
-  border-style: none;
-  background-color: #cfcfcf;
-  transition: 0.5s;
-  line-height: 30px;
-}
-
 
 footer{
   background: darkgrey;
