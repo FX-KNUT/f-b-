@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,30 +34,34 @@
         <input type="submit" id="idBtn" value="mail 보내기">
       </form>
 
-      <div id="findPasswdForm">
+      <div id="findPasswdForm" th:object="${find}">
         <form action="/find/emailCheck" method="post" id="emailCheck">
           <label for="mail">Email : </label>
-          <input type="text" name="email" id="mail">
+          <input type="text" id="mail" th:field="*{email}">
           <input type="submit" id="eBtn" value="인증">
         </form>
-        <form action="" method="post" id="questionCheck">
+        <form action="/find/findPw" method="post" id="questionCheck">
           <div>
+            <input type="hidden" th:field="*{email}">
             <label for="questionInput">질문 : </label>
-            <input type="text" name="question" id="questionInput" disabled>
+            <input type="text" id="questionInput" th:field="*{question}" disabled>
           </div>
           <div>
             <label for="answer">문답 : </label>
-            <input type="text" name="answer" id="answer">
+            <input type="text" id="answer" th:field="*{answer}">
           </div>
           <input type="submit" id="findBtn" value="찾기">
         </form>
       </div>
 
+      <div th:if="${answerCheck}"> 임시 비밀 번호는 [[${tokenPw}]]</div>
+      <div th:if="${answerCheck == false && question != '' }" th:text="#{loginError}">에러 메세지</div>
+
     </div>
 
   </article>
 
-  <a href="main.html" id="homebutton">홈으로</a>
+  <a href="main.html" id="homebutton" th:href="@{/articles}">홈으로</a>
 
 </section>
 
