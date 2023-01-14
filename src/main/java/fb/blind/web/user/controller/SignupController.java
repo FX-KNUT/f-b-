@@ -1,5 +1,8 @@
 package fb.blind.web.user.controller;
 
+import fb.blind.domain.Gender;
+import fb.blind.domain.profile.Profile;
+import fb.blind.domain.profile.repository.ProfileRepository;
 import fb.blind.domain.question.Question;
 import fb.blind.domain.question.repository.QuestionRepository;
 import fb.blind.web.user.form.LoginForm;
@@ -25,6 +28,7 @@ public class SignupController {
 
     private final UserService us;
     private final QuestionRepository qr;
+    private final ProfileRepository pr;
 
     @GetMapping
     public String signupForm(@ModelAttribute("user") SignupForm form, BindingResult bindingResult, Model model){
@@ -51,6 +55,9 @@ public class SignupController {
         long joinedUserId = us.findByEmail(user.getEmail()).get().getId();
         Question question = new Question(form.getQuestion(), form.getAnswer(), joinedUserId);
         qr.save(question);
+
+        Profile profile = new Profile(Gender.valueOf(form.getGender()), null, joinedUserId);
+        pr.save(profile);
         
         model.addAttribute("user", new LoginForm());
 
