@@ -159,6 +159,13 @@ section>article{
   color: #fff;
 }
 
+.validation{
+  margin: 10px 0;
+  border : 1px solid rebeccapurple;
+  color: rebeccapurple;
+  font-size: 15px;
+}
+
 footer{
   background: darkgrey;
   padding: 10px;

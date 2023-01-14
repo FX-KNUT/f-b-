@@ -59,6 +59,7 @@ public class FindController {
 
         model.addAttribute("find",form);
 
+
         return "find";
     }
 
@@ -74,7 +75,6 @@ public class FindController {
         if(!form.getAnswer().equals(target.getAnswer())){
             model.addAttribute("answerCheck",false);
             model.addAttribute("find",form);
-
             return "find";
         }
 

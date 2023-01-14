@@ -52,10 +52,13 @@
           </div>
           <input type="submit" id="findBtn" value="찾기">
         </form>
+
+        <div class="validation" th:if="${answerCheck}"> 임시 비밀 번호는 [[${tokenPw}]]</div>
+        <div class="validation" th:if="${answerCheck == false && question != '' }" th:text="#{loginError}">에러 메세지</div>
+
       </div>
 
-      <div th:if="${answerCheck}"> 임시 비밀 번호는 [[${tokenPw}]]</div>
-      <div th:if="${answerCheck == false && question != '' }" th:text="#{loginError}">에러 메세지</div>
+
 
     </div>
 
@@ -74,9 +77,15 @@
   const $passwdFind = document.querySelector("#passwdCheck");
   const $idForm = document.querySelector("#findIdForm");
   const $passwdForm = document.querySelector("#findPasswdForm");
+  const $mail = document.querySelector("#mail");
 
-  $passwdForm.style.display = "none";
-  $idForm.style.display = "block";
+  if(!$mail.value){
+    $passwdForm.style.display = "none";
+    $idForm.style.display = "block";
+  }else{
+    $passwdForm.style.display = "block";
+    $idForm.style.display = "none";
+  }
 
   const onClick = (event) => {
     if(event.target === $idFind) {
