@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/editpasswd.css?after">
+  <script src="https://kit.fontawesome.com/5a855f27dd.js" crossorigin="anonymous"></script>
+  <title>Edit Passwd</title>
+  <style>
+    .error{
+      color: #ff2f2f;
+    }
+  </style>
+</head>
+<body>
+  
+  <header>
+    <div id="logo">
+      <h1>Blind Clone f(b) Edit Passwd</h1>
+    </div>
+  </header>
+
+  <section>
+
+    <article>
+      <div id="logWrapper">
+
+
+        <form action="" th:action="@{/users/changepw}" method="post" th:object="${passwd}">
+
+          <div th:if="${#fields.hasGlobalErrors()}">
+            <p th:each="err : ${#fields.globalErrors()}" th:errorclass="error" th:text="err"></p>
+          </div>
+
+          <div>
+            <label for="pw1">PW : </label>
+            <input type="password" th:field="*{pw1}" id="pw1">
+            <p th:errorclass="error" th:errors="*{pw1}" th:text="#{NotBlank}">test</p>
+          </div>
+          <div>
+            <label for="pw2">PW 확인 : </label>
+            <input type="password" th:field="*{pw2}" id="pw2">
+            <p th:errorclass="error" th:errors="*{pw2}" th:text="#{NotBlank}">test</p>
+          </div>
+          <input type="submit" id="changeBtn" value="변경하기">
+        </form>
+      </div>
+
+    </article>
+
+    <a href="main.html" id="homebutton" th:href="@{/articles}">홈으로</a>
+
+  </section>
+
+  <footer>
+    footer 기능 추가 시 활용 예정
+    @Capyright f(b)
+  </footer>
+
+  <script>
+
+    const $pw1 = document.querySelector("#pw1");
+    const $pw2 = document.querySelector("#pw2");
+    const MIN = 8;
+
+    $pw2.oninput = function() {
+      if(!$pw1.value){
+        alert("please input first passwd");
+        $pw2.value = "";
+        $pw1.focus();
+      }
+    };
+
+    $pw2.onchange = ()=>{
+      if($pw1.value !== $pw2.value){
+        alert("패스워드가 다릅니다. 확인 바람, 대소문자 비교");
+        $pw2.value = "";
+        $pw2.focus();
+      }
+    }
+
+    $pw1.onchange = () => {
+      if ($pw1.value.length < MIN) {
+        alert("비밀번호는 8이상이여야 합니다.");
+        $pw1.value = "";
+        $pw1.focus();
+      }
+
+      if (!$pw1.value.includes("#", "!", "@", "~")) {
+        alert("특수문자 1개 이상 포함해야 하며, \"#\",\"!\",\"@\",\"~\" 만 허용 합니다.");
+        $pw1.value = "";
+        $pw1.focus();
+      }
+    }
+
+
+  </script>
+
+
+</body>
+</html>

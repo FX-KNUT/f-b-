@@ -44,13 +44,14 @@
           </div>
           <input type="submit" th:onclick="|location.href='@{/login}'|" id="loginBtn" value="로그인">
           <a th:onclick="|location.href='@{/signup}'|" id="signupBtn">회원가입</a>
+          <a href="find.html" th:href="@{/find}" id="findBtn">E-mail / passwd 찾기</a>
+          <a href="main.html" id="homebutton" th:href="@{/articles}">홈으로</a>
         </form>
       </div>
 
     </article>
 
-    <a href="find.html" th:href="@{/find}" id="findBtn">E-mail / passwd 찾기</a>
-    <a href="main.html" id="homebutton" th:href="@{/articles}">홈으로</a>
+
 
   </section>
 

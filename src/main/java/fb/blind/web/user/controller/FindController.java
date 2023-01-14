@@ -50,6 +50,7 @@ public class FindController {
 
         if(findUser.isEmpty()) {
             bindingResult.reject("loginError");
+            model.addAttribute("find",form);
             return "find";
         }
 
@@ -63,11 +64,24 @@ public class FindController {
         return "find";
     }
 
-    @PostMapping("findPw")
+    @PostMapping("/findPw")
     public String findPw(@ModelAttribute FindForm form, BindingResult bindingResult, Model model){
 
-        User findUser = us.findByEmail(form.getEmail()).get();
-        Question target = qr.findByUserId(findUser.getId());
+        if(bindingResult.hasErrors()){
+            model.addAttribute("answerCheck",false);
+            model.addAttribute("find",form);
+            return "find";
+        }
+
+        Optional<User> findUser = us.findByEmail(form.getEmail());
+
+        if(findUser.isEmpty()){
+            model.addAttribute("answerCheck",false);
+            model.addAttribute("find",form);
+            return "find";
+        }
+
+        Question target = qr.findByUserId(findUser.get().getId());
 
         log.info("form answer : {}",form.getAnswer());
         log.info("qr answer : {}",target.getAnswer());
@@ -78,7 +92,7 @@ public class FindController {
             return "find";
         }
 
-        findUser.setPasswd(TokenPwConst.TOKEN_PW);
+        findUser.get().setPasswd(TokenPwConst.TOKEN_PW);
         model.addAttribute("find",form);
         model.addAttribute("answerCheck",true);
         model.addAttribute("tokenPw", TokenPwConst.TOKEN_PW);

@@ -58,11 +58,11 @@ section>article{
   margin-bottom: 10px;
 }
 
-#id{
+#pw1{
   margin-left: 10px;
 }
 
-#id,#pw{
+#pw1,#pw2{
   width: 300px;
   height: 30px;
   font-size: 16px;
@@ -71,7 +71,7 @@ section>article{
   border-bottom: 1px solid #cfcfcf;
 }
 
-#loginBtn,#signupBtn,#findBtn{
+#changeBtn,#signupBtn{
   width: 340px;
   height: 30px;
   border-style: none;
@@ -79,7 +79,7 @@ section>article{
   transition: 0.5s;
 }
 
-#signupBtn, #findBtn{
+#signupBtn{
   display: block;
   background: #eeecec;
   margin-top: 5px;
@@ -88,13 +88,13 @@ section>article{
   font-size: 14px;
 }
 
-#loginBtn:hover,#signupBtn:hover,#findBtn:hover{
+#changeBtn:hover,#signupBtn:hover{
   background-color: #ffff;
   color: gray;
 }
 
 
-#homebutton{
+#homebutton,#findBtn{
   position: absolute;
   bottom: 30%;
   right: 2%;
@@ -108,7 +108,12 @@ section>article{
   line-height: 30px;
 }
 
-#homebutton:hover{
+#findBtn{
+  right: 12%;
+  width: 150px;
+}
+
+#homebutton:hover, #findBtn:hover{
   background-color: #000;
   color: #fff;
 }
