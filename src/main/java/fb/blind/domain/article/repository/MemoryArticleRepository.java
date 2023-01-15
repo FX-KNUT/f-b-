@@ -81,12 +81,16 @@ public class MemoryArticleRepository implements ArticleRepository {
     @Override
     public Article updateArticle(Article update) {
         Article target = store.get(update.getId());
+        setValues(update, target);
+
+        return store.get(update.getId());
+    }
+
+    private static void setValues(Article update, Article target) {
         target.setTitle(update.getTitle());
         target.setBody(update.getBody());
         target.setDate(update.getDate());
         target.setFileName(update.getFileName());
-
-        return store.get(update.getId());
     }
 
 

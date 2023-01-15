@@ -27,17 +27,7 @@ public class UserServiceImpl implements UserService{
     @Override
     public boolean join(User user) {
         Optional<User> findUser = findByEmail(user.getEmail());
-        List<User> result = ur.findAll();
-        if(findUser != null){
-            for (User u : result) {
-                if(u.getEmail().equals(user.getEmail())){
-                    return false;
-                }
-            }
-            ur.save(user);
-            return true;
-        }
-        return false;
+        return joinProcess(user, findUser);
     }
 
     @Override
@@ -96,6 +86,20 @@ public class UserServiceImpl implements UserService{
     @Override
     public Optional<User> findByEmail(String email) {
         return ur.findAll().stream().filter(m -> m.getEmail().equals(email)).findAny();
+    }
+
+    private boolean joinProcess(User user, Optional<User> findUser) {
+        List<User> result = ur.findAll();
+        if(findUser != null){
+            for (User u : result) {
+                if(u.getEmail().equals(user.getEmail())){
+                    return false;
+                }
+            }
+            ur.save(user);
+            return true;
+        }
+        return false;
     }
 
 }

@@ -46,7 +46,7 @@ public class ArticleServiceImpl implements ArticleService{
             return null;
         }
 
-        Article update = new Article(target.get().getId(), article.getTitle(), article.getBody(), article.getDate(),article.getFileName());
+        Article update = setValues(article, target);
 
         return ar.updateArticle(update);
     }
@@ -131,21 +131,21 @@ public class ArticleServiceImpl implements ArticleService{
      */
     @Override
     public List<Article> findByKindId(long kindId) {
-        
+
         List<Article> result = new ArrayList<>();
-        //List<Article> findList = ar.findAll();
+
         ar.findAll().forEach(a -> {
             if(a.getKindId() == kindId){
                 result.add(a);
             }
         });
-//        for (Article article : findList) {
-//            if(article.getKindId() == kindId){
-//                result.add(article);
-//            }
-//        }
 
         return result;
+    }
+
+    private static Article setValues(Article article, Optional<Article> target) {
+        Article update = new Article(target.get().getId(), article.getTitle(), article.getBody(), article.getDate(), article.getFileName());
+        return update;
     }
 
 }
