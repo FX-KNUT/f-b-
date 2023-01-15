@@ -52,5 +52,10 @@ public interface ArticleRepository {
      */
     void clear();
 
-
+    /**
+     * update logic 수정
+     * @param update
+     * @return
+     */
+    Article updateArticle(Article update);
 }

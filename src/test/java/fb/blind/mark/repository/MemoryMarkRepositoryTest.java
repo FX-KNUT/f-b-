@@ -35,12 +35,13 @@ class MemoryMarkRepositoryTest {
 
         mark1 = new Mark(1L, 1L, "mark1");
         mark4 = new Mark(4L, 1L, "mark4");
+        mark5 = new Mark(5L, 1L, "mark5");
+        mark6 = new Mark(6L, 1L, "mark6");
 
         mark7 = new Mark(4L, 2L, "mark7");
         mark8 = new Mark(4L, 3L, "mark9");
 
-        mark5 = new Mark(5L, 1L, "mark5");
-        mark6 = new Mark(6L, 1L, "mark6");
+
         mark2 = new Mark(2L, 2L, "mark2");
         mark3 = new Mark(3L, 3L, "mark3");
 

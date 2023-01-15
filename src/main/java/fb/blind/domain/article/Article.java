@@ -70,5 +70,22 @@ public class Article {
         this.body = body;
         this.date = date;
     }
+
+    public Article(long id, String title, String body, String date, String fileName) {
+        this.id = id;
+        this.title = title;
+        this.body = body;
+        this.date = date;
+        this.fileName = fileName;
+    }
+
+    public Article(long id, String title, String body, String date, String writer, String fileName) {
+        this.id = id;
+        this.title = title;
+        this.body = body;
+        this.date = date;
+        this.writer = writer;
+        this.fileName = fileName;
+    }
 }
 

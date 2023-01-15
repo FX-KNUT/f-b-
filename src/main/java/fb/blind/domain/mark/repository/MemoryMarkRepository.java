@@ -13,6 +13,7 @@ public class MemoryMarkRepository implements MarkRepository{
 
     private static Map<Long,Mark> store = new HashMap<>();
     private static long sequence = 0L;
+
     @Override
     public Mark save(Mark mark) {
         mark.setId(++sequence);
@@ -23,28 +24,28 @@ public class MemoryMarkRepository implements MarkRepository{
     @Override
     public List<Mark> findByUserId(long userId) {
         List<Mark> result = new ArrayList<>();
-        for (Mark mark : store.values()) {
+        store.values().stream().forEach(mark -> {
             if(mark.getUserId() == userId){
                 result.add(mark);
             }
-        }
+        });
         return result;
     }
 
     @Override
     public List<Mark> findByArticleId(long articleId) {
         List<Mark> result = new ArrayList<>();
-        for (Mark mark : store.values()) {
+        store.values().stream().forEach(mark -> {
             if(mark.getArticleId() == articleId){
                 result.add(mark);
             }
-        }
+        });
         return result;
     }
 
     @Override
     public void delete(Mark mark) {
-        store.remove(mark.getArticleId());
+        //update 필요
     }
 
     @Override

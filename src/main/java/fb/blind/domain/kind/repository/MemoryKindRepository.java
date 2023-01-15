@@ -15,10 +15,7 @@ public class MemoryKindRepository implements KindRepository{
 
     @Override
     public Kind save(Kind kind) {
-        if(kind.getId() == 0){
-            kind.setId(++sequence);
-        }
-
+        kind.setId(++sequence);
         store.put(kind.getId(),kind);
         return kind;
     }

@@ -26,19 +26,15 @@ public class MemoryUserRepository implements UserRepository{
     }
 
     /**
-     * @author 김성은,신영운
      * @param nickName 닉네임
      * @return
+     * @author 김성은, 신영운
      */
 
     @Override
     public Optional<User> findByNickName(String nickName) {
-        for (User user : store.values()) {
-            if(user.getNickName().equals(nickName)){
-                return Optional.ofNullable(user);
-            }
-        }
-        return Optional.empty();
+        return Optional.ofNullable(store.values().stream()
+                .filter(m -> m.getNickName().equals(nickName)).findFirst().orElse(null));
     }
 
     /**
@@ -49,11 +45,11 @@ public class MemoryUserRepository implements UserRepository{
     @Override
     public List<User> findByDept(String dept) {
         ArrayList<User> result = new ArrayList<>();
-        for (User user : store.values()) {
+        store.values().stream().forEach(user -> {
             if(user.getDept().equals(dept)){
                 result.add(user);
             }
-        }
+        });
         return result;
     }
 

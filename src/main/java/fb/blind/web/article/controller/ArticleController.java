@@ -4,8 +4,7 @@ import fb.blind.common.NowDate;
 import fb.blind.common.argumentresolver.Login;
 import fb.blind.domain.article.service.ArticleService;
 import fb.blind.domain.article.Article;
-import fb.blind.domain.comment.SessionConst;
-import fb.blind.domain.profile.Profile;
+import fb.blind.common.SessionConst;
 import fb.blind.domain.profile.repository.ProfileRepository;
 import fb.blind.web.article.form.ArticleAddForm;
 import fb.blind.web.article.form.ArticleEditForm;
@@ -24,10 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @Controller

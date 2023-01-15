@@ -47,7 +47,6 @@ public class KindServiceImpl implements KindService{
 
     @Override
     public Optional<Kind> findByTitle(String title) {
-        log.info("repository Title = {} ", title);
         return kr.findAll().stream().filter(m -> m.getKindName().equals(title)).findFirst();
     }
 

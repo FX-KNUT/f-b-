@@ -11,24 +11,27 @@ import java.util.*;
 public class MemoryArticleRepository implements ArticleRepository {
 
     private static Map<Long, Article> store = new HashMap<>();
-    private long Sequence = 0L;
+
+    /**
+     * article id  -> server 에서 자동 입력
+     */
+    private static long Sequence = 0L;
+
+
     /**
      * @author 김성은,신영운
      * @param article 객체를 받아와 저장
-     * 작성 레벨 --> ???
-     * 변수 담아서 갈래? -> 직접 매서드 호출
      */
     @Override
     public Article save(Article article) {
         article.setId(++Sequence);
-        long articleId = article.getId();
-        store.put(articleId,article);
+        store.put(article.getId(),article);
         return article;
     }
 
     /**
+     * 구현 필요
      * @author 김성은,신영운
-     * User 만들고 update 필요
      * @param email : 사용자 id -> e-mail 활용
      * @return
      */
@@ -37,13 +40,6 @@ public class MemoryArticleRepository implements ArticleRepository {
         return null;
     }
 
-    /**
-     *
-     * @param title : article 제목으로 검색 -> 검색 방법 결정 필요
-     * @return
-     * @author 김성은, 신영운
-     * @version v0_1 : title 100% 검사
-     */
 
     /**
      * @author 김성은,신영운
@@ -70,7 +66,7 @@ public class MemoryArticleRepository implements ArticleRepository {
      */
     @Override
     public List<Article> findAll() {
-        return new ArrayList<Article>(store.values());
+        return new ArrayList<>(store.values());
     }
 
     /**
@@ -80,6 +76,17 @@ public class MemoryArticleRepository implements ArticleRepository {
     @Override
     public void clear() {
         store.clear();
+    }
+
+    @Override
+    public Article updateArticle(Article update) {
+        Article target = store.get(update.getId());
+        target.setTitle(update.getTitle());
+        target.setBody(update.getBody());
+        target.setDate(update.getDate());
+        target.setFileName(update.getFileName());
+
+        return store.get(update.getId());
     }
 
 

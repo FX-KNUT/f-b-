@@ -1,6 +1,6 @@
 package fb.blind.common.interceptor;
 
-import fb.blind.domain.comment.SessionConst;
+import fb.blind.common.SessionConst;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerInterceptor;
 

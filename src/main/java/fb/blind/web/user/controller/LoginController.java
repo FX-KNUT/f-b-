@@ -1,7 +1,7 @@
 package fb.blind.web.user.controller;
 
 
-import fb.blind.domain.comment.SessionConst;
+import fb.blind.common.SessionConst;
 import fb.blind.web.user.form.LoginForm;
 import fb.blind.domain.user.User;
 import fb.blind.domain.user.service.LoginService;
