@@ -9,7 +9,7 @@ import lombok.Setter;
 public class Profile {
 
     /**
-     * @Param id : profiel 고유 no
+     * @Param id : profile 고유 no
      * @Param gender : 여 0, 남 1 (Enum)
      * @Param imgPath : 경로 저장용
      * @Param userId : user id
