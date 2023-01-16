@@ -7,8 +7,7 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 public class Kind {
     /**
      * id = 게시판 고유 id

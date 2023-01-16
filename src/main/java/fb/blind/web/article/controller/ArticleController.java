@@ -24,6 +24,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Controller
@@ -62,6 +63,9 @@ public class ArticleController {
     public String mainView(@Login User loginUser, HttpServletRequest request, @ModelAttribute("kind") Kind kind, Model model){
 
         model.addAttribute("kinds",ks.findAll());
+        for (Kind kind1 : ks.findAll()) {
+            log.info("kidsCheck : {}",kind1.getId());
+        }
 
         if (loginUser == null){
             return "main";
