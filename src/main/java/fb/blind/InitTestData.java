@@ -100,13 +100,17 @@ public class InitTestData {
         User userB = new User("KNUT", "김성은", "rlatjddms@gmail.com", "1234");
         User userC = new User("KNUT", "신영운", "tlsduddns@gmail.com", "1234");
 
-        Profile profileA = new Profile(Gender.M, null, userA.getId());
-        Profile profileB = new Profile(Gender.W, null, userB.getId());
-        Profile profileC = new Profile(Gender.M, null, userC.getId());
+        User saveA = ur.save(userA);
+        User saveB = ur.save(userB);
+        User saveC = ur.save(userC);
 
-        ur.save(userA);ur.save(userB);ur.save(userC);
+        Profile profileA = new Profile(Gender.M, null, saveA.getId());
+        Profile profileB = new Profile(Gender.W, null, saveB.getId());
+        Profile profileC = new Profile(Gender.M, null, saveC.getId());
 
-        pr.save(profileA);pr.save(profileB);pr.save(profileC);
+        pr.save(profileA);
+        pr.save(profileB);
+        pr.save(profileC);
 
     }
 

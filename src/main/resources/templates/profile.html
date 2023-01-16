@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,19 +23,19 @@
         <form action="" method="post">
           <div>
             <label for="nick">닉네임 : </label>
-            <input type="text" name="nick" id="nick" disabled>
+            <input type="text" th:value="${user.nickName}" name="nick" id="nick"  disabled >
           </div>
           <div>
-            <label for="id">ID : </label>
-            <input type="text" name="userid" id="id" disabled>
+            <label for="email">ID : </label>  <!-- id말고 email로 고려할 필요가 있음!-->
+            <input type="email" th:value="${user.email}" name="email" id="email"  disabled >
           </div>
           <div>
             <label for="belong">소속 : </label>
-            <input type="text" name="belong" id="belong" disabled>
+            <input type="text" th:value="${user.dept}" name="belong" id="belong"  disabled >
           </div>
           <div>
-            <input type="radio" name="gender" value="남" checked disabled>남
-            <input type="radio" name="gender" value="여" disabled>여
+            <input type="radio" name="gender" value="남" th:checked="${profile.getGender.ordinal() == 0}" disabled>남
+            <input type="radio" name="gender" value="여" th:checked="${profile.getGender.ordinal() == 1}" disabled>여
           </div>
         </form>
       </div>
@@ -45,7 +45,7 @@
 
     </article>
 
-    <a href="profileedit.html" id="editBtn">수정</a>
+    <a href="profileedit.html" th:href="@{/profile/edit}" id="editBtn">수정</a>
     <a href="main.html" id="homebutton">홈으로</a>
 
   </section>

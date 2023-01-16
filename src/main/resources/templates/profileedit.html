@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/profileedit.css?after">
+  <script src="https://kit.fontawesome.com/5a855f27dd.js" crossorigin="anonymous"></script>
+  <title>profile edit</title>
+</head>
+<body>
+  
+  <header>
+    <div id="logo">
+      <h1>Blind Clone f(b) login</h1>
+    </div>
+  </header>
+
+  <section>
+
+    <article>
+      <div id="Wrapper">
+        <form action="profile/edit" method="post" th:object="${profile}">
+          <div>
+            <label th:for="nickName">닉네임 : </label>
+            <input type="text" name="nickName" th:field="*{nickName}">
+          </div>
+          <input type="button" id="nickCheckBtn" value="중복 확인">
+          <div>
+            <label th:for="email">email : </label>
+            <input type="text" name="email" th:field="*{email}">
+          </div>
+          <input type="button" id="idCheckBtn" value="중복 확인">
+          <div>
+            <label th:for="dept">소속 : </label>
+            <input type="text" name="dept" th:field="*{dept}">
+          </div>
+          <div>
+            <label th:for="gender"></label>
+            <input type="radio" th:field="*{gender}" value="M">남
+            <label th:for="gender"></label>
+            <input type="radio" th:field="*{gender}" value="W">여
+          </div>
+          <input type="button" id="editBtn" value="수정하기">
+        </form>
+      </div>
+
+    </article>
+
+    <a href="main.html" th:href="@{/articles}" id="homebutton">홈으로</a>
+
+  </section>
+
+  <footer>
+    footer 기능 추가 시 활용 예정
+    @Capyright f(b)
+  </footer>
+
+
+</body>
+</html>
