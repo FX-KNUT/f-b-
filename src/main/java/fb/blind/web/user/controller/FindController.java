@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,7 +44,7 @@ public class FindController {
 
     // e-mail 인증 -> question 받아와서 등록하기 -> answer 받아와 user 인증 후 임시 비밀 번호 setting 및 발급 해주기
     @PostMapping("/emailCheck")
-    public String find(@ModelAttribute FindForm form, BindingResult bindingResult, Model model){
+    public String find(@Validated @ModelAttribute FindForm form, BindingResult bindingResult, Model model){
 
         String email = form.getEmail();
         Optional<User> findUser = us.findByEmail(email);
@@ -55,7 +56,7 @@ public class FindController {
         }
 
         String question = qr.findByUserId(findUser.get().getId()).getQuestion();
-        log.info("question : {}", question);
+
         form.setQuestion(question);
 
         model.addAttribute("find",form);
@@ -76,15 +77,13 @@ public class FindController {
         Optional<User> findUser = us.findByEmail(form.getEmail());
 
         if(findUser.isEmpty()){
+            log.info("here");
             model.addAttribute("answerCheck",false);
             model.addAttribute("find",form);
             return "find";
         }
 
         Question target = qr.findByUserId(findUser.get().getId());
-
-        log.info("form answer : {}",form.getAnswer());
-        log.info("qr answer : {}",target.getAnswer());
 
         if(!form.getAnswer().equals(target.getAnswer())){
             model.addAttribute("answerCheck",false);

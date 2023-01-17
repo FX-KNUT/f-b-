@@ -34,13 +34,16 @@
         <input type="submit" id="idBtn" value="mail 보내기">
       </form>
 
+
       <div id="findPasswdForm" th:object="${find}">
         <form action="/find/emailCheck" method="post" id="emailCheck">
+
           <label for="mail">Email : </label>
           <input type="text" id="mail" th:field="*{email}">
           <input type="submit" id="eBtn" value="인증">
         </form>
         <form action="/find/findPw" method="post" id="questionCheck">
+
           <div>
             <input type="hidden" th:field="*{email}">
             <label for="questionInput">질문 : </label>
