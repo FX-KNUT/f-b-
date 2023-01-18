@@ -12,10 +12,10 @@
   
   <header>
     <div id="logo">
-      <h1>Blind Clone f(b)</h1>
+      <h1 th:text="#{title}"></h1>
     </div>
     <div id="btnWrapper">
-      <a href="login.html" th:href="@{/login}" id="lbtn">로그인</a>
+      <a href="login.html" th:href="@{/login}" id="lbtn" th:text="#{login}"></a>
     </div>
   </header>
 

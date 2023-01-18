@@ -12,7 +12,7 @@
 
 <header>
   <div id="logo">
-    <h1>Blind Clone f(b) login</h1>
+    <h1 th:text="#{title}"></h1>
   </div>
 </header>
 
@@ -23,15 +23,15 @@
 
         <div id="nav">
           <ul>
-            <li id="idCheck" class="focusBox">ID 찾기</li>
-            <li id="passwdCheck">PW 찾기</li>
+            <li id="idCheck" class="focusBox" th:text="#{find.id}"></li>
+            <li id="passwdCheck" th:text="#{find.pw}"></li>
           </ul>
         </div>
 
       <form action="" method="post" id="findIdForm">
-        <label for="email">Email : </label>
+        <label for="email" th:text="#{email}"></label>
         <input type="text" name="email" id="email">
-        <input type="submit" id="idBtn" value="mail 보내기">
+        <input type="submit" id="idBtn" value="mail 보내기" th:value="#{send.mail}">
       </form>
 
 
@@ -40,20 +40,20 @@
 
           <label for="mail">Email : </label>
           <input type="text" id="mail" th:field="*{email}">
-          <input type="submit" id="eBtn" value="인증">
+          <input type="submit" id="eBtn" value="인증" th:value="#{Authenticate}">
         </form>
         <form action="/find/findPw" method="post" id="questionCheck">
 
           <div>
             <input type="hidden" th:field="*{email}">
-            <label for="questionInput">질문 : </label>
+            <label for="questionInput" th:text="#{question}"></label>
             <input type="text" id="questionInput" th:field="*{question}" disabled>
           </div>
           <div>
-            <label for="answer">문답 : </label>
+            <label for="answer" th:text="#{answer}">문답 : </label>
             <input type="text" id="answer" th:field="*{answer}">
           </div>
-          <input type="submit" id="findBtn" value="찾기">
+          <input type="submit" id="findBtn" value="찾기" th:value="#{find}">
         </form>
 
         <div class="validation" th:if="${answerCheck}"> 임시 비밀 번호는 [[${tokenPw}]]</div>
@@ -67,7 +67,7 @@
 
   </article>
 
-  <a href="main.html" id="homebutton" th:href="@{/articles}">홈으로</a>
+  <a href="main.html" id="homebutton" th:href="@{/articles}" th:text="#{main}"></a>
 
 </section>
 

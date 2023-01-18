@@ -12,7 +12,7 @@
   
   <header>
     <div id="logo">
-      <h1>Blind Clone f(b) login</h1>
+      <h1 th:text="#{title}"></h1>
     </div>
   </header>
 
@@ -22,31 +22,31 @@
       <div id="Wrapper">
         <form action="" method="post">
           <div>
-            <label for="nick">닉네임 : </label>
+            <label for="nick" th:text="#{NickName}"></label>
             <input type="text" th:value="${user.nickName}" name="nick" id="nick"  disabled >
           </div>
           <div>
-            <label for="email">ID : </label>  <!-- id말고 email로 고려할 필요가 있음!-->
+            <label for="email" th:text="#{id}"></label>  <!-- id말고 email로 고려할 필요가 있음!-->
             <input type="email" th:value="${user.email}" name="email" id="email"  disabled >
           </div>
           <div>
-            <label for="belong">소속 : </label>
+            <label for="belong" th:text="#{dept}"></label>
             <input type="text" th:value="${user.dept}" name="belong" id="belong"  disabled >
           </div>
           <div>
-            <input type="radio" name="gender" value="남" th:checked="${profile.getGender.ordinal() == 0}" disabled>남
-            <input type="radio" name="gender" value="여" th:checked="${profile.getGender.ordinal() == 1}" disabled>여
+            <input type="radio" name="gender" value="남" th:value="#{Gender.m}" th:checked="${profile.getGender.ordinal() == 0}" disabled>남
+            <input type="radio" name="gender" value="여" th:value="#{Gender.w}" th:checked="${profile.getGender.ordinal() == 1}" disabled>여
           </div>
         </form>
       </div>
 
-      <a href="myArticleList.html" id="myarticle">내가 쓴 글 보기</a>
-      <a href="myCommentList.html" id="mycomment">내가 쓴 댓글 보기</a>
+      <a href="myArticleList.html" id="myarticle" th:text="#{myArticles}"></a>
+      <a href="myCommentList.html" id="mycomment" th:text="#{myComments}"></a>
 
     </article>
 
-    <a href="profileedit.html" th:href="@{/profile/edit}" id="editBtn">수정</a>
-    <a href="main.html" id="homebutton" th:href="@{/articles}">홈으로</a>
+    <a href="profileedit.html" th:href="@{/profile/edit}" id="editBtn" th:text="#{article.edit}"></a>
+    <a href="main.html" id="homebutton" th:href="@{/articles}" th:text="#{main}"></a>
 
   </section>
 

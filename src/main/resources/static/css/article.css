@@ -91,7 +91,7 @@ form{
 
 #body{
   width:700px; 
-	height:370px; 
+  height:370px;
   resize: none;
   outline: none;
   padding: 10px;
@@ -99,7 +99,7 @@ form{
 
 #homebutton{
   position: absolute;
-  bottom: 20%;
+  top: 20%;
   right: 2%;
   width: 50px;
   height: 30px;
@@ -118,7 +118,7 @@ form{
 
 #edit{
   position: absolute;
-  bottom: 20%;
+  top: 20%;
   right: 10%;
   width: 50px;
   height: 30px;
@@ -132,7 +132,7 @@ form{
 
 #delete{
   position: absolute;
-  bottom: 20%;
+  top: 20%;
   right: 18.5%;
   width: 50px;
   height: 30px;

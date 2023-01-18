@@ -19,7 +19,7 @@
   
   <header>
     <div id="logo">
-      <h1>Blind Clone f(b) login</h1>
+      <h1 th:text="#{title}"></h1>
     </div>
   </header>
 
@@ -33,27 +33,27 @@
               <p class="error" th:each="err : ${ #fields.globalErrors() }" th:text="${err}">에러</p>
           </div>
           <div>
-            <label for="nick">닉네임 : </label>
+            <label for="nick" th:text="#{NickName}"></label>
             <input type="text" th:field="*{nick}" th:errorclass="error" name="nick" id="nick">
             <p th:errorclass="error" th:errors="*{nick}"></p>
           </div>
           <div>
-            <label for="id">E-mail : </label>
+            <label for="id" th:text="#{email}"></label>
             <input type="text" th:field="*{email}" th:errorclass="error" name="userid" id="id">
             <p th:errorclass="error" th:errors="*{email}"></p>
           </div>
           <div>
-            <label for="pw1">PW : </label>
+            <label for="pw1" th:text="#{passwd}"></label>
             <input type="password" name="passwd1" th:field="*{pw1}" th:errorclass="error" id="pw1">
             <p th:errorclass="error" th:errors="*{pw1}"></p>
           </div>
           <div>
-            <label for="pw2">PW : </label>
+            <label for="pw2" th:text="#{passwd}"></label>
             <input type="password" name="passwd2" th:field="*{pw2}" th:errorclass="error" id="pw2">
             <p th:errorclass="error" th:errors="*{pw2}"></p>
           </div>
           <div>
-            <label for="belong">소속 : </label>
+            <label for="belong" th:text="#{dept}"></label>
             <input type="text"  th:field="*{dept}" th:errorclass="error" id="belong">
             <p th:errorclass="error" th:errors="*{dept}"></p>
           </div>
@@ -64,12 +64,9 @@
           </div>
 
           <div>
-            <label for="questionInput">질문 : </label>
-            <select class="question" id="questionSelect" th:field="*{question}" th:errorclass="error">
-              <option value="본인의 고향은?">본인의 고향은?</option>
-              <option value="본인의 취미는?">본인의 취미는?</option>
-              <option value="본인의 초등학교 별명은?">본인의 초등학교 별명은?</option>
-              <option value="직접 입력">직접 입력</option>
+            <label for="questionInput" th:text="#{question}"></label>
+            <select id="questionSelect" th:field="*{question}" class="form-select">
+              <option th:each="questionCode : ${QuestionCodes}" th:value="${questionCode.displayName}" th:text="${questionCode.displayName}"></option>
             </select>
             <input type="text" th:field="*{question}" th:errorclass="error" id="questionInput" disabled>
             <p th:errorclass="error" th:errors="*{question}"></p>
@@ -97,7 +94,7 @@
     const $questionInput = document.querySelector("#questionInput");
     const $questionSelect = document.querySelector("#questionSelect");
     const $signupForm = document.querySelector("#signupForm");
-    $questionInput.value = questionSelect.value;
+    $questionInput.value = $questionSelect.value;
     const MIN = 8;
 
     let init = () =>{

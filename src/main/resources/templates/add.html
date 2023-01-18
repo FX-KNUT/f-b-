@@ -20,14 +20,13 @@
 
   <header>
     <div id="logo">
-      <h1>Blind Clone f(b)</h1>
+      <h1 th:text="#{add}"></h1>
     </div>
   </header>
 
   <section>
 
     <article>
-      <h1 class="articleName" >게시판 이름 1</h1>
       
       <hr>
       
@@ -38,12 +37,12 @@
         </select>
 
         <div id="titleWrapper">
-          <label for="title">제목 : </label>
+          <label for="title" th:text="#{article.title}"></label>
           <input type="text" id="title" th:field="*{title}"  th:value="*{title}" th:errorclass="error-class" placeholder="제목을 입력하세요.">
           <p th:errorclass="error-class" th:errors="*{title}">입력 에러</p>
         </div>
         <div id="bodyWrapper">
-        <label for="body">내용 : </label>
+        <label for="body" th:text="#{article.body}"></label>
         <textarea id="body" cols="30" rows="10" th:field="*{body}" th:errorclass="error-class" th:value="*{body}"></textarea>
         <p th:errorclass="error-class" th:errors="*{body}">입력 에러</p>
         </div>
@@ -56,8 +55,8 @@
         document.getElementById('addForm').submit();  
       }
     </script>
-    <a href="main.html" id="homebutton" th:href="@{/articles}">홈으로</a>
-    <a id="submit" onclick="form_submit()">등록</a>
+    <a href="main.html" id="homebutton" th:href="@{/articles}" th:text="#{main}"></a>
+    <a id="submit" onclick="form_submit()" th:text="#{article.add}"></a>
 
   </section>
 

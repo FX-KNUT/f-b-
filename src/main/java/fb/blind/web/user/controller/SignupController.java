@@ -4,6 +4,7 @@ import fb.blind.domain.Gender;
 import fb.blind.domain.profile.Profile;
 import fb.blind.domain.profile.repository.ProfileRepository;
 import fb.blind.domain.question.Question;
+import fb.blind.domain.question.QuestionCode;
 import fb.blind.domain.question.repository.QuestionRepository;
 import fb.blind.web.user.form.LoginForm;
 import fb.blind.web.user.form.SignupForm;
@@ -19,6 +20,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Slf4j
 @Controller
@@ -62,6 +66,15 @@ public class SignupController {
         model.addAttribute("user", new LoginForm());
 
         return "login";
+    }
+
+    @ModelAttribute("QuestionCodes")
+    public List<QuestionCode> deliveryCodes(){
+        List<QuestionCode> deliveryCodes = new ArrayList<>();
+        deliveryCodes.add(new QuestionCode( "본인의 고향은?"));
+        deliveryCodes.add(new QuestionCode( "본인의 취미는?"));
+        deliveryCodes.add(new QuestionCode( "본인의 초등학교 별명은?"));
+        return deliveryCodes;
     }
 
 

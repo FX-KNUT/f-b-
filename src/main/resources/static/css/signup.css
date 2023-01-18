@@ -85,6 +85,7 @@ section>article{
 }
 
 
+
 #homebutton{
   position: absolute;
   bottom: 30%;
@@ -115,7 +116,7 @@ section>article{
   color: #fff;
 }
 
-.question,#questionInput{
+#questionSelect,#questionInput{
   margin-bottom: 5px;
   width: 350px;
   height: 30px;

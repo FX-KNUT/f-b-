@@ -12,17 +12,17 @@
   
   <header>
     <div id="logo">
-      <h1>Blind Clone f(b)</h1>
+      <h1 th:text="#{main}"></h1>
     </div>
 
     <a th:href="@{/profile}" id="loginUser"> [[${user.nickName}]] 님 </a>
 
     <div id="btnWrapper">
-      <a href="add.html" th:href="@{/articles/add}" id="wbtn">글 작성</a>
+      <a href="add.html" th:href="@{/articles/add}" id="wbtn" th:text="#{article.add}"></a>
     </div>
 
     <form th:action="@{/login/logout}" id="logoutForm" method="post">
-      <input th:type="submit" id="lbtn" th:value="로그아웃">
+      <input th:type="submit" id="lbtn" th:value="#{logout}">
     </form>
   </header>
 

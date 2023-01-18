@@ -12,15 +12,16 @@
   
   <header>
     <div id="logo">
-      <h1>Blind Clone f(b)</h1>
+      <h1 th:text="#{articles}"></h1>
       
     </div>
     <div id="btnWrapper">
-      <a href="add.html" th:if="${logined}" th:href="@{/articles/add}" id="wbtn">글 작성</a>
-      <a href="login.html" th:unless="${logined}" th:href="@{/login}" id="lbtn">로그인</a>
+      <a href="add.html" th:if="${logined}" th:href="@{/articles/add}" id="wbtn" th:text="#{article.add}"></a>
+      <a href="login.html" th:unless="${logined}" th:href="@{/login}" id="lbtn" th:text="#{login}"></a>
     </div>
   </header>
 
+  <!-- 수정 및 update 필요-->
   <form action="" method="get" id="orderForm">
     <select name="orderFlag">
       <option value="1">최신순</option>
@@ -34,12 +35,12 @@
     <article>
       <h1 class="articleName" th:text="${kind.kindName}">게시판 이름 1</h1>
       <div id="discript">
-        <p id="no">No.</p>
-        <p id="title">제목</p>
-        <p id="writer">작성자</p>
-        <p id="date">작성일</p>
-        <p id="like">좋아요</p>
-        <p id="comments">댓글</p>
+        <p id="no" th:text="#{no}"></p>
+        <p id="title" th:text="#{title1}"></p>
+        <p id="writer" th:text="#{writer}"></p>
+        <p id="date" th:text="#{Writedate}"></p>
+        <p id="like" th:text="#{likes}"></p>
+        <p id="comments" th:text="#{comment}"></p>
       </div>
       
       <hr>
@@ -67,7 +68,7 @@
       </ul>
     </article>
 
-    <a href="main.html" th:href="@{/articles}" id="homebutton">홈으로</a>
+    <a href="main.html" th:href="@{/articles}" id="homebutton" th:text="#{main}"></a>
 
   </section>
 
