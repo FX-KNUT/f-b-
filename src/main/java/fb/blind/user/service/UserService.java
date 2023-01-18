@@ -4,6 +4,9 @@ import fb.blind.domain.article.Article;
 import fb.blind.domain.profile.Profile;
 import fb.blind.domain.question.Question;
 import fb.blind.domain.user.User;
+import fb.blind.user.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
@@ -13,6 +16,7 @@ public interface UserService {
      * @param passwd user passwd
      * @return 로그인 된 User 객체 반환
      */
+
     User login(String email, String passwd);
 
     /**
