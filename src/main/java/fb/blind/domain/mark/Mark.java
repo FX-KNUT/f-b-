@@ -15,6 +15,7 @@ public class Mark {
     private long articleId;
     private long userId;
     private String name;
+    private long id;
 
     public Mark() {}
 

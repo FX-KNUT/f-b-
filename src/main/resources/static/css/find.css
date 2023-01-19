@@ -1,0 +1,167 @@
+
+@charset "UTF-8";
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+header,section,footer{
+  position: relative;
+  width: 60%;
+  height: 100px;
+  margin: 0 auto;
+}
+
+#logo{
+  display: inline-block;
+  position: relative;
+  width: 500px;
+  height: 40px;
+  font-weight: bolder;
+  top: 25%;
+  left: 8px;
+  line-height: 40px;
+  font-size: 25px;
+}
+
+
+section{
+  height: 700px;
+  position: relative;
+}
+
+section>article{
+  width: 100%;
+  height: 100%;
+  float: left;
+  margin-bottom: 15px;
+}
+
+#Wrapper{
+  position: relative;
+  width: 100%;
+  height: 80%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#Wrapper>form>div{
+  margin-bottom: 10px;
+}
+
+#nav{
+  width: 100%;
+  height: 50px;
+}
+
+#nav>ul{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-bottom: 0px;
+}
+
+#nav>ul>li{
+  width: 50%;
+  height: 100%;
+  line-height: 50px;
+  text-align: center;
+  float: left;
+  cursor: pointer;
+}
+
+.focusBox{
+  box-sizing: border-box;
+  border-bottom: 2px black solid;
+  transition: 1s;
+}
+
+#findIdForm,#findPasswdForm{
+  position: absolute;
+  width: 100%;
+  height: 300px;
+  padding: 30px;
+  box-sizing: border-box;
+}
+#email,#mail{
+  display: block;
+  width: 300px;
+  padding: 2px;
+  height: 30px;
+  border-style: none;
+  border-bottom: 1px solid #4d4a4a;
+  outline: none;
+  box-sizing: border-box;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+#idBtn{
+  width: 300px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+#questionInput,#answer{
+  display: block;
+  width: 300px;
+  height: 30px;
+  font-size: 16px;
+  outline: none;
+  border-style: none;
+  border-bottom: 1px solid #4d4a4a;
+}
+
+#findBtn,#eBtn{
+  width: 340px;
+  height: 30px;
+  border-style: none;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+#findBtn:hover{
+  background-color: #ffff;
+  color: gray;
+}
+
+
+#homebutton{
+  position: absolute;
+  bottom: 30%;
+  right: 2%;
+  width: 50px;
+  height: 30px;
+  border-style: none;
+  background-color: #cfcfcf;
+  cursor: pointer;
+  transition: 0.5s;
+  text-align: center;
+  line-height: 30px;
+}
+
+
+#homebutton:hover,#nickCheckBtn:hover,#idCheckBtn:hover{
+  background-color: #000;
+  color: #fff;
+}
+
+footer{
+  background: darkgrey;
+  padding: 10px;
+}
+
+

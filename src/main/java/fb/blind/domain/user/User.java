@@ -1,12 +1,15 @@
 package fb.blind.domain.user;
 
+import fb.blind.domain.Gender;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
 public class User {
-
     /**
      * @Param id : user 고유 id
      * @Param dept : 소속
@@ -20,15 +23,17 @@ public class User {
     private String nickName;
     private String email;
     private String passwd;
-    private String createDate;
+    private LocalDateTime createDate = LocalDateTime.now();
+
 
     public User() {}
 
-    public User(String dept, String nickName, String email, String passwd, String createDate) {
+    public User(String dept, String nickName, String email, String passwd) {
         this.dept = dept;
         this.nickName = nickName;
         this.email = email;
         this.passwd = passwd;
-        this.createDate = createDate;
+        this.createDate = LocalDateTime.now();
     }
+
 }

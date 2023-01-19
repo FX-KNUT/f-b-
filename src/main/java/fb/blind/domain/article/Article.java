@@ -1,10 +1,10 @@
 package fb.blind.domain.article;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
+import java.time.LocalDateTime;
+
+@Data
 public class Article {
 
     /**
@@ -25,15 +25,50 @@ public class Article {
     private long likes;
     private long views;
     private long userId;
+    private String writer;
 
-    public Article() {
+    private long kindId;
+
+    public Article(String title, String body, String date, String writer, long userId) {
+        this.title = title;
+        this.body = body;
+        this.date = date;
+        this.writer = writer;
+        this.userId = userId;
     }
 
-    public Article(String title, String body, String date, String fileName) {
+    public Article(String title, String body, String date, String fileName, String writer, long kindId) {
         this.title = title;
         this.body = body;
         this.date = date;
         this.fileName = fileName;
+        this.writer = writer;
+        this.kindId = kindId;
+    }
+
+    public Article(String title, String body) {
+        this.title = title;
+        this.body = body;
+    }
+
+    public Article(long id, String title, String body) {
+        this.id = id;
+        this.title = title;
+        this.body = body;
+    }
+
+    public Article(String title, String body, String date, String writer) {
+        this.title = title;
+        this.body = body;
+        this.date = date;
+        this.writer = writer;
+    }
+
+    public Article(long id, String title, String body, String date) {
+        this.id = id;
+        this.title = title;
+        this.body = body;
+        this.date = date;
     }
 }
 

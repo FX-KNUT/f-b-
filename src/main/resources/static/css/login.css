@@ -94,7 +94,7 @@ section>article{
 }
 
 
-#homebutton{
+#homebutton,#findBtn{
   position: absolute;
   bottom: 30%;
   right: 2%;
@@ -108,7 +108,12 @@ section>article{
   line-height: 30px;
 }
 
-#homebutton:hover{
+#findBtn{
+  right: 12%;
+  width: 150px;
+}
+
+#homebutton:hover, #findBtn:hover{
   background-color: #000;
   color: #fff;
 }

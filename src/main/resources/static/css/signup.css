@@ -37,7 +37,7 @@ header,section,footer{
 
 
 section{
-  height: 500px;
+  height: 800px;
   position: relative;
 }
 
@@ -62,7 +62,7 @@ section>article{
   margin-left: 10px;
 }
 
-#id,#pw1,#pw2,#nick,#belong{
+#id,#pw1,#pw2,#nick,#belong,#question,#answer{
   width: 300px;
   height: 30px;
   font-size: 16px;
@@ -113,6 +113,16 @@ section>article{
 #homebutton:hover,#nickCheckBtn:hover,#idCheckBtn:hover{
   background-color: #000;
   color: #fff;
+}
+
+.question,#questionInput{
+  margin-bottom: 5px;
+  width: 350px;
+  height: 30px;
+  border-style: none;
+  background-color: #cfcfcf;
+  transition: 0.5s;
+  line-height: 30px;
 }
 
 

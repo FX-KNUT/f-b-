@@ -38,10 +38,10 @@ header,section,footer{
 #btnWrapper{
   display: inline-block;
   position: absolute;
-  width: 120px;
+  width: 50px;
   height: 30px;
   top: 28%;
-  right: 30px;
+  right: 80px;
 }
 
 #btnWrapper>a{
@@ -51,7 +51,7 @@ header,section,footer{
   cursor: pointer;
   border-style: none;
   transition: 0.5s;
-  line-height: 32px;
+  line-height: 30px;
   text-align: center;
 }
 
@@ -66,11 +66,42 @@ header,section,footer{
   color: red;
 }
 
+#logoutForm{
+  position: absolute;
+  top: 28%;
+  right: 10px;
+}
+
+#lbtn{
+  width: 50px;
+  height: 100%;
+  cursor: pointer;
+  border-style: none;
+  transition: 0.5s;
+  line-height: 30px;
+  text-align: center;
+}
+
 #lbtn:hover{
   background: #000;
   color: #fff;
 }
 
+#loginUser{
+  display: block;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #4d4a4a;
+  font-weight: bold;
+  transition: 1s;
+}
+
+#loginUser:hover{
+  font-size: 22px;
+  color: black;
+}
 
 section{
   height: 780px;

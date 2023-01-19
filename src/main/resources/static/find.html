@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/find.css?after">
+  <script src="https://kit.fontawesome.com/5a855f27dd.js" crossorigin="anonymous"></script>
+  <title>signup</title>
+</head>
+<body>
+
+<header>
+  <div id="logo">
+    <h1>Blind Clone f(b) login</h1>
+  </div>
+</header>
+
+<section>
+
+  <article>
+    <div id="Wrapper">
+      <form action="" method="post" id="findForm">
+
+        <div>
+          <input type="radio" name="findValue" value="id">ID
+          <input type="radio" name="findValue" value="pw">PW
+        </div>
+
+        <div>
+          <label for="questionInput">질문 : </label>
+          <input type="text" name="question" id="questionInput" disabled>
+        </div>
+        <div>
+          <label for="answer">문답 : </label>
+          <input type="text" name="answer" id="answer">
+        </div>
+        <input type="button" id="findBtn" value="찾기" onclick="form_submit()">
+      </form>
+    </div>
+
+  </article>
+
+  <a href="main.html" id="homebutton">홈으로</a>
+
+</section>
+
+<footer>
+  footer 기능 추가 시 활용 예정
+  @Capyright f(b)
+</footer>
+<script>
+  function form_submit(){
+    document.getElementById('findForm').submit();
+  }
+</script>
+
+</body>
+</html>

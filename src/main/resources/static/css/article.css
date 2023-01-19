@@ -99,7 +99,7 @@ form{
 
 #homebutton{
   position: absolute;
-  bottom: 30%;
+  bottom: 20%;
   right: 2%;
   width: 50px;
   height: 30px;
@@ -118,7 +118,7 @@ form{
 
 #edit{
   position: absolute;
-  bottom: 30%;
+  bottom: 20%;
   right: 10%;
   width: 50px;
   height: 30px;
@@ -130,7 +130,21 @@ form{
   line-height: 30px;
 }
 
-#edit:hover{
+#delete{
+  position: absolute;
+  bottom: 20%;
+  right: 18.5%;
+  width: 50px;
+  height: 30px;
+  border-style: none;
+  background-color: #cfcfcf;
+  cursor: pointer;
+  transition: 0.5s;
+  text-align: center;
+  line-height: 30px;
+}
+
+#edit:hover,#delete:hover{
   background-color: #000;
   color: #fff;
 }

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/add.css">
+  <link rel="stylesheet" href="/css/add.css?after">
   <script src="https://kit.fontawesome.com/5a855f27dd.js" crossorigin="anonymous"></script>
   <title>add</title>
 </head>
@@ -24,6 +24,14 @@
       <hr>
       
       <form action="" method="post" id="addForm">
+
+        <select class="article" id="article" name="article">
+          <option value="free">자유 게시판</option>
+          <option value="secret">비밀 게시판</option>
+          <option value="game">게임 게시판</option>
+          <option value="cat">고양이 게시판</option>
+        </select>
+
         <div id="titleWrapper">
           <label for="title">제목 : </label>
           <input type="text" name="title" id="title" placeholder="제목을 입력하세요.">

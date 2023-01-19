@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/find.css?after">
+  <script src="https://kit.fontawesome.com/5a855f27dd.js" crossorigin="anonymous"></script>
+  <title>signup</title>
+</head>
+<body>
+
+<header>
+  <div id="logo">
+    <h1>Blind Clone f(b) login</h1>
+  </div>
+</header>
+
+<section>
+
+  <article>
+    <div id="Wrapper">
+
+        <div id="nav">
+          <ul>
+            <li id="idCheck" class="focusBox">ID 찾기</li>
+            <li id="passwdCheck">PW 찾기</li>
+          </ul>
+        </div>
+
+      <form action="" method="post" id="findIdForm">
+        <label for="email">Email : </label>
+        <input type="text" name="email" id="email">
+        <input type="submit" id="idBtn" value="mail 보내기">
+      </form>
+
+      <div id="findPasswdForm" th:object="${find}">
+        <form action="/find/emailCheck" method="post" id="emailCheck">
+          <label for="mail">Email : </label>
+          <input type="text" id="mail" th:field="*{email}">
+          <input type="submit" id="eBtn" value="인증">
+        </form>
+        <form action="/find/findPw" method="post" id="questionCheck">
+          <div>
+            <input type="hidden" th:field="*{email}">
+            <label for="questionInput">질문 : </label>
+            <input type="text" id="questionInput" th:field="*{question}" disabled>
+          </div>
+          <div>
+            <label for="answer">문답 : </label>
+            <input type="text" id="answer" th:field="*{answer}">
+          </div>
+          <input type="submit" id="findBtn" value="찾기">
+        </form>
+      </div>
+
+      <div th:if="${answerCheck}"> 임시 비밀 번호는 [[${tokenPw}]]</div>
+      <div th:if="${answerCheck == false && question != '' }" th:text="#{loginError}">에러 메세지</div>
+
+    </div>
+
+  </article>
+
+  <a href="main.html" id="homebutton" th:href="@{/articles}">홈으로</a>
+
+</section>
+
+<footer>
+  footer 기능 추가 시 활용 예정
+  @Capyright f(b)
+</footer>
+<script>
+  const $idFind = document.querySelector("#idCheck");
+  const $passwdFind = document.querySelector("#passwdCheck");
+  const $idForm = document.querySelector("#findIdForm");
+  const $passwdForm = document.querySelector("#findPasswdForm");
+
+  $passwdForm.style.display = "none";
+  $idForm.style.display = "block";
+
+  const onClick = (event) => {
+    if(event.target === $idFind) {
+      $passwdFind.className = "";
+      event.target.className = "focusBox";
+      $passwdForm.style.display = "none";
+      $idForm.style.display = "block";
+    }else{
+      $idFind.className = "";
+      event.target.className = "focusBox";
+      $passwdForm.style.display = "block";
+      $idForm.style.display = "none";
+    }
+
+  }
+
+  $idFind.addEventListener("click",onClick);
+  $passwdFind.addEventListener("click",onClick);
+
+</script>
+
+</body>
+</html>
