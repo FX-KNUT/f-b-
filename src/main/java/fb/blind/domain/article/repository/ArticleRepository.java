@@ -33,6 +33,12 @@ public interface ArticleRepository {
      * @return articleId Match article return
      */
     Optional<Article> findByArticleId(long articleId);
+    /**
+     * @author 김민기
+     * @param userId : 본인 게시판 click 시 userId -> PathVariable 전달
+     * @return UserId Match article return
+     */
+    List<Article> findByUserId(long userId);
 
     /**
      * @author 김성은,신영운

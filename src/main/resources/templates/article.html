@@ -32,10 +32,21 @@
         <div id="bodyWrapper">
         <label for="body">내용 : </label>
         <textarea id="body" cols="30" rows="10" th:text="${article.body}" disabled></textarea>
+          <hr>
+          댓글
+          &nbsp;
+          <th:block th:each="comm : ${comms}">
+            <div>
+              <input type="text" id="comm" th:value="${comm.comm}" disabled>
+              &nbsp;
+            </div>
+          </th:block>
         </div>
       </form>
-
     </article>
+  </section>
+
+
     <a href="main.html" th:href="@{/articles}" id="homebutton">홈으로</a>
     <a th:if="${owner}" id="edit" href="edit.html" th:href="@{/articles/edit/{articleId}(articleId=${articleId})}">수정</a>
     <form th:if="${owner}" th:action="@{/articles/delete/{articleId}(articleId=${articleId})}" method="post">
@@ -43,7 +54,7 @@
     </form>
 
 
-  </section>
+
 
   <footer>
     footer 기능 추가 시 활용 예정

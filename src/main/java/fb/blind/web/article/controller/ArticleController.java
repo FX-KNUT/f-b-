@@ -4,6 +4,8 @@ import fb.blind.common.NowDate;
 import fb.blind.common.argumentresolver.Login;
 import fb.blind.domain.article.service.ArticleService;
 import fb.blind.domain.article.Article;
+import fb.blind.domain.comment.Comment;
+import fb.blind.domain.comment.CommentRepository;
 import fb.blind.domain.comment.SessionConst;
 import fb.blind.domain.profile.Profile;
 import fb.blind.domain.profile.repository.ProfileRepository;
@@ -20,6 +22,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
@@ -42,6 +45,8 @@ public class ArticleController {
     private final UserService us;
 
     private final ProfileRepository pr;
+
+    private  final CommentRepository cm;
 
     /**
      * @author 김성은,신영운
@@ -108,9 +113,12 @@ public class ArticleController {
 
         Kind kind = ks.getKindById(target.getKindId()).get();
 
+        List<Comment> comments = cm.findByArticleId(target.getId());
+
         model.addAttribute("article",target);
         model.addAttribute("kind",kind);
         model.addAttribute("owner",target.getUserId() == loginUser.getId());
+        model.addAttribute("comms",comments);
 
         return "article";
     }
@@ -182,10 +190,13 @@ public class ArticleController {
 
         Article article = new Article(form.getTitle(),form.getBody(), NowDate.getNowDate(),loginUser.getNickName(),loginUser.getId());
         Article result = as.addArticle(article);
+
+
         long kindId = ks.getKindByTitle(form.getKindName()).get().getId();
 
         article.setUserId(loginUser.getId());
         result.setKindId(kindId);
+
 
         redirectAttributes.addAttribute("articleId",result.getId());
         redirectAttributes.addAttribute("kindId",kindId);
@@ -203,4 +214,5 @@ public class ArticleController {
         redirectAttributes.addAttribute("kindId",kindId);
         return "redirect:/articles/articleList/{kindId}";
     }
+
 }

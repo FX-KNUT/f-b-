@@ -50,9 +50,9 @@
         <a href="#"><input type="text" th:value="${article.userId}" name="username" id="username"></a>
         <a href="#"><input type="text" th:value="${article.date}" name="articledate" id="articledate"></a>
         <div class="artiinfo">
-          <div class="none"><i class="fa-regular fa-heart"></i><span>12</span></div>
+          <div class="none"><i class="fa-regular fa-heart"></i><span><input type="text" th:value="${article.likenum}" name="likenum" id="likenum"></span></div>
           <div class="clicked"><i class="fa-solid fa-heart"></i><span>12</span></div>
-          <div class="commets"><i class="fa-regular fa-comment-dots"></i> <span>12</span></div>
+          <div class="commets"><i class="fa-regular fa-comment-dots"></i> <span><input type="text" th:value="${article.commentnum}" name="commentnum" id="commentnum"></span></div>
         </div>
       </li>
 

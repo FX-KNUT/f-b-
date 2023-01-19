@@ -5,8 +5,12 @@ import fb.blind.domain.article.Article;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -97,6 +101,26 @@ public class ArticleServiceImpl implements ArticleService{
         }
 
         return result;
+    }
+
+    @Override
+    public void insertBoard(Article article, MultipartHttpServletRequest multipartHttpServletRequest) throws Exception {
+        if (ObjectUtils.isEmpty(multipartHttpServletRequest) == false){
+            Iterator<String> iterator = multipartHttpServletRequest.getFileNames();
+            String name;
+            while(iterator.hasNext()){
+                name = iterator.next();
+                log.debug("file tag name : " + name);
+                List<MultipartFile> list = multipartHttpServletRequest.getFiles(name);
+                for (MultipartFile multipartFile : list){
+                    log.debug("start file information");
+                    log.debug("file name : " + multipartFile.getOriginalFilename());
+                    log.debug("file size : " + multipartFile.getSize());
+                    log.debug("file content type : " + multipartFile.getContentType());
+                    log.debug("end file information. \n");
+                }
+            }
+        }
     }
 
 }

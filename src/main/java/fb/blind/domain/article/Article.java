@@ -5,6 +5,7 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Data
+@NoArgsConstructor
 public class Article {
 
     /**
@@ -23,6 +24,7 @@ public class Article {
     private String date;
     private String fileName;
     private long likes;
+
     private long views;
     private long userId;
     private String writer;

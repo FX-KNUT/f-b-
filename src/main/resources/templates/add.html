@@ -48,6 +48,11 @@
         <p th:errorclass="error-class" th:errors="*{body}">입력 에러</p>
         </div>
       </form>
+      <form id="frm" name="frm" method="post">
+        <input type="file" id="files" name = "files" multiple = "multiple">
+        <input type = "submit" id="save" value="저장" class="btn">
+      </form>
+
 
     </article>
     <script>

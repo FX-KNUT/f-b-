@@ -12,7 +12,9 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ArticleAddForm {
-
+    /**
+     * 게시판 새로 추가
+     */
     @NotBlank
     String kindName;
     @NotBlank

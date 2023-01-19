@@ -8,6 +8,9 @@ import javax.validation.constraints.NotNull;
 
 @Data
 public class ArticleEditForm {
+    /**
+     * 게시판 수정
+     */
     @NotBlank
     String title;
     @NotBlank

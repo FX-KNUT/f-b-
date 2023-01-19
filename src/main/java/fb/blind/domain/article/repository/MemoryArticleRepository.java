@@ -1,6 +1,8 @@
 package fb.blind.domain.article.repository;
 
 import fb.blind.domain.article.Article;
+import fb.blind.domain.comment.Comment;
+import fb.blind.domain.user.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 
@@ -53,6 +55,17 @@ public class MemoryArticleRepository implements ArticleRepository {
     @Override
     public Optional<Article> findByArticleId(long articleId) {
         return Optional.ofNullable(store.get(articleId));
+    }
+
+    @Override
+    public List<Article> findByUserId(long userId) {
+        ArrayList<Article> result = new ArrayList<>();
+        for (Article article : store.values()) {
+            if(article.getUserId() == userId){
+                result.add(article);
+            }
+        }
+        return result;
     }
 
     /**

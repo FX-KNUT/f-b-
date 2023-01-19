@@ -1,6 +1,7 @@
 package fb.blind.domain.article.service;
 
 import fb.blind.domain.article.Article;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import java.util.List;
 import java.util.Optional;
@@ -61,5 +62,7 @@ public interface ArticleService {
     public Optional<Article> findByTitle(String title);
 
     public List<Article> findByKindId(long kindId);
+
+    void insertBoard(Article article, MultipartHttpServletRequest multipartHttpServletRequest) throws Exception;
 
 }

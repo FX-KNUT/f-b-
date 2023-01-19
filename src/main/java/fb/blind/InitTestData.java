@@ -4,6 +4,8 @@ import fb.blind.common.NowDate;
 import fb.blind.domain.article.repository.ArticleRepository;
 import fb.blind.domain.Gender;
 import fb.blind.domain.article.Article;
+import fb.blind.domain.comment.Comment;
+import fb.blind.domain.comment.CommentRepository;
 import fb.blind.domain.kind.Kind;
 import fb.blind.domain.profile.Profile;
 import fb.blind.domain.user.User;
@@ -30,6 +32,8 @@ public class InitTestData {
 
     private final ProfileRepository pr;
 
+    private final CommentRepository cr;
+
     @PostConstruct
     public void setTestData(){
         Article arA = new Article("testA", "test", NowDate.getNowDate(), null,"shin",996L);
@@ -47,7 +51,7 @@ public class InitTestData {
         Article arK = new Article("testK", "test", NowDate.getNowDate(), null,"shin",999L);
         Article arL = new Article("testL", "test", NowDate.getNowDate(), null,"shin",999L);
 
-        arA.setId(988L);
+        arA.setId(1);
         arB.setId(989L);
         arC.setId(990L);
         arD.setId(991L);
@@ -73,7 +77,12 @@ public class InitTestData {
         ar.save(arK);
         ar.save(arL);
 
+        Comment comment1 = new Comment(1,1,"테스트1 댓글입니다.","2023-01-18");
+        Comment comment2 = new Comment(1,1,"테스트2 댓글입니다.","2023-01-18");
+        cr.save(comment1);
+        cr.save(comment2);
     }
+
 
     @PostConstruct
     public void setKindTestData(){
@@ -113,7 +122,5 @@ public class InitTestData {
         pr.save(profileC);
 
     }
-
-
 
 }
