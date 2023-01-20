@@ -23,7 +23,7 @@ public interface UserService {
     /**
      * @param user 로그인 된 user 객체
      */
-    void logout(User user);
+    String logout(User user);
 
     /**
      * @param user user

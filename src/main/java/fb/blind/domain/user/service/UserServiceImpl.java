@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 import java.util.Optional;
@@ -41,8 +42,10 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void logout(User user) {
+    public String logout(User user) {
 
+
+        return "articles";
     }
 
     @Override
