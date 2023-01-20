@@ -29,6 +29,8 @@ public class Article {
 
     private long kindId;
 
+
+
     public Article(String title, String body, String date, String writer, long userId) {
         this.title = title;
         this.body = body;

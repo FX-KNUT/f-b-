@@ -9,9 +9,9 @@ public interface ArticleRepository {
 
     /**
      * @author 김성은,신영운
-     * @param Article 객체를 받아와 저장
+     * @param article 객체를 받아와 저장
      */
-    Article save(Article Article);
+    Article save(Article article);
 
     /**
      * @author 김성은,신영운

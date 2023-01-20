@@ -34,11 +34,9 @@
         </div>
       </form>
 
+
     </article>
 
-    <form>
-
-    </form>
 
     <a th:if="${owner}" id="edit" href="edit.html" th:href="@{/articles/edit/{articleId}(articleId=${articleId})}" th:text="#{article.edit}"></a>
     <form th:if="${owner}" th:action="@{/articles/delete/{articleId}(articleId=${articleId})}" method="post">
@@ -46,7 +44,6 @@
     </form>
 
     <a href="main.html" th:href="@{/articles}" id="homebutton" th:text="#{main}"></a>
-
 
   </section>
 

@@ -2,17 +2,17 @@
 @charset "UTF-8";
 
 * {
-    margin: 0px;
-    padding: 0px;
+  margin: 0px;
+  padding: 0px;
 }
 
 ul, ol {
-    list-style: none;
+  list-style: none;
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 
@@ -90,7 +90,7 @@ form{
 }
 
 #body{
-  width:700px; 
+  width:700px;
   height:370px;
   resize: none;
   outline: none;
@@ -99,7 +99,7 @@ form{
 
 #homebutton{
   position: absolute;
-  top: 20%;
+  bottom: 30%;
   right: 2%;
   width: 50px;
   height: 30px;
@@ -116,9 +116,9 @@ form{
   color: #fff;
 }
 
-#edit{
+#submit{
   position: absolute;
-  top: 20%;
+  bottom: 30%;
   right: 10%;
   width: 50px;
   height: 30px;
@@ -130,21 +130,7 @@ form{
   line-height: 30px;
 }
 
-#delete{
-  position: absolute;
-  top: 20%;
-  right: 18.5%;
-  width: 50px;
-  height: 30px;
-  border-style: none;
-  background-color: #cfcfcf;
-  cursor: pointer;
-  transition: 0.5s;
-  text-align: center;
-  line-height: 30px;
-}
-
-#edit:hover,#delete:hover{
+#submit:hover{
   background-color: #000;
   color: #fff;
 }

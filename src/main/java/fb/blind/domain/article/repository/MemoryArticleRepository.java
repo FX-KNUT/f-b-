@@ -17,7 +17,6 @@ public class MemoryArticleRepository implements ArticleRepository {
      */
     private static long Sequence = 0L;
 
-
     /**
      * @author 김성은,신영운
      * @param article 객체를 받아와 저장
@@ -39,7 +38,6 @@ public class MemoryArticleRepository implements ArticleRepository {
     public List<Article> findByEmail(String email) {
         return null;
     }
-
 
     /**
      * @author 김성은,신영운
@@ -92,6 +90,5 @@ public class MemoryArticleRepository implements ArticleRepository {
         target.setDate(update.getDate());
         target.setFileName(update.getFileName());
     }
-
 
 }
