@@ -4,9 +4,7 @@ import fb.blind.common.NowDate;
 import fb.blind.common.argumentresolver.Login;
 import fb.blind.domain.article.service.ArticleService;
 import fb.blind.domain.article.Article;
-import fb.blind.domain.comment.Comment;
-import fb.blind.domain.comment.CommentRepository;
-import fb.blind.domain.comment.SessionConst;
+import fb.blind.domain.comment.*;
 import fb.blind.domain.profile.Profile;
 import fb.blind.domain.profile.repository.ProfileRepository;
 import fb.blind.web.article.form.ArticleAddForm;
@@ -47,6 +45,8 @@ public class ArticleController {
     private final ProfileRepository pr;
 
     private  final CommentRepository cm;
+
+    private final RecommentRepository rcm;
 
     /**
      * @author 김성은,신영운
@@ -112,13 +112,21 @@ public class ArticleController {
         Article target = as.readArticle(articleId).get();
 
         Kind kind = ks.getKindById(target.getKindId()).get();
-
+        // 댓글
         List<Comment> comments = cm.findByArticleId(target.getId());
+        // 대댓글
+        List<Recomment> recomments = null;
+        for (int i = 0; i < comments.size(); i++) {
+            recomments.add((Recomment) rcm.findByCommId(comments.get(i).getId()));
+        }
+
 
         model.addAttribute("article",target);
         model.addAttribute("kind",kind);
         model.addAttribute("owner",target.getUserId() == loginUser.getId());
         model.addAttribute("comms",comments);
+
+//        model.addAttribute("rcomms",recomments);
 
         return "article";
     }

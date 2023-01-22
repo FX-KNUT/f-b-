@@ -22,7 +22,7 @@
       <h1 class="articleName" th:text="${kind.kindName}">게시판 이름 1</h1>
       
       <hr>
-      
+
       <form id="addForm">
         <div id="titleWrapper">
           <input type="hidden" th:value="${article.id}">
@@ -38,7 +38,13 @@
           <th:block th:each="comm : ${comms}">
             <div>
               <input type="text" id="comm" th:value="${comm.comm}" disabled>
-              &nbsp;
+              <th:block th:each="rcomm : ${rcomms}">
+<!--                &nbsp;-->
+<!--                <span th:if="${rcomm.id == rcomm.commId}">-->
+                  <input type="text" id="rcomm" th:value="${rcomm.comm}" disabled>
+<!--                </span>-->
+<!--                &nbsp;-->
+              </th:block>
             </div>
           </th:block>
         </div>
@@ -56,10 +62,10 @@
 
 
 
-  <footer>
-    footer 기능 추가 시 활용 예정
-    @Capyright f(b)
-  </footer>
+<!--  <footer>-->
+<!--    footer 기능 추가 시 활용 예정-->
+<!--    @Capyright f(b)-->
+<!--  </footer>-->
 
 
 </body>

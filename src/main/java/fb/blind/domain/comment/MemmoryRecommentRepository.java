@@ -1,7 +1,10 @@
 package fb.blind.domain.comment;
 
+import org.springframework.stereotype.Repository;
+
 import java.util.*;
 
+@Repository
 public class MemmoryRecommentRepository implements RecommentRepository {
     private static Map<Long, Recomment> store = new HashMap<>();
 

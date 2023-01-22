@@ -6,6 +6,8 @@ import fb.blind.domain.Gender;
 import fb.blind.domain.article.Article;
 import fb.blind.domain.comment.Comment;
 import fb.blind.domain.comment.CommentRepository;
+import fb.blind.domain.comment.Recomment;
+import fb.blind.domain.comment.RecommentRepository;
 import fb.blind.domain.kind.Kind;
 import fb.blind.domain.profile.Profile;
 import fb.blind.domain.user.User;
@@ -33,6 +35,8 @@ public class InitTestData {
     private final ProfileRepository pr;
 
     private final CommentRepository cr;
+
+    private final RecommentRepository rcr;
 
     @PostConstruct
     public void setTestData(){
@@ -77,10 +81,17 @@ public class InitTestData {
         ar.save(arK);
         ar.save(arL);
 
-        Comment comment1 = new Comment(1,1,"테스트1 댓글입니다.","2023-01-18");
-        Comment comment2 = new Comment(1,1,"테스트2 댓글입니다.","2023-01-18");
+        Comment comment1 = new Comment(1,1,1,"테스트1 댓글입니다.","2023-01-18");
+        Comment comment2 = new Comment(1,2,2,"테스트2 댓글입니다.","2023-01-18");
         cr.save(comment1);
         cr.save(comment2);
+        Recomment recomment1 = new Recomment(1,1,"테스트 대댓글1입니다.","2023-01-22");
+        Recomment recomment2 = new Recomment(2,2,"테스트 대댓글2입니다.","2023-01-22");
+        rcr.save(recomment1);
+        rcr.save(recomment2);
+
+
+
     }
 
 
