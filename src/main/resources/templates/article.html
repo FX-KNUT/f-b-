@@ -32,23 +32,37 @@
         <div id="bodyWrapper">
         <label for="body">내용 : </label>
         <textarea id="body" cols="30" rows="10" th:text="${article.body}" disabled></textarea>
-          <hr>
-          댓글
-          &nbsp;
-          <th:block th:each="comm : ${comms}">
-            <div>
-              <input type="text" id="comm" th:value="${comm.comm}" disabled>
-              <th:block th:each="rcomm : ${rcomms}">
-<!--                &nbsp;-->
-<!--                <span th:if="${rcomm.id == rcomm.commId}">-->
-                  <input type="text" id="rcomm" th:value="${rcomm.comm}" disabled>
-<!--                </span>-->
-<!--                &nbsp;-->
-              </th:block>
-            </div>
-          </th:block>
         </div>
       </form>
+      <hr>
+      <h2>댓글</h2>
+      <div class = "comment-list" style="text-align: left">
+        <table class="comment-table">
+          <th:block th:each="comm : ${comms}">
+            <tr>
+              <td><br></td>
+            </tr>
+            <tr>
+              <td><h5 th:text="${comm.date}"></h5></td>
+            </tr>
+            <tr>
+              <td><h5 th:text="${comm.comm}"></h5></td>
+            </tr>
+              <table class="re-comment-table">
+                <th:block th:each="recomm : ${recomms}">
+                  <span th:if = "${comm.id} == ${recomm.commId}">
+                      <tr>
+                        <td><h5 th:text="${recomm.date}"></h5></td>
+                      </tr>
+                      <tr>
+                        <td><h5 th:text="${recomm.comm}"></h5></td>
+                      </tr>
+                    </span>
+                </th:block>
+              </table>
+          </th:block>
+        </table>
+      </div>
     </article>
   </section>
 
@@ -58,14 +72,6 @@
     <form th:if="${owner}" th:action="@{/articles/delete/{articleId}(articleId=${articleId})}" method="post">
       <button type="submit" id="delete" th:text="삭제">삭제하기</button>
     </form>
-
-
-
-
-<!--  <footer>-->
-<!--    footer 기능 추가 시 활용 예정-->
-<!--    @Capyright f(b)-->
-<!--  </footer>-->
 
 
 </body>

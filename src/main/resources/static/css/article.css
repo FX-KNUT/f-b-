@@ -55,6 +55,12 @@ section>article{
   margin-bottom: 15px;
 }
 
+.comment-table{
+  border: 1px;
+  width: 800px;
+  align: left;
+}
+
 hr{
   color: gray;
 }
@@ -153,4 +159,5 @@ footer{
   background: darkgrey;
   padding: 10px;
 }
+
 

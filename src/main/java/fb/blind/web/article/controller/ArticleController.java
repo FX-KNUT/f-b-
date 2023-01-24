@@ -107,7 +107,7 @@ public class ArticleController {
     }
 
     @GetMapping("/article/{articleId}")
-    public String article(@Login User loginUser, @PathVariable long articleId,Model model){
+    public String article(@Login User loginUser, @PathVariable long articleId,Model model) {
 
         Article target = as.readArticle(articleId).get();
 
@@ -115,18 +115,18 @@ public class ArticleController {
         // 댓글
         List<Comment> comments = cm.findByArticleId(target.getId());
         // 대댓글
+
         List<Recomment> recomments = null;
-        for (int i = 0; i < comments.size(); i++) {
-            recomments.add((Recomment) rcm.findByCommId(comments.get(i).getId()));
+        for (Comment commment : comments) {
+            List<Recomment> byCommId = rcm.findByCommId(commment.getId());
         }
 
 
-        model.addAttribute("article",target);
-        model.addAttribute("kind",kind);
-        model.addAttribute("owner",target.getUserId() == loginUser.getId());
-        model.addAttribute("comms",comments);
-
-//        model.addAttribute("rcomms",recomments);
+        model.addAttribute("article", target);
+        model.addAttribute("kind", kind);
+        model.addAttribute("owner", target.getUserId() == loginUser.getId());
+        model.addAttribute("comms", comments);
+        model.addAttribute("recomms", recomments);
 
         return "article";
     }
