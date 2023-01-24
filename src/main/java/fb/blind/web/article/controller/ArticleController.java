@@ -27,6 +27,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -106,6 +107,13 @@ public class ArticleController {
         return "articleList";
     }
 
+    /**
+     * 각 게시판 api
+     * @param loginUser
+     * @param articleId
+     * @param model
+     * @return
+     */
     @GetMapping("/article/{articleId}")
     public String article(@Login User loginUser, @PathVariable long articleId,Model model) {
 
@@ -115,10 +123,9 @@ public class ArticleController {
         // 댓글
         List<Comment> comments = cm.findByArticleId(target.getId());
         // 대댓글
-
-        List<Recomment> recomments = null;
-        for (Comment commment : comments) {
-            List<Recomment> byCommId = rcm.findByCommId(commment.getId());
+        List<Recomment> recomments = new ArrayList<Recomment>();
+        for (Comment comment : comments) {
+            recomments.add(rcm.findByCommId(comment.getId()).get(0));
         }
 
 
