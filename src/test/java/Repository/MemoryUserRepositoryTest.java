@@ -26,11 +26,11 @@ class MemoryUserRepositoryTest {
     @Test
     public void findByNickName(){
         User user1 = new User();
-        user1.setName("spring1");
+        user1.setNickName("spring1");
         repository.save(user1);
 
         User user2 = new User();
-        user2.setName("spring2");
+        user2.setNickName("spring2");
         repository.save(user2);
 
         User result= repository.findByNickName("spring1").get();

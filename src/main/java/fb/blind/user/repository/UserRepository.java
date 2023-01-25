@@ -1,13 +1,8 @@
 package fb.blind.user.repository;
 
 import fb.blind.domain.user.User;
-import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.GetMapping;
 
-import javax.annotation.PostConstruct;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 public interface UserRepository{
@@ -40,7 +35,7 @@ public interface UserRepository{
      * @return user List 반환
      */
 
-    Optional<List<User>> findByDept(String dept);
+    Optional<List<User>> findByDept(long dept);
 
     /**
      * @param userid user 고유 id

@@ -7,6 +7,14 @@ import fb.blind.user.repository.UserRepository;
 public class MemoryUserService implements UserService{
     private final UserRepository userRepository;
 
+    /*
+    public UserService save(User user){
+        if(user.getId()==null){
+            user.setId(++userCount);
+        }
+        user.add(user);
+        return (UserService) user;
+    }*/
     public MemoryUserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }

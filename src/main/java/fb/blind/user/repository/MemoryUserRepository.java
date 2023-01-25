@@ -1,6 +1,8 @@
 package fb.blind.user.repository;
 
 import fb.blind.domain.user.User;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 import java.util.HashMap;
 import java.util.List;
@@ -9,6 +11,15 @@ import java.util.Optional;
 
 public class MemoryUserRepository implements UserRepository{
 
+    @Data
+    @AllArgsConstructor
+    public class UserRepository{
+
+        private Integer userId;
+        private Integer passwd;
+        private String nickName;
+
+    }
     private static Map<Long, User> store=new HashMap<>();
     private static long sequence=0L;
 
@@ -33,8 +44,10 @@ public class MemoryUserRepository implements UserRepository{
     }
 
     @Override
-    public Optional<List<User>> findByDept(String dept){
+    public Optional<List<User>> findByDept(long dept){
+
         return Optional.empty();
+
     }
 
     @Override
