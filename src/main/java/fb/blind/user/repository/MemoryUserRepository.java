@@ -11,23 +11,27 @@ import java.util.Optional;
 
 public class MemoryUserRepository implements UserRepository{
 
+
     @Data
     @AllArgsConstructor
     public class UserRepository{
 
-        private Integer userId;
+        private Integer id;
         private Integer passwd;
         private String nickName;
+        private String email;
+
 
     }
     private static Map<Long, User> store=new HashMap<>();
     private static long sequence=0L;
 
     @Override
-    public void save(User user){
+    public Optional<User> save(User user){
         user.setId(++sequence);
         store.put(user.getId(),user);
 
+        return Optional.of(user);
     }
 
     @Override
@@ -51,13 +55,14 @@ public class MemoryUserRepository implements UserRepository{
     }
 
     @Override
-    public void delete(long userid) {
+    public Optional<User> delete(long userid) {
 
+        return null;
     }
 
     @Override
-    public Optional<List<User>> findAll() {
-        return Optional.empty();
+    public List<User> findAll() {
+        return null;
     }
 
     @Override

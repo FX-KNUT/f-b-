@@ -19,7 +19,7 @@ class MemoryUserRepositoryTest {
 
         repository.save(user);
 
-        User result = repository.findByUserId(user.getId()).get();
+        User result = repository.findById(user.getId()).get();
         assertThat(user).isEqualTo(result);
 
     }

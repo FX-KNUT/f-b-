@@ -4,6 +4,7 @@ import fb.blind.domain.question.Question;
 import fb.blind.domain.user.User;
 import fb.blind.user.repository.UserRepository;
 
+@Transactional
 public class MemoryUserService implements UserService{
     private final UserRepository userRepository;
 
@@ -26,8 +27,18 @@ public class MemoryUserService implements UserService{
     }
 
     @Override
-    public User join(User user) {
-        return null;
+    public Long join(User user) {
+
+        validateDuplicateUser(user);
+        userRepository.save(user);
+        return user.getId();
+    }
+    private void validateDuplicateUser(User user){
+        userRepository.findByNickName(user.getNickName())
+                .ifPresent(u ->{
+                    throw new IllegalStateException(("이미 존재하는 회원입니다.");
+                });
+
     }
 
     @Override

@@ -8,10 +8,11 @@ import java.util.Optional;
 public interface UserRepository{
     /**
      * @param user user 객체 저장
+     * @return
      */
 
 
-    void save(User user);
+    Optional<User> save(User user);
 
     /**
      * @param email user email (id 대용)
@@ -39,13 +40,14 @@ public interface UserRepository{
 
     /**
      * @param userid user 고유 id
+     * @return
      */
-    void delete(long userid);
+    Optional<User> delete(long userid);
 
     /**
      * @return user List 반환
      */
-    Optional<List<User>> findAll();
+    List<User> findAll();
 
     /**
      * Repository clear 용 test 시 사용
