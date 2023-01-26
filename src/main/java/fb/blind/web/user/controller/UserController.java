@@ -34,4 +34,15 @@ public class UserController {
 
     }
 
+    // 비밀번호 바꾸기
+    @Bean
+    public void userPwChange(String Pw, @Validated @ModelAttribute("user") SignupForm form){
+        if(form.getPw2() == Pw){
+            return;
+        }
+
+        User user = new User(form.getDept(),form.getNick(),form.getEmail(),Pw);
+        us.join(user);
+    }
+
 }
