@@ -3,7 +3,9 @@ package fb.blind.domain.user.service;
 import fb.blind.domain.question.Question;
 import fb.blind.domain.user.User;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
 public interface UserService {
@@ -23,7 +25,7 @@ public interface UserService {
     /**
      * @param user 로그인 된 user 객체
      */
-    void logout(User user);
+    ModelAndView logout(HttpSession session);
 
     /**
      * @param user user
